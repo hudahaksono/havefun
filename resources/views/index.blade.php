@@ -2,984 +2,868 @@
 <html lang="en">
 
 <head>
+    <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
-    <title>Rapid Bootstrap Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon">
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 
-    <!-- Bootstrap CSS File -->
-    <link href="{{ asset('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
 
-    <!-- Libraries CSS Files -->
-    <link href="{{ asset('lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
 
-    <!-- Main Stylesheet File -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
 
-    <!-- =======================================================
-    Theme Name: Rapid
-    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}">
+
+
+    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
-    <!--==========================
-  Header
-  ============================-->
-    <header id="header">
-
-        <div id="topbar">
-            <div class="container">
-                <div class="social-links">
-                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                    <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-
-            <div class="logo float-left">
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <h1 class="text-light"><a href="#intro" class="scrollto"><span>Rapid</span></a></h1>
-                <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
-            </div>
-
-            <nav class="main-nav float-right d-none d-lg-block">
-                <ul>
-                    <li class="active"><a href="#intro">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li class="drop-down"><a href="">Drop Down</a>
-                        <ul>
-                            <li><a href="#">Drop Down 1</a></li>
-                            <li class="drop-down"><a href="#">Drop Down 2</a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Drop Down 3</a></li>
-                            <li><a href="#">Drop Down 4</a></li>
-                            <li><a href="#">Drop Down 5</a></li>
-                        </ul>
+            <a class="navbar-brand" href="index.html"><img style="width:150px" src="{{ asset('images/savana/logo.jpg') }}" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">Tentang Kami</a></li>
+                    <li class="nav-item"><a href="menu.html" class="nav-link">Store</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Vendor</a></li>
+                    <!-- <li class="nav-item"><a href="blog.html" class="nav-link">Ulasan</a></li> -->
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <!-- <li class="nav-item"><a href="services.html" class="nav-link btn btn-primary">Register</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link btn btn-info">Login</a></li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> Nur Hudha Haksono</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="shop.html">Profile</a>
+                            <a class="dropdown-item" href="product-single.html">My Order</a>
+                            <!-- <a class="dropdown-item" href="room.html">Cart</a>
+                            <hr> -->
+                            <a style="color:red" class="dropdown-item" href="checkout.html">Logout</a>
+                        </div>
                     </li>
-                    <li><a href="#footer">Contact Us</a></li>
+                    <li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
+
                 </ul>
-            </nav><!-- .main-nav -->
-
+            </div>
         </div>
-    </header><!-- #header -->
+    </nav>
+    <!-- END nav -->
 
-    <!--==========================
-    Intro Section
-  ============================-->
-    <section id="intro" class="clearfix">
-        <div class="container d-flex h-100">
-            <div class="row justify-content-center align-self-center">
-                <div class="col-md-6 intro-info order-md-first order-last">
-                    <h2>Rapid Solutions<br>for Your <span>Business!</span></h2>
-                    <div>
-                        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    <section class="home-slider owl-carousel">
+        <div class="slider-item" style="background-image: url(images/savana/savana1.jpg);">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                    <div class="col-md-8 col-sm-12 text-center ftco-animate">
+                        <span class="subheading">Welcome</span>
+                        <h1 class="mb-4">SAVANNA DECORATION</h1>
+                        <p class="mb-4 mb-md-5">Ganti Kata Kata Lu bays</p>
+                        <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Product</a></p>
                     </div>
-                </div>
 
-                <div class="col-md-6 intro-img order-md-last order-first">
-                    <img src="img/intro-img.svg" alt="" class="img-fluid">
                 </div>
             </div>
-
         </div>
-    </section><!-- #intro -->
 
-    <main id="main">
-
-        <!--==========================
-      About Us Section
-    ============================-->
-        <section id="about">
-
+        <div class="slider-item" style="background-image: url(images/savana/savana2.jpg);">
+            <div class="overlay"></div>
             <div class="container">
-                <div class="row">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-                    <div class="col-lg-5 col-md-6">
-                        <div class="about-img">
-                            <img src="img/about-img.jpg" alt="">
+                    <div class="col-md-8 col-sm-12 text-center ftco-animate">
+                        <span class="subheading">Welcome</span>
+                        <h1 class="mb-4">SAVANNA DECORATION</h1>
+                        <p class="mb-4 mb-md-5">Ganti Kata Kata Lu bays</p>
+                        <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Product</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-item" style="background-image: url(images/savana/savana3.jpg);">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                    <div class="col-md-8 col-sm-12 text-center ftco-animate">
+                        <span class="subheading">Welcome</span>
+                        <h1 class="mb-4">SAVANNA DECORATION</h1>
+                        <p class="mb-4 mb-md-5">Ganti Kata Kata Lu bays</p>
+                        <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Product</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-intro">
+        <div class="container-wrap">
+            <div class="wrap d-md-flex align-items-xl-end">
+                <div class="info">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 d-flex ftco-animate">
+                            <div class="icon"><span class="icon-phone"></span></div>
+                            <div class="text">
+                                <h3>Kontak Person</h3>
+                                <p>+6285866167659</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-flex ftco-animate">
+                            <div class="icon"><span class="icon-my_location"></span></div>
+                            <div class="text">
+                                <h3>Savanna Decoration</h3>
+                                <p> Jl. H. Rijin No.143 A, Tugu, Kec. Cimanggis, Kota Depok, Jawa Barat 16451</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-flex ftco-animate">
+                            <div class="icon"><span class="icon-clock-o"></span></div>
+                            <div class="text">
+                                <h3>Open Senin-Jumat</h3>
+                                <p>08:00- 21:00</p>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="book p-4">
+                    <h3>Book a Table</h3>
+                    <form action="#" class="appointment-form">
+                        <div class="d-md-flex">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name">
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <input type="text" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="d-md-flex">
+                            <div class="form-group">
+                                <div class="input-wrap">
+                                    <div class="icon"><span class="ion-md-calendar"></span></div>
+                                    <input type="text" class="form-control appointment_date" placeholder="Date">
+                                </div>
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <div class="input-wrap">
+                                    <div class="icon"><span class="ion-ios-clock"></span></div>
+                                    <input type="text" class="form-control appointment_time" placeholder="Time">
+                                </div>
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <input type="text" class="form-control" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="d-md-flex">
+                            <div class="form-group">
+                                <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <input type="submit" value="Appointment" class="btn btn-white py-3 px-4">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="col-lg-7 col-md-6">
-                        <div class="about-content">
-                            <h2>About Us</h2>
-                            <h3>Odio sed id eos et laboriosam consequatur eos earum soluta.</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p>Aut dolor id. Sint aliquam consequatur ex ex labore. Et quis qui dolor nulla dolores neque. Aspernatur consectetur omnis numquam quaerat. Sed fugiat nisi. Officiis veniam molestiae. Et vel ut quidem alias veritatis repudiandae ut fugit. Est ut eligendi aspernatur nulla voluptates veniam iusto vel quisquam. Fugit ut maxime incidunt accusantium totam repellendus eum error. Et repudiandae eum iste qui et ut ab alias.</p>
+    <section class="ftco-about d-md-flex">
+        <div class="one-half img" style="background-image: url(images/savana/about.jpg);"></div>
+        <div class="one-half ftco-animate">
+            <div class="overlap">
+                <div class="heading-section ftco-animate ">
+                    <span class="subheading">Discover</span>
+                    <h2 class="mb-4">Our Story</h2>
+                </div>
+                <div>
+                    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section ftco-services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 ftco-animate">
+                    <div class="media d-block text-center block-6 services">
+                        <div class="icon d-flex justify-content-center align-items-center mb-5">
+                            <span class="flaticon-choices"></span>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="heading">Mudah Untuk Order</h3>
+                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="media d-block text-center block-6 services">
+                        <div class="icon d-flex justify-content-center align-items-center mb-5">
+                            <i class="fas fa-mobile-alt fa-3x"></i>
+                            <!-- <span class="flaticon-phone"></span> -->
+                        </div>
+                        <div class="media-body">
+                            <h3 class="heading">Fast Respon</h3>
+                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ftco-animate">
+                    <div class="media d-block text-center block-6 services">
+                        <div class="icon d-flex justify-content-center align-items-center mb-5">
+                            <i class="fas fa-newspaper fa-3x"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="heading">Terpercaya</h3>
+                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 pr-md-5">
+                    <div class="heading-section text-md-right ftco-animate">
+                        <span class="subheading">Discover</span>
+                        <h2 class="mb-4">Our Menu</h2>
+                        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                        <p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="menu-entry">
+                                <a href="#" class="img" style="background-image: url(images/menu-1.jpg);"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="menu-entry mt-lg-4">
+                                <a href="#" class="img" style="background-image: url(images/menu-2.jpg);"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="menu-entry">
+                                <a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="menu-entry mt-lg-4">
+                                <a href="#" class="img" style="background-image: url(images/menu-4.jpg);"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                            <div class="block-18 text-center">
+                                <div class="text">
+                                    <div class="icon"><span class="flaticon-coffee-cup"></span></div>
+                                    <strong class="number" data-number="100">0</strong>
+                                    <span>Coffee Branches</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                            <div class="block-18 text-center">
+                                <div class="text">
+                                    <div class="icon"><span class="flaticon-coffee-cup"></span></div>
+                                    <strong class="number" data-number="85">0</strong>
+                                    <span>Number of Awards</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                            <div class="block-18 text-center">
+                                <div class="text">
+                                    <div class="icon"><span class="flaticon-coffee-cup"></span></div>
+                                    <strong class="number" data-number="10567">0</strong>
+                                    <span>Happy Customer</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                            <div class="block-18 text-center">
+                                <div class="text">
+                                    <div class="icon"><span class="flaticon-coffee-cup"></span></div>
+                                    <strong class="number" data-number="900">0</strong>
+                                    <span>Staff</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section ftco-animate text-center">
+                    <span class="subheading">Discover</span>
+                    <h2 class="mb-4">Best Coffee Sellers</h2>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="menu-entry">
+                        <a href="#" class="img" style="background-image: url(images/menu-1.jpg);"></a>
+                        <div class="text text-center pt-4">
+                            <h3><a href="#">Coffee Capuccino</a></h3>
+                            <p>A small river named Duden flows by their place and supplies</p>
+                            <p class="price"><span>$5.90</span></p>
+                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="menu-entry">
+                        <a href="#" class="img" style="background-image: url(images/menu-2.jpg);"></a>
+                        <div class="text text-center pt-4">
+                            <h3><a href="#">Coffee Capuccino</a></h3>
+                            <p>A small river named Duden flows by their place and supplies</p>
+                            <p class="price"><span>$5.90</span></p>
+                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="menu-entry">
+                        <a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>
+                        <div class="text text-center pt-4">
+                            <h3><a href="#">Coffee Capuccino</a></h3>
+                            <p>A small river named Duden flows by their place and supplies</p>
+                            <p class="price"><span>$5.90</span></p>
+                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="menu-entry">
+                        <a href="#" class="img" style="background-image: url(images/menu-4.jpg);"></a>
+                        <div class="text text-center pt-4">
+                            <h3><a href="#">Coffee Capuccino</a></h3>
+                            <p>A small river named Duden flows by their place and supplies</p>
+                            <p class="price"><span>$5.90</span></p>
+                            <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-gallery">
+        <div class="container-wrap">
+            <div class="row no-gutters">
+                <div class="col-md-3 ftco-animate">
+                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-1.jpg);">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-search"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-2.jpg);">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-search"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-3.jpg);">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-search"></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-4.jpg);">
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                            <span class="icon-search"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-menu">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <span class="subheading">Discover</span>
+                    <h2 class="mb-4">Our Products</h2>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                </div>
+            </div>
+            <div class="row d-md-flex">
+                <div class="col-lg-12 ftco-animate p-md-5">
+                    <div class="row">
+                        <div class="col-md-12 nav-link-wrap mb-5">
+                            <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Main Dish</a>
+
+                                <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Drinks</a>
+
+                                <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 d-flex align-items-center">
+
+                            <div class="tab-content ftco-animate" id="v-pills-tabContent">
+
+                                <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                                    <div class="row">
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <a href="#" class="menu-img img mb-4" style="background-image: url(images/dish-1.jpg);"></a>
+                                                <div class="text">
+                                                    <h3><a href="#">Grilled Beef</a></h3>
+                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                    <p class="price"><span>$2.90</span></p>
+                                                    <p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <a href="#" class="menu-img img mb-4" style="background-image: url(images/dish-2.jpg);"></a>
+                                                <div class="text">
+                                                    <h3><a href="#">Grilled Beef</a></h3>
+                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                    <p class="price"><span>$2.90</span></p>
+                                                    <p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <a href="#" class="menu-img img mb-4" style="background-image: url(images/dish-3.jpg);"></a>
+                                                <div class="text">
+                                                    <h3><a href="#">Grilled Beef</a></h3>
+                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                    <p class="price"><span>$2.90</span></p>
+                                                    <p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+                                    <div class="row">
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <a href="#" class="menu-img img mb-4" style="background-image: url(images/drink-1.jpg);"></a>
+                                                <div class="text">
+                                                    <h3><a href="#">Lemonade Juice</a></h3>
+                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                    <p class="price"><span>$2.90</span></p>
+                                                    <p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <a href="#" class="menu-img img mb-4" style="background-image: url(images/drink-2.jpg);"></a>
+                                                <div class="text">
+                                                    <h3><a href="#">Pineapple Juice</a></h3>
+                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                    <p class="price"><span>$2.90</span></p>
+                                                    <p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <a href="#" class="menu-img img mb-4" style="background-image: url(images/drink-3.jpg);"></a>
+                                                <div class="text">
+                                                    <h3><a href="#">Soda Drinks</a></h3>
+                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                    <p class="price"><span>$2.90</span></p>
+                                                    <p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+                                    <div class="row">
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-1.jpg);"></a>
+                                                <div class="text">
+                                                    <h3><a href="#">Hot Cake Honey</a></h3>
+                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                    <p class="price"><span>$2.90</span></p>
+                                                    <p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-2.jpg);"></a>
+                                                <div class="text">
+                                                    <h3><a href="#">Hot Cake Honey</a></h3>
+                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                    <p class="price"><span>$2.90</span></p>
+                                                    <p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="menu-wrap">
+                                                <a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-3.jpg);"></a>
+                                                <div class="text">
+                                                    <h3><a href="#">Hot Cake Honey</a></h3>
+                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                    <p class="price"><span>$2.90</span></p>
+                                                    <p><a href="#" class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section img" id="ftco-testimony" style="background-image: url(images/bg_1.jpg);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <span class="subheading">Testimony</span>
+                    <h2 class="mb-4">Customers Says</h2>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-wrap">
+            <div class="row d-flex no-gutters">
+                <div class="col-lg align-self-sm-end ftco-animate">
+                    <div class="testimony">
+                        <blockquote>
+                            <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small.&rdquo;</p>
+                        </blockquote>
+                        <div class="author d-flex mt-4">
+                            <div class="image mr-3 align-self-center">
+                                <img src="images/person_1.jpg" alt="">
+                            </div>
+                            <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg align-self-sm-end">
+                    <div class="testimony overlay">
+                        <blockquote>
+                            <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
+                        </blockquote>
+                        <div class="author d-flex mt-4">
+                            <div class="image mr-3 align-self-center">
+                                <img src="images/person_2.jpg" alt="">
+                            </div>
+                            <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg align-self-sm-end ftco-animate">
+                    <div class="testimony">
+                        <blockquote>
+                            <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name. &rdquo;</p>
+                        </blockquote>
+                        <div class="author d-flex mt-4">
+                            <div class="image mr-3 align-self-center">
+                                <img src="images/person_3.jpg" alt="">
+                            </div>
+                            <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg align-self-sm-end">
+                    <div class="testimony overlay">
+                        <blockquote>
+                            <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however.&rdquo;</p>
+                        </blockquote>
+                        <div class="author d-flex mt-4">
+                            <div class="image mr-3 align-self-center">
+                                <img src="images/person_2.jpg" alt="">
+                            </div>
+                            <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg align-self-sm-end ftco-animate">
+                    <div class="testimony">
+                        <blockquote>
+                            <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name. &rdquo;</p>
+                        </blockquote>
+                        <div class="author d-flex mt-4">
+                            <div class="image mr-3 align-self-center">
+                                <img src="images/person_3.jpg" alt="">
+                            </div>
+                            <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section ftco-animate text-center">
+                    <h2 class="mb-4">Recent from blog</h2>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                </div>
+            </div>
+            <div class="row d-flex">
+                <div class="col-md-4 d-flex ftco-animate">
+                    <div class="blog-entry align-self-stretch">
+                        <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+                        </a>
+                        <div class="text py-4 d-block">
+                            <div class="meta">
+                                <div><a href="#">Sept 10, 2018</a></div>
+                                <div><a href="#">Admin</a></div>
+                                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                            </div>
+                            <h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
+                            <p>Ganti Kata Kata Lu bays</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex ftco-animate">
+                    <div class="blog-entry align-self-stretch">
+                        <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
+                        </a>
+                        <div class="text py-4 d-block">
+                            <div class="meta">
+                                <div><a href="#">Sept 10, 2018</a></div>
+                                <div><a href="#">Admin</a></div>
+                                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                            </div>
+                            <h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
+                            <p>Ganti Kata Kata Lu bays</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex ftco-animate">
+                    <div class="blog-entry align-self-stretch">
+                        <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
+                        </a>
+                        <div class="text py-4 d-block">
+                            <div class="meta">
+                                <div><a href="#">Sept 10, 2018</a></div>
+                                <div><a href="#">Admin</a></div>
+                                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                            </div>
+                            <h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
+                            <p>Ganti Kata Kata Lu bays</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="ftco-appointment">
+        <div class="overlay"></div>
+        <div class="container-wrap">
+            <div class="row no-gutters d-md-flex align-items-center">
+                <div class="col-md-6 d-flex align-self-stretch">
+                    <div id="map"></div>
+                </div>
+                <div class="col-md-6 appointment ftco-animate">
+                    <h3 class="mb-3">Book a Table</h3>
+                    <form action="#" class="appointment-form">
+                        <div class="d-md-flex">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name">
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <input type="text" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="d-md-flex">
+                            <div class="form-group">
+                                <div class="input-wrap">
+                                    <div class="icon"><span class="ion-md-calendar"></span></div>
+                                    <input type="text" class="form-control appointment_date" placeholder="Date">
+                                </div>
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <div class="input-wrap">
+                                    <div class="icon"><span class="ion-ios-clock"></span></div>
+                                    <input type="text" class="form-control appointment_time" placeholder="Time">
+                                </div>
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <input type="text" class="form-control" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="d-md-flex">
+                            <div class="form-group">
+                                <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+                            </div>
+                            <div class="form-group ml-md-4">
+                                <input type="submit" value="Appointment" class="btn btn-primary py-3 px-4">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section img">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">About Us</h2>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-5 mb-md-5">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Recent Blog</h2>
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                            <div class="text">
+                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                                <div class="meta">
+                                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                            <div class="text">
+                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                                <div class="meta">
+                                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-5">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">Services</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="py-2 d-block">Cooked</a></li>
+                            <li><a href="#" class="py-2 d-block">Deliver</a></li>
+                            <li><a href="#" class="py-2 d-block">Quality Foods</a></li>
+                            <li><a href="#" class="py-2 d-block">Mixed</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <div class="block-23 mb-3">
                             <ul>
-                                <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                <li><i class="ion-android-checkmark-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                                <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
 
-        </section><!-- #about -->
-
-
-        <!--==========================
-      Services Section
-    ============================-->
-        <section id="services" class="section-bg">
-            <div class="container">
-
-                <header class="section-header">
-                    <h3>Services</h3>
-                    <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
-                </header>
-
-                <div class="row">
-
-                    <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-                        <div class="box">
-                            <div class="icon" style="background: #fceef3;"><i class="ion-ios-analytics-outline" style="color: #ff689b;"></i></div>
-                            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
-                        <div class="box">
-                            <div class="icon" style="background: #fff0da;"><i class="ion-ios-bookmarks-outline" style="color: #e98e06;"></i></div>
-                            <h4 class="title"><a href="">Dolor Sitema</a></h4>
-                            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-                        <div class="box">
-                            <div class="icon" style="background: #e6fdfc;"><i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i></div>
-                            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-                            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
-                        <div class="box">
-                            <div class="icon" style="background: #eafde7;"><i class="ion-ios-speedometer-outline" style="color:#41cf2e;"></i></div>
-                            <h4 class="title"><a href="">Magni Dolores</a></h4>
-                            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
-                        <div class="box">
-                            <div class="icon" style="background: #e1eeff;"><i class="ion-ios-world-outline" style="color: #2282ff;"></i></div>
-                            <h4 class="title"><a href="">Nemo Enim</a></h4>
-                            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
-                        <div class="box">
-                            <div class="icon" style="background: #ecebff;"><i class="ion-ios-clock-outline" style="color: #8660fe;"></i></div>
-                            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-                            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-                        </div>
-                    </div>
-
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>
+                            document.write(new Date().getFullYear());
+                        </script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
                 </div>
-
-            </div>
-        </section><!-- #services -->
-
-        <!--==========================
-      Why Us Section
-    ============================-->
-        <section id="why-us" class="wow fadeIn">
-            <div class="container-fluid">
-
-                <header class="section-header">
-                    <h3>Why choose us?</h3>
-                    <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
-                </header>
-
-                <div class="row">
-
-                    <div class="col-lg-6">
-                        <div class="why-us-img">
-                            <img src="img/why-us.jpg" alt="" class="img-fluid">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="why-us-content">
-                            <p>Molestiae omnis numquam corrupti omnis itaque. Voluptatum quidem impedit. Odio dolorum exercitationem est error omnis repudiandae ad dolorum sit.</p>
-                            <p>
-                                Explicabo repellendus quia labore. Non optio quo ea ut ratione et quaerat. Porro facilis deleniti porro consequatur
-                                et temporibus. Labore est odio.
-
-                                Odio omnis saepe qui. Veniam eaque ipsum. Ea quia voluptatum quis explicabo sed nihil repellat..
-                            </p>
-
-                            <div class="features wow bounceInUp clearfix">
-                                <i class="fa fa-diamond" style="color: #f058dc;"></i>
-                                <h4>Corporis dolorem</h4>
-                                <p>Commodi quia voluptatum. Est cupiditate voluptas quaerat officiis ex alias dignissimos et ipsum. Soluta at enim modi ut incidunt dolor et.</p>
-                            </div>
-
-                            <div class="features wow bounceInUp clearfix">
-                                <i class="fa fa-object-group" style="color: #ffb774;"></i>
-                                <h4>Eum ut aspernatur</h4>
-                                <p>Molestias eius rerum iusto voluptas et ab cupiditate aut enim. Assumenda animi occaecati. Quo dolore fuga quasi autem aliquid ipsum odit. Perferendis doloremque iure nulla aut.</p>
-                            </div>
-
-                            <div class="features wow bounceInUp clearfix">
-                                <i class="fa fa-language" style="color: #589af1;"></i>
-                                <h4>Voluptates dolores</h4>
-                                <p>Voluptates nihil et quis omnis et eaque omnis sint aut. Ducimus dolorum aspernatur. Totam dolores ut enim ullam voluptas distinctio aut.</p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="container">
-                <div class="row counters">
-
-                    <div class="col-lg-3 col-6 text-center">
-                        <span data-toggle="counter-up">274</span>
-                        <p>Clients</p>
-                    </div>
-
-                    <div class="col-lg-3 col-6 text-center">
-                        <span data-toggle="counter-up">421</span>
-                        <p>Projects</p>
-                    </div>
-
-                    <div class="col-lg-3 col-6 text-center">
-                        <span data-toggle="counter-up">1,364</span>
-                        <p>Hours Of Support</p>
-                    </div>
-
-                    <div class="col-lg-3 col-6 text-center">
-                        <span data-toggle="counter-up">18</span>
-                        <p>Hard Workers</p>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!--==========================
-      Call To Action Section
-    ============================-->
-        <section id="call-to-action" class="wow fadeInUp">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9 text-center text-lg-left">
-                        <h3 class="cta-title">Call To Action</h3>
-                        <p class="cta-text"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                    <div class="col-lg-3 cta-btn-container text-center">
-                        <a class="cta-btn align-middle" href="#">Call To Action</a>
-                    </div>
-                </div>
-
-            </div>
-        </section><!-- #call-to-action -->
-
-        <!--==========================
-      Features Section
-    ============================-->
-        <section id="features">
-            <div class="container">
-
-                <div class="row feature-item">
-                    <div class="col-lg-6 wow fadeInUp">
-                        <img src="img/features-1.svg" class="img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
-                        <h4>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h4>
-                        <p>
-                            Ipsum in aspernatur ut possimus sint. Quia omnis est occaecati possimus ea. Quas molestiae perspiciatis occaecati qui rerum. Deleniti quod porro sed quisquam saepe. Numquam mollitia recusandae non ad at et a.
-                        </p>
-                        <p>
-                            Ad vitae recusandae odit possimus. Quaerat cum ipsum corrupti. Odit qui asperiores ea corporis deserunt veritatis quidem expedita perferendis. Qui rerum eligendi ex doloribus quia sit. Porro rerum eum eum.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row feature-item mt-5 pt-5">
-                    <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
-                        <img src="img/features-2.svg" class="img-fluid" alt="">
-                    </div>
-
-                    <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
-                        <h4>Neque saepe temporibus repellat ea ipsum et. Id vel et quia tempora facere reprehenderit.</h4>
-                        <p>
-                            Delectus alias ut incidunt delectus nam placeat in consequatur. Sed cupiditate quia ea quis. Voluptas nemo qui aut distinctio. Cumque fugit earum est quam officiis numquam. Ducimus corporis autem at blanditiis beatae incidunt sunt.
-                        </p>
-                        <p>
-                            Voluptas saepe natus quidem blanditiis. Non sunt impedit voluptas mollitia beatae. Qui esse molestias. Laudantium libero nisi vitae debitis. Dolorem cupiditate est perferendis iusto.
-                        </p>
-                        <p>
-                            Eum quia in. Magni quas ipsum a. Quis ex voluptatem inventore sint quia modi. Numquam est aut fuga mollitia exercitationem nam accusantium provident quia.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- #about -->
-
-        <!--==========================
-      Portfolio Section
-    ============================-->
-        <section id="portfolio" class="section-bg">
-            <div class="container">
-
-                <header class="section-header">
-                    <h3 class="section-title">Our Portfolio</h3>
-                </header>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-app">App</li>
-                            <li data-filter=".filter-card">Card</li>
-                            <li data-filter=".filter-web">Web</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row portfolio-container">
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="img/portfolio/app1.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4><a href="#">App 1</a></h4>
-                                <p>App</p>
-                                <div>
-                                    <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-                                    <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.1s">
-                        <div class="portfolio-wrap">
-                            <img src="img/portfolio/web3.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4><a href="#">Web 3</a></h4>
-                                <p>Web</p>
-                                <div>
-                                    <a href="img/portfolio/web3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 3" title="Preview"><i class="ion ion-eye"></i></a>
-                                    <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-wow-delay="0.2s">
-                        <div class="portfolio-wrap">
-                            <img src="img/portfolio/app2.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4><a href="#">App 2</a></h4>
-                                <p>App</p>
-                                <div>
-                                    <a href="img/portfolio/app2.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 2" title="Preview"><i class="ion ion-eye"></i></a>
-                                    <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="img/portfolio/card2.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4><a href="#">Card 2</a></h4>
-                                <p>Card</p>
-                                <div>
-                                    <a href="img/portfolio/card2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 2" title="Preview"><i class="ion ion-eye"></i></a>
-                                    <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.1s">
-                        <div class="portfolio-wrap">
-                            <img src="img/portfolio/web2.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4><a href="#">Web 2</a></h4>
-                                <p>Web</p>
-                                <div>
-                                    <a href="img/portfolio/web2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 2" title="Preview"><i class="ion ion-eye"></i></a>
-                                    <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-wow-delay="0.2s">
-                        <div class="portfolio-wrap">
-                            <img src="img/portfolio/app3.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4><a href="#">App 3</a></h4>
-                                <p>App</p>
-                                <div>
-                                    <a href="img/portfolio/app3.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
-                                    <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="img/portfolio/card1.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4><a href="#">Card 1</a></h4>
-                                <p>Card</p>
-                                <div>
-                                    <a href="img/portfolio/card1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 1" title="Preview"><i class="ion ion-eye"></i></a>
-                                    <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card" data-wow-delay="0.1s">
-                        <div class="portfolio-wrap">
-                            <img src="img/portfolio/card3.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4><a href="#">Card 3</a></h4>
-                                <p>Card</p>
-                                <div>
-                                    <a href="img/portfolio/card3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 3" title="Preview"><i class="ion ion-eye"></i></a>
-                                    <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.2s">
-                        <div class="portfolio-wrap">
-                            <img src="img/portfolio/web1.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4><a href="#">Web 1</a></h4>
-                                <p>Web</p>
-                                <div>
-                                    <a href="img/portfolio/web1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
-                                    <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- #portfolio -->
-
-        <!--==========================
-      Clients Section
-    ============================-->
-        <section id="testimonials">
-            <div class="container">
-
-                <header class="section-header">
-                    <h3>Testimonials</h3>
-                </header>
-
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-
-                        <div class="owl-carousel testimonials-carousel wow fadeInUp">
-
-                            <div class="testimonial-item">
-                                <img src="img/testimonial-1.jpg" class="testimonial-img" alt="">
-                                <h3>Saul Goodman</h3>
-                                <h4>Ceo &amp; Founder</h4>
-                                <p>
-                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                                </p>
-                            </div>
-
-                            <div class="testimonial-item">
-                                <img src="img/testimonial-2.jpg" class="testimonial-img" alt="">
-                                <h3>Sara Wilsson</h3>
-                                <h4>Designer</h4>
-                                <p>
-                                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                                </p>
-                            </div>
-
-                            <div class="testimonial-item">
-                                <img src="img/testimonial-3.jpg" class="testimonial-img" alt="">
-                                <h3>Jena Karlis</h3>
-                                <h4>Store Owner</h4>
-                                <p>
-                                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                                </p>
-                            </div>
-
-                            <div class="testimonial-item">
-                                <img src="img/testimonial-4.jpg" class="testimonial-img" alt="">
-                                <h3>Matt Brandon</h3>
-                                <h4>Freelancer</h4>
-                                <p>
-                                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                                </p>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-
-            </div>
-        </section><!-- #testimonials -->
-
-        <!--==========================
-      Team Section
-    ============================-->
-        <section id="team" class="section-bg">
-            <div class="container">
-                <div class="section-header">
-                    <h3>Team</h3>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-lg-3 col-md-6 wow fadeInUp">
-                        <div class="member">
-                            <img src="img/team-1.jpg" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4>Walter White</h4>
-                                    <span>Chief Executive Officer</span>
-                                    <div class="social">
-                                        <a href=""><i class="fa fa-twitter"></i></a>
-                                        <a href=""><i class="fa fa-facebook"></i></a>
-                                        <a href=""><i class="fa fa-google-plus"></i></a>
-                                        <a href=""><i class="fa fa-linkedin"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="member">
-                            <img src="img/team-2.jpg" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4>Sarah Jhonson</h4>
-                                    <span>Product Manager</span>
-                                    <div class="social">
-                                        <a href=""><i class="fa fa-twitter"></i></a>
-                                        <a href=""><i class="fa fa-facebook"></i></a>
-                                        <a href=""><i class="fa fa-google-plus"></i></a>
-                                        <a href=""><i class="fa fa-linkedin"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="member">
-                            <img src="img/team-3.jpg" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4>William Anderson</h4>
-                                    <span>CTO</span>
-                                    <div class="social">
-                                        <a href=""><i class="fa fa-twitter"></i></a>
-                                        <a href=""><i class="fa fa-facebook"></i></a>
-                                        <a href=""><i class="fa fa-google-plus"></i></a>
-                                        <a href=""><i class="fa fa-linkedin"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="member">
-                            <img src="img/team-4.jpg" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <div class="member-info-content">
-                                    <h4>Amanda Jepson</h4>
-                                    <span>Accountant</span>
-                                    <div class="social">
-                                        <a href=""><i class="fa fa-twitter"></i></a>
-                                        <a href=""><i class="fa fa-facebook"></i></a>
-                                        <a href=""><i class="fa fa-google-plus"></i></a>
-                                        <a href=""><i class="fa fa-linkedin"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- #team -->
-
-        <!--==========================
-      Clients Section
-    ============================-->
-        <section id="clients" class="wow fadeInUp">
-            <div class="container">
-
-                <header class="section-header">
-                    <h3>Our Clients</h3>
-                </header>
-
-                <div class="owl-carousel clients-carousel">
-                    <img src="img/clients/client-1.png" alt="">
-                    <img src="img/clients/client-2.png" alt="">
-                    <img src="img/clients/client-3.png" alt="">
-                    <img src="img/clients/client-4.png" alt="">
-                    <img src="img/clients/client-5.png" alt="">
-                    <img src="img/clients/client-6.png" alt="">
-                    <img src="img/clients/client-7.png" alt="">
-                    <img src="img/clients/client-8.png" alt="">
-                </div>
-
-            </div>
-        </section><!-- #clients -->
-
-
-        <!--==========================
-      Pricing Section
-    ============================-->
-        <section id="pricing" class="wow fadeInUp section-bg">
-
-            <div class="container">
-
-                <header class="section-header">
-                    <h3>Pricing</h3>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-                </header>
-
-                <div class="row flex-items-xs-middle flex-items-xs-center">
-
-                    <!-- Basic Plan  -->
-                    <div class="col-xs-12 col-lg-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3><span class="currency">$</span>19<span class="period">/month</span></h3>
-                            </div>
-                            <div class="card-block">
-                                <h4 class="card-title">
-                                    Basic Plan
-                                </h4>
-                                <ul class="list-group">
-                                    <li class="list-group-item">Odio animi voluptates</li>
-                                    <li class="list-group-item">Inventore quisquam et</li>
-                                    <li class="list-group-item">Et perspiciatis suscipit</li>
-                                    <li class="list-group-item">24/7 Support System</li>
-                                </ul>
-                                <a href="#" class="btn">Choose Plan</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Regular Plan  -->
-                    <div class="col-xs-12 col-lg-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3><span class="currency">$</span>29<span class="period">/month</span></h3>
-                            </div>
-                            <div class="card-block">
-                                <h4 class="card-title">
-                                    Regular Plan
-                                </h4>
-                                <ul class="list-group">
-                                    <li class="list-group-item">Odio animi voluptates</li>
-                                    <li class="list-group-item">Inventore quisquam et</li>
-                                    <li class="list-group-item">Et perspiciatis suscipit</li>
-                                    <li class="list-group-item">24/7 Support System</li>
-                                </ul>
-                                <a href="#" class="btn">Choose Plan</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Premium Plan  -->
-                    <div class="col-xs-12 col-lg-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3><span class="currency">$</span>39<span class="period">/month</span></h3>
-                            </div>
-                            <div class="card-block">
-                                <h4 class="card-title">
-                                    Premium Plan
-                                </h4>
-                                <ul class="list-group">
-                                    <li class="list-group-item">Odio animi voluptates</li>
-                                    <li class="list-group-item">Inventore quisquam et</li>
-                                    <li class="list-group-item">Et perspiciatis suscipit</li>
-                                    <li class="list-group-item">24/7 Support System</li>
-                                </ul>
-                                <a href="#" class="btn">Choose Plan</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </section><!-- #pricing -->
-
-        <!--==========================
-      Frequently Asked Questions Section
-    ============================-->
-        <section id="faq">
-            <div class="container">
-                <header class="section-header">
-                    <h3>Frequently Asked Questions</h3>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-                </header>
-
-                <ul id="faq-list" class="wow fadeInUp">
-                    <li>
-                        <a data-toggle="collapse" class="collapsed" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="ion-android-remove"></i></a>
-                        <div id="faq1" class="collapse" data-parent="#faq-list">
-                            <p>
-                                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a data-toggle="collapse" href="#faq2" class="collapsed">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="ion-android-remove"></i></a>
-                        <div id="faq2" class="collapse" data-parent="#faq-list">
-                            <p>
-                                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a data-toggle="collapse" href="#faq3" class="collapsed">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="ion-android-remove"></i></a>
-                        <div id="faq3" class="collapse" data-parent="#faq-list">
-                            <p>
-                                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                            </p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a data-toggle="collapse" href="#faq4" class="collapsed">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="ion-android-remove"></i></a>
-                        <div id="faq4" class="collapse" data-parent="#faq-list">
-                            <p>
-                                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                            </p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a data-toggle="collapse" href="#faq5" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="ion-android-remove"></i></a>
-                        <div id="faq5" class="collapse" data-parent="#faq-list">
-                            <p>
-                                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-                            </p>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a data-toggle="collapse" href="#faq6" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="ion-android-remove"></i></a>
-                        <div id="faq6" class="collapse" data-parent="#faq-list">
-                            <p>
-                                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
-                            </p>
-                        </div>
-                    </li>
-
-                </ul>
-
-            </div>
-        </section><!-- #faq -->
-
-    </main>
-
-    <!--==========================
-    Footer
-  ============================-->
-    <footer id="footer" class="section-bg">
-        <div class="footer-top">
-            <div class="container">
-
-                <div class="row">
-
-                    <div class="col-lg-6">
-
-                        <div class="row">
-
-                            <div class="col-sm-6">
-
-                                <div class="footer-info">
-                                    <h3>Rapid</h3>
-                                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
-                                </div>
-
-                                <div class="footer-newsletter">
-                                    <h4>Our Newsletter</h4>
-                                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem.</p>
-                                    <form action="" method="post">
-                                        <input type="email" name="email"><input type="submit" value="Subscribe">
-                                    </form>
-                                </div>
-
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="footer-links">
-                                    <h4>Useful Links</h4>
-                                    <ul>
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">About us</a></li>
-                                        <li><a href="#">Services</a></li>
-                                        <li><a href="#">Terms of service</a></li>
-                                        <li><a href="#">Privacy policy</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="footer-links">
-                                    <h4>Contact Us</h4>
-                                    <p>
-                                        A108 Adam Street <br>
-                                        New York, NY 535022<br>
-                                        United States <br>
-                                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                                        <strong>Email:</strong> info@example.com<br>
-                                    </p>
-                                </div>
-
-                                <div class="social-links">
-                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-lg-6">
-
-                        <div class="form">
-
-                            <h4>Send us a message</h4>
-                            <p>Eos ipsa est voluptates. Nostrum nam libero ipsa vero. Debitis quasi sit eaque numquam similique commodi harum aut temporibus.</p>
-                            <form action="" method="post" role="form" class="contactForm">
-                                <div class="form-group">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                    <div class="validation"></div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                                    <div class="validation"></div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                                    <div class="validation"></div>
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                                    <div class="validation"></div>
-                                </div>
-
-                                <div id="sendmessage">Your message has been sent. Thank you!</div>
-                                <div id="errormessage"></div>
-
-                                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
-                            </form>
-                        </div>
-
-                    </div>
-
-
-
-                </div>
-
             </div>
         </div>
+    </footer>
 
-        <div class="container">
-            <div class="copyright">
-                &copy; Copyright <strong>Rapid</strong>. All Rights Reserved
-            </div>
-            <div class="credits">
-                <!--
-          All the links in the footer should remain intact.
-          You can delete the links only if you purchased the pro version.
-          Licensing information: https://bootstrapmade.com/license/
-          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Rapid
-        -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
-        </div>
-    </footer><!-- #footer -->
 
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-    <!-- Uncomment below i you want to use a preloader -->
-    <!-- <div id="preloader"></div> -->
 
-    <!-- JavaScript Libraries -->
-    <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('lib/jquery/jquery-migrate.min.js') }}"></script>
-    <script src="{{ asset('lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('lib/mobile-nav/mobile-nav.js') }}"></script>
-    <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
-    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
-    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('lib/isotope/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
-    <!-- Contact Form JavaScript File -->
-    <script src="{{ asset('contactform/contactform.js') }}"></script>
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+        </svg></div>
 
-    <!-- Template Main Javascript File -->
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}"></script>
+    <script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
+    <script src="{{ asset('js/scrollax.min.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="{{ asset('js/google-map.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
 </body>
