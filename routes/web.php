@@ -52,6 +52,9 @@ Route::get('/dashboard', function () {
     return view('office.dashboard');
 });
 
+// Master Paket //
+Route::get('/master-paket', 'Master\PaketController@index')->name('master-paket');
+
 // Master Kategori //
 Route::get('/master-kategori', 'Master\KategoriController@index')->name('master-kategori');
 // Route::get('/master-kategori/list-data', 'Master\KategoriController@list_data_hdr');
@@ -62,6 +65,18 @@ Route::get('/master-kategori', 'Master\KategoriController@index')->name('master-
 // Master Product //
 Route::get('/master-product', 'Master\ProductController@index')->name('master-product');
 Route::get('/master-product/view_file/{filename}', 'Master\ProductController@view_filename');
+
+Route::get('/tr-order', function () {
+    return view('office.transaksi.tr-order');
+});
+
+Route::get('/tr-schedule', function () {
+    return view('office.transaksi.tr-shcedule');
+});
+
+Route::get('/tr-payment', function () {
+    return view('office.transaksi.tr-payment');
+});
 
 // Route::get('/', 'TelegramBotController@sendMessage');
 Route::post('/send-message', 'TelegramBotController@storeMessage');

@@ -182,16 +182,24 @@
                             <ul class="dropdown-menu">
                                 <li id="master-user"><a class="nav-link" href="/master-user">Master User</a></li>
                                 <li id="master-access"><a class="nav-link" href="/master-akses">Master Access</a></li>
-                                <li id="master-kategori"><a class="nav-link" href="/master-kategori">Master Categori</a></li>
+                                <li id="master-paket"><a class="nav-link" href="/master-paket">Master Paket</a></li>
+                                <li id="master-kategori"><a class="nav-link" href="/master-kategori">Master Kategori</a></li>
                                 <li id="master-product"><a class="nav-link" href="/master-product">Master Product</a></li>
                             </ul>
                         </li>
                         <li class="menu-header">Transaction</li>
                         <li class="dropdown">
-                            <a href="/report-pdf" class="nav-link"><i data-feather="file-text"></i><span>Export Data To PDF</span></a>
+                            <a href="/tr-order" class="nav-link"><i data-feather="file-text"></i><span>Customer Order</span></a>
                         </li>
                         <li class="dropdown">
-                            <a href="/report-excel" class="nav-link"><i data-feather="external-link"></i><span>Export Data To csv</span></a>
+                            <a href="/tr-schedule" class="nav-link"><i data-feather="calendar"></i><span>Customer Schedule</span></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/tr-payment" class="nav-link"><i data-feather="dollar-sign"></i><span>Payment Order</span></a>
+                        </li>
+                        <li class="menu-header">Reporting</li>
+                        <li class="dropdown">
+                            <a href="/rpt-message" class="nav-link"><i data-feather="message-square"></i><span>Message Website</span></a>
                         </li>
                     </ul>
                 </aside>

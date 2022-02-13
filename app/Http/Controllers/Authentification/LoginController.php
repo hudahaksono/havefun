@@ -22,7 +22,7 @@ class LoginController extends Controller
     {
         $data = UserModels::where('email', $request->email)->first();
         if ($data === null) {
-            return redirect('/')->with('alert-nofind', 'Unregistered Account');
+            return redirect('/login')->with('alert-nofind', 'Unregistered Account');
         } else {
             if ($data->jabatan == 1) {
                 if ($data->status_hapus == '0') {
@@ -31,7 +31,7 @@ class LoginController extends Controller
                         session::put('sess_nama', $data->nama);
                         session::put('sess_jabatan', $data->id_golongan);
                         session(['berhasil_login' => true]);
-                        return redirect('/menu');
+                        return redirect('/dashboard');
                     } else {
                         return redirect('/login')->with('alert-wrong', 'Wrong Password');
                     }
@@ -47,6 +47,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Session::flush();
-        return redirect('/')->with('alert-logout', 'Anda Berhasil Logout');
+        return redirect('/login')->with('alert-logout', 'Anda Berhasil Logout');
     }
 }

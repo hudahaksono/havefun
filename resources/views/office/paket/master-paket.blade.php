@@ -1,4 +1,4 @@
-@section('title', 'Master Kategori')
+@section('title', 'Master Paket')
 @include('office.layouts.header')
 <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
@@ -8,7 +8,7 @@
         <div id="list_data" class="row">
             <div class="col-12 col-sm-12 col-lg-12">
                 <div class="card">
-                    <h3 class="text-center mt-3 mb-3">Master Kategori</h3>
+                    <h3 class="text-center mt-3 mb-3">Master Paket</h3>
                     <div class="container mb-5">
                         <div class="row">
                             <div class="col-md-12 mb-3">
@@ -22,7 +22,6 @@
                                                 <th style="color: white;">Id</th>
                                                 <th style="color: white;">No</th>
                                                 <th style="color: white;">Nama</th>
-                                                <th style="color: white;">Peruntukan</th>
                                                 <th style="color: white;">Keterangan</th>
                                                 <th style="color: white;">Action</th>
                                             </tr>
@@ -61,20 +60,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="nama">Nama Kategori Barang <span style="color: red;">*</span></label>
+                                        <label for="nama">Nama Paket <span style="color: red;">*</span></label>
                                         <input id="nama" name="nama" class="form-control" type="text" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="peruntukan">Peruntukan <span style="color: red;">*</span></label>
-                                        <select id="peruntukan" class="form-control" name="peruntukan">
-                                            <option value="Prewedding">Prewedding</option>
-                                            <option value="Wedding">Wedding</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="keterangan">Keterangan <span style="color: red;">*</span></label>
                                         <textarea id="keterangan" name="keterangan" class="form-control" type="text" cols="2"></textarea>
@@ -166,22 +156,17 @@
                         data: "nama",
                         name: "nama",
                         visible: true
-                    }, // 3
-                    {
-                        data: "peruntukan",
-                        name: "peruntukan",
-                        visible: true
-                    }, // 4
+                    }, // 2
                     {
                         data: "keterangan",
                         name: "keterangan",
                         visible: true
-                    }, // 4
+                    }, // 3
                     {
                         data: "action",
                         name: "action",
                         visible: true
-                    }, // 5
+                    }, // 4
                 ],
                 //      aligment left, right, center row dan coloumn
                 order: [
@@ -189,11 +174,11 @@
                 ],
                 columnDefs: [{
                         className: "text-center",
-                        targets: [0, 1, 2, 3, 4, 5]
+                        targets: [0, 1, 2, 3, 4]
                     },
                     {
                         width: "20%",
-                        targets: 5
+                        targets: 4
                     },
                 ],
                 bAutoWidth: false,
@@ -216,9 +201,9 @@
                 });
             } else {
                 if (state == 'ADD') {
-                    url_save = "{{route('api.kategori.store')}}";
+                    url_save = "{{route('api.paket.store')}}";
                 } else {
-                    url_save = "{{route('api.kategori.update')}}";
+                    url_save = "{{route('api.paket.update')}}";
                 }
 
                 $.ajax({

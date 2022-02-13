@@ -12,6 +12,6 @@ class BarangModels extends Model
     use Notifiable;
 
     protected $fillable = [
-        'id', 'id_kategori', 'id_ukuran', 'nama', 'nama_singkat', 'satuan', 'file_name', 'file_name_multi', 'keterangan', 'status_hapus', 'user_at'
+        'id', 'id_paket', 'id_kategori', 'id_ukuran', 'nama', 'nama_singkat', 'satuan', 'file_name', 'file_name_multi', 'keterangan', 'status_hapus', 'user_at'
     ];
 }
