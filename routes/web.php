@@ -66,9 +66,10 @@ Route::get('/master-kategori', 'Master\KategoriController@index')->name('master-
 Route::get('/master-product', 'Master\ProductController@index')->name('master-product');
 Route::get('/master-product/view_file/{filename}', 'Master\ProductController@view_filename');
 
-Route::get('/tr-order', function () {
-    return view('office.transaksi.tr-order');
-});
+// Route::get('/tr-order', function () {
+//     return view('office.transaksi.tr-order');
+// });
+Route::get('/tr-order', 'Transaksi\OrderController@index')->name('trx-order');
 
 Route::get('/tr-schedule', function () {
     return view('office.transaksi.tr-shcedule');
