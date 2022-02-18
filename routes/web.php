@@ -12,6 +12,15 @@
 */
 
 // login //
+Route::get('/login-customer', 'AuthCustomer\LoginController@index')->name('login-customer');
+Route::post('/postlogincustomer', 'AuthCustomer\LoginController@postlogincustomer')->name('postlogincustomer');
+Route::get('/logoutcustomer', 'AuthCustomer\LoginController@logoutcustomer')->name('logoutcustomer');
+
+// Register //
+Route::get('/register-customer', 'AuthCustomer\RegisterController@index')->name('register-customer');
+Route::post('/postregistercustomer', 'AuthCustomer\RegisterController@postregistercustomer')->name('postregistercustomer');
+
+// login //
 Route::get('/login', 'Authentification\LoginController@index')->name('login');
 Route::post('/postlogin', 'Authentification\LoginController@postlogin')->name('postlogin');
 Route::get('/logout', 'Authentification\LoginController@logout')->name('logout');
@@ -42,6 +51,14 @@ Route::get('/master-user/list-data', 'Master\MasterUserController@list_data')->n
 Route::post('/master-user/store', 'Master\MasterUserController@store')->name('master-user.store');
 Route::post('/master-user/update', 'Master\MasterUserController@update')->name('master-user.update');
 Route::get('/master-user/destroy', 'Master\MasterUserController@destroy')->name('master-user.destroy');
+// });
+
+// Route::get('/login-customer', function () {
+//     return view('login-customer');
+// });
+
+// Route::get('/register-customer', function () {
+//     return view('register-customer');
 // });
 
 Route::get('/', function () {

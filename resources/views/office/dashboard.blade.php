@@ -108,7 +108,7 @@
                                 <canvas id="batang" width="100%"></canvas>
                             </div>
                             <div class="col-md-6">
-                                <h4 class="text-center">Penjualan Tahun 2022</h4>
+                                <h4 class="text-center">Jumlah Product Terjual</h4>
                                 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
                             </div>
                         </div>
@@ -180,25 +180,25 @@
     const batang = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: [
+                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ],
             datasets: [{
                 label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                data: [12, 19, 3, 5, 2, 3, 6, 9, 20, 20, 22, 39],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    '#0004ff',
+                    '#0004ff',
+                    '#0004ff',
+                    '#0004ff',
+                    '#0004ff',
+                    '#0004ff',
+                    '#0004ff',
+                    '#0004ff',
+                    '#0004ff',
+                    '#0004ff',
+                    '#0004ff',
+                    '#0004ff',
                 ],
                 borderWidth: 1
             }]
@@ -211,14 +211,15 @@
             }
         }
     });
-    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    var yValues = [55, 49, 44, 24, 15];
+    var xValues = ["Engagement", "Intimate Akad", "Wedding Outdoor", "Wedding Hall", "Wedding Home", "Custom Wedding Decoration"];
+    var yValues = [55, 49, 44, 24, 15, 59];
     var barColors = [
         "#b91d47",
         "#00aba9",
         "#2b5797",
         "#e8c3b9",
-        "#1e7145"
+        "#1e7145",
+        "#17a2b8"
     ];
 
     new Chart("myChart", {
@@ -230,11 +231,11 @@
                 data: yValues
             }]
         },
-        options: {
-            title: {
-                display: true,
-                text: "World Wide Wine Production 2018"
-            }
-        }
+        // options: {
+        //     title: {
+        //         display: true,
+        //         text: "Jumlah Product Terjual"
+        //     }
+        // }
     });
 </script>
