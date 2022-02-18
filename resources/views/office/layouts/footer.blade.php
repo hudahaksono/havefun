@@ -19,6 +19,8 @@
 <!-- Custom JS File -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 <script src="{{ asset('assets/js/sweetalert/sweetalert.min.js') }}"></script>
+<script src="{{ asset('js/accounting.js') }}"></script>
+<script src="{{ asset('js/moment.js') }}"></script>
 </body>
 
 </html>

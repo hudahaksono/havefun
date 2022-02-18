@@ -35,3 +35,14 @@ Route::get('/master-product/list-kategori', 'Master\ProductController@list_data_
 Route::post('/master-product/store', 'Master\ProductController@store')->name('api.product.store');
 Route::post('/master-product/update', 'Master\ProductController@update')->name('api.product.update');
 Route::post('/master-product/destroy', 'Master\ProductController@destroy')->name('api.product.destroy');
+
+//Order Barang
+Route::get('/tr-order/list-data', 'Transaksi\OrderController@list_data_hdr')->name('api.order.list');
+Route::get('/tr-order/list-data-dtl', 'Transaksi\OrderController@list_data_dtl')->name('api.order.listdtl');
+Route::get('/tr-order/list-kategori', 'Transaksi\OrderController@list_data_kategori')->name('api.order.list.kategori');
+Route::get('/tr-order/list-barang', 'Transaksi\OrderController@list_data_barang')->name('api.order.list.barang');
+Route::post('/tr-order/store', 'Transaksi\OrderController@store')->name('api.order.store');
+Route::post('/tr-order/update', 'Transaksi\OrderController@update')->name('api.order.update');
+Route::post('/tr-order/destroy-hdr', 'Transaksi\OrderController@destroy_hdr')->name('api.order.destroyhdr');
+Route::post('/tr-order/destroy-dtl', 'Transaksi\OrderController@destroy_dtl')->name('api.order.destroydtl');
+Route::post('/tr-order/proses-po', 'Transaksi\OrderController@proses_po')->name('api.order.proses');
