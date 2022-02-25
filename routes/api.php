@@ -31,6 +31,7 @@ Route::post('/master-kategori/destroy', 'Master\KategoriController@destroy')->na
 
 //Master Barang
 Route::get('/master-product/list-data', 'Master\ProductController@list_data_hdr')->name('api.product.list');
+Route::get('/master-product/list-paket', 'Master\ProductController@list_data_paket')->name('api.product.list.paket');
 Route::get('/master-product/list-kategori', 'Master\ProductController@list_data_kategori')->name('api.product.list.kategori');
 Route::post('/master-product/store', 'Master\ProductController@store')->name('api.product.store');
 Route::post('/master-product/update', 'Master\ProductController@update')->name('api.product.update');
@@ -46,3 +47,6 @@ Route::post('/tr-order/update', 'Transaksi\OrderController@update')->name('api.o
 Route::post('/tr-order/destroy-hdr', 'Transaksi\OrderController@destroy_hdr')->name('api.order.destroyhdr');
 Route::post('/tr-order/destroy-dtl', 'Transaksi\OrderController@destroy_dtl')->name('api.order.destroydtl');
 Route::post('/tr-order/proses-po', 'Transaksi\OrderController@proses_po')->name('api.order.proses');
+
+// Schedule
+Route::get('/tr-schedule/list-data', 'Transaksi\ScheduleController@list_data_hdr')->name('api.schedule.list');

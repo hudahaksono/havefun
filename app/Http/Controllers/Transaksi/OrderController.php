@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Transaksi;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\OrderModels;
 use App\Models\PaymentModels;
@@ -267,9 +268,10 @@ class OrderController extends Controller
     {
         $no_order       = $request->no_order_input;
         $tgl_order      = $request->tgl_order_input;
-        $id_user        = 1;
+        $id_user        = Session::get('sess_nama');
         $id_product     = $request->barang_id;
-
+        // session::put('sess_nama', 'test message 1');
+        // dd(Session::get('sess_nama'));
         $data_cek = OrderModels::where([['no_order','=',$no_order],['id_product','=',$id_product]])->count();
         if ($data_cek>0) {
             $msg = 'Tidak bisa input produk yang sama';
@@ -281,6 +283,7 @@ class OrderController extends Controller
             $order_save->id_user         = $id_user;
             $order_save->id_product      = $id_product;
             $order_save->status          = 1;
+            $order_save->user_at         = Session::get('sess_nama');
 
             $order_save->save();
             
@@ -338,8 +341,11 @@ class OrderController extends Controller
             $total = floatval($total) + floatval($harga);
             $id_user = $value->id_user;
         }
-        // $no_payment = 'INV-'.Helper::right($year, 2) . $month . "-" .Helper::right("0000" . $last_doc_no, 4);
-        $no_payment = 'INV-2215-0001';
+        $year = date('Y');
+        $month = date('m');
+        $last_doc_no = Helper::create_doc_no('PAYMENT', $month, $year);
+        $no_payment = 'INV-'.Helper::right($year, 2) . $month . "-" .Helper::right("0000" . $last_doc_no, 4);
+        // $no_payment = 'INV-2215-0001';
 
         $payment                    = new PaymentModels();
 
@@ -350,6 +356,7 @@ class OrderController extends Controller
         // $payment->id_order          = $id_order;
         $payment->no_order          = $request->no_order;
         $payment->status            = 0;
+        $payment->user_at         = Session::get('sess_nama');
 
         $payment->save();
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Authentification;
+namespace App\Http\Controllers\AuthCustomer;
 
 use App\Http\Controllers\Controller;
 
@@ -15,7 +15,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('auth.login');
+        return view('login-customer');
     }
 
     public function postlogin(Request $request)
@@ -27,6 +27,7 @@ class LoginController extends Controller
             if ($data->jabatan == 1) {
                 if ($data->status_hapus == '0') {
                     if (Hash::check($request->password, $data->password)) {
+                        session::put('sess_id', $data->id);
                         session::put('sess_email', $data->email);
                         session::put('sess_nama', $data->nama);
                         session::put('sess_jabatan', $data->id_golongan);

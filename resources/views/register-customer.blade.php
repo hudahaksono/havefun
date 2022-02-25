@@ -27,20 +27,51 @@
     <section class="ftco-section contact-section">
         <div class="container mt-1">
             <div class="row block-9">
+
                 <div class="col-md-12 ftco-animate">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <img style="width:300px" src="{{ asset('images/savana/logo.jpg') }}" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <div class="form-group">
+                                <h2>Register</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-2">
+                        @if(\Session::has('alert-name'))
+                        <div class="alert alert-danger" style="padding:10px;color: black;" role="alert">
+                            <i class="fas fa-times-circle"></i> &nbsp; {{ Session::get('alert-name') }}
+                        </div>
+                        @endif
+                        @if(\Session::has('alert-email'))
+                        <div class="alert alert-danger" style="padding:10px;color: black;" role="alert">
+                            <i class="fas fa-times-circle"></i> &nbsp; {{ Session::get('alert-email') }}
+                        </div>
+                        @endif
+                        @if(\Session::has('alert-password'))
+                        <div class="alert alert-danger" style="padding:10px;color: black;" role="alert">
+                            <i class="fas fa-times-circle"></i> &nbsp; {{ Session::get('alert-password') }}
+                        </div>
+                        @endif
+                        @if(\Session::has('alert-password2'))
+                        <div class="alert alert-danger" style="padding:10px;color: black;" role="alert">
+                            <i class="fas fa-times-circle"></i> &nbsp; {{ Session::get('alert-password2') }}
+                        </div>
+                        @endif
+                        @if(\Session::has('alert-salah'))
+                        <div class="alert alert-danger" style="padding:10px;color: black;" role="alert">
+                            <i class="fas fa-times-circle"></i> &nbsp; {{ Session::get('alert-salah') }}
+                        </div>
+                        @endif
+                    </div>
                     <form method="POST" action="{{ route('postregistercustomer') }}" class="contact-form" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
-                            <div class="col-md-12 text-center">
-                                <div class="form-group">
-                                    <img style="width:300px" src="{{ asset('images/savana/logo.jpg') }}" />
-                                </div>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <div class="form-group">
-                                    <h2>Register</h2>
-                                </div>
-                            </div>
+                            
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Nama</label>
