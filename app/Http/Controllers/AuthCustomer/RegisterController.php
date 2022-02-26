@@ -38,7 +38,7 @@ class RegisterController extends Controller
             $data->status_hapus = 5;
             $data->created_at = now();
             $data->save();
-            return redirect('/login-customer')->with('alert-success', 'Registration Is Successful Please Login');
+            return redirect('/login-customer')->with('alert-success', 'Registrasi Berhasil Silahkan Melakukan Login');
         }
     }
 }
