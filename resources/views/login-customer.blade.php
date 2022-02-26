@@ -28,7 +28,8 @@
         <div class="container mt-5">
             <div class="row block-9">
                 <div class="col-md-12 ftco-animate">
-                    <form action="#" class="contact-form">
+                    <form method="POST" action="{{ route('postlogincustomer') }}" class="contact-form" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <div class="form-group">
@@ -43,18 +44,18 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" placeholder="Masukan Email Anda">
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="Masukan Email Anda">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Masukan Password Anda">
+                                    <input type="password" id="password" name="password" class="form-control" placeholder="Masukan Password Anda">
                                 </div>
                             </div>
                             <div class="col-md-12 text-center">
                                 <div class="form-group">
-                                    <a style="color:white;width:150px" type="submit" class="btn btn-primary">LOGIN</a>
+                                    <button style="color:white;width:150px" type="submit" class="btn btn-primary">LOGIN</button>
                                 </div>
                             </div>
                             <div class="col-md-12 text-center">

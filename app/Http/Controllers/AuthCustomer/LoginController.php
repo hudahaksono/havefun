@@ -18,11 +18,11 @@ class LoginController extends Controller
         return view('login-customer');
     }
 
-    public function postlogin(Request $request)
+    public function postlogincustomer(Request $request)
     {
         $data = UserModels::where('email', $request->email)->first();
         if ($data === null) {
-            return redirect('/login')->with('alert-nofind', 'Unregistered Account');
+            return redirect('/login')->with('alert-nofind', 'Akun Tidak Ditemukan');
         } else {
             if ($data->jabatan == 1) {
                 if ($data->status_hapus == '0') {
@@ -30,24 +30,25 @@ class LoginController extends Controller
                         session::put('sess_id', $data->id);
                         session::put('sess_email', $data->email);
                         session::put('sess_nama', $data->nama);
-                        session::put('sess_jabatan', $data->id_golongan);
+                        session::put('sess_no_tlp', $data->no_tlp);
+                        session::put('sess_jabatan', $data->jabatan);
                         session(['berhasil_login' => true]);
-                        return redirect('/dashboard');
+                        return redirect('/');
                     } else {
-                        return redirect('/login')->with('alert-wrong', 'Wrong Password');
+                        return redirect('/login-customer')->with('alert-wrong', 'Password Salah');
                     }
-                    return redirect('/login')->with('alert-confirm', 'Your account has not been confirmed, please contact the admin');
+                } else {
+                    return redirect('/login-customer')->with('alert-noaccess', 'Akun sudah dihapus');
                 }
             } else {
-                return redirect('/login')->with('alert-noaccess', 'Access Denied');
+                return redirect('/login-customer')->with('alert-nofind', 'Akun anda belum dikonfirmasi via email');
             }
-            return redirect('/login')->with('alert-nofind', 'Unregistered Account');
         }
     }
 
-    public function logout(Request $request)
+    public function logoutcustomer(Request $request)
     {
         Session::flush();
-        return redirect('/login')->with('alert-logout', 'Anda Berhasil Logout');
+        return redirect('/')->with('alert-logout', 'Anda Berhasil Logout');
     }
 }
