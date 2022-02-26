@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\BarangModels;
 use Illuminate\Support\Facades\Storage;
@@ -83,6 +84,7 @@ class ProductController extends Controller
                 $nestedData['ukuran'] = '';
                 $nestedData['keterangan'] = $post->keterangan;
                 $nestedData['file_name'] = $post->file_name;
+                $nestedData['harga'] = $post->harga;
                 $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='edit_data_hdr' data-toggle='tooltip' title='Edit' data-id='$post->id' data-original-title='' class='Edit btn btn-warning btn-sm'><i class='fas fa-pencil-alt'></i> &nbsp; Edit </a>
                                         <a href='javascript:void(0)' id='delete_data_hdr' data-toggle='tooltip' title='Delete' data-id='$post->id' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i> &nbsp; Hapus </a>";
                 $data[] = $nestedData;
@@ -98,6 +100,14 @@ class ProductController extends Controller
         );
 
         echo json_encode($json_data);
+    }
+
+    public function list_data_paket(Request $request)
+    {
+        $data = DB::table('tmst_paket')
+            ->where('status_hapus', '=', 0)
+            ->get();
+        return response()->json($data);
     }
 
     public function list_data_kategori(Request $request)
@@ -129,15 +139,17 @@ class ProductController extends Controller
 
             $bpp_dtl_attach                     = new BarangModels();
 
+            $bpp_dtl_attach->id_paket           = $request->input('paket');
             $bpp_dtl_attach->id_kategori        = $request->input('kategori');
             $bpp_dtl_attach->id_ukuran          = 0;
             $bpp_dtl_attach->nama               = $request->input('nama');
             $bpp_dtl_attach->satuan             = $request->input('satuan');
+            $bpp_dtl_attach->harga             = $request->input('harga');
             $bpp_dtl_attach->file_name          = $filenameSimpan;
             $bpp_dtl_attach->file_name_multi    = $fileMultiSimpan;
             $bpp_dtl_attach->keterangan            = $request->input('keterangan');
             $bpp_dtl_attach->status_hapus          = 0;
-            // $bpp_dtl_attach->user_at         = $request->session()->get('sess_username');
+            $bpp_dtl_attach->user_at         = $request->session()->get('sess_nama');
 
             $bpp_dtl_attach->save();
 
@@ -179,7 +191,7 @@ class ProductController extends Controller
                 'keterangan'    => $request->input('e_keterangan'),
                 'file_name'          => $filenameSimpan,
                 'file_name_multi'          => $fileMultiSimpan,
-                'user_at'      => 'system'
+                'user_at'      => $request->session()->get('sess_nama')
             ];
         } else {
             $data = [
@@ -188,7 +200,7 @@ class ProductController extends Controller
                 'id_kategori'          => $request->input('e_kategori'),
                 'id_ukuran'          => 0,
                 'keterangan'    => $request->input('e_keterangan'),
-                'user_at'      => 'system'
+                'user_at'      => $request->session()->get('sess_nama')
             ];
         }
 
@@ -201,7 +213,7 @@ class ProductController extends Controller
     {
         $data = [
             'status_hapus'  => 1,
-            'user_at'      => 'system'
+            'user_at'      => $request->session()->get('sess_nama')
         ];
 
         BarangModels::where('id', $request->id)->update($data);

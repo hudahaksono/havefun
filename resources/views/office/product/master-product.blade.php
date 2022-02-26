@@ -31,6 +31,7 @@
 												<th style="color: white;">UKURAN</th>
 												<th style="color: white;">FILE GAMBAR</th>
 												<th style="color: white;">KETERANGAN</th>
+												<th style="color: white;">HARGA</th>
 												<th style="color: white;">ACTION</th>
 											</tr>
 										</thead>
@@ -65,18 +66,32 @@
 										<h2 class="alert-info font-weight-bold text-center" id="title_input">Tambah Data Barang</h2>
 									</div>
 								</div>
-								<div class="col-md-9">
+								<div class="col-md-12">
 									<div class="form-group">
 										<label for="nama">Nama Barang<span style="color: red;">*</span></label>
 										<input id="nama" name="nama" class="form-control" type="text" />
 									</div>
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="paket">Paket <span style="color: red;">*</span></label>
+										<select id="paket" name="paket" class="form-control" type="email">
+
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
 									<div class="form-group">
 										<label for="kategori">Kategori <span style="color: red;">*</span></label>
 										<select id="kategori" name="kategori" class="form-control" type="email">
 
 										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="harga">Harga <span style="color: red;">*</span></label>
+										<input id="harga" name="harga" class="form-control" type="text" />
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -138,18 +153,38 @@
 										<h2 class="alert-info font-weight-bold text-center" id="title_input">Edit Data Barang</h2>
 									</div>
 								</div>
-								<div class="col-md-9">
+								<div class="col-md-12">
 									<div class="form-group">
 										<label for="e_nama">Nama Barang<span style="color: red;">*</span></label>
 										<input id="e_nama" name="e_nama" class="form-control" type="text" />
 									</div>
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="e_paket">Paket <span style="color: red;">*</span></label>
+										<select id="e_paket" name="e_paket" class="form-control" type="email">
+
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
 									<div class="form-group">
 										<label for="e_kategori">Kategori <span style="color: red;">*</span></label>
 										<select id="e_kategori" name="e_kategori" class="form-control" type="email">
 
 										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="e_harga">Harga <span style="color: red;">*</span></label>
+										<input id="e_harga" name="e_harga" class="form-control" type="text" />
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="e_keterangan">Keterangan <span style="color: red;">*</span></label>
+										<textarea id="e_keterangan" name="e_keterangan" class="form-control" type="text" cols="2"></textarea>
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -171,12 +206,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<label for="e_keterangan">Keterangan <span style="color: red;">*</span></label>
-										<textarea id="e_keterangan" name="e_keterangan" class="form-control" type="text" cols="2"></textarea>
-									</div>
-								</div>
+								
 								<div class="col-md-12 text-right">
 									<div class="form-group">
 										<button style="color:white" type="submit" class="btn btn-info waves-effect waves-dark e_btn-upload" data-toggle="tooltip" title="Save">
@@ -219,11 +249,22 @@
 			},
 		});
 
+		function currencyFormat(num, decimal = 0) {
+            //return parseFloat(num).toFixed(decimal).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+            return accounting.formatMoney(num, "", decimal, ",", ".");
+        }
+
+        function amountToFloat(amount) {
+            //return parseFloat(amount.toString().replace(/\s/g, "").replace(",", "."));
+            return parseFloat(accounting.unformat(amount));
+        }
+
 		function reset_input() {
 			$('#sysid').val('');
 			$('#nama').val('');
 			// $('#satuan').val('M');
 			$('#keterangan').val('');
+			$('#harga').val(0);
 		}
 
 		function form_state(state) {
@@ -237,6 +278,7 @@
 				case 'ADD_HDR':
 					reset_input();
 					list_data_kategori('', 'ADD');
+					list_data_paket('', 'ADD');
 					$("#state").val("ADD");
 					$('#title_input').html('Tambah Master Barang');
 					$('#add_data').show('slow');
@@ -328,6 +370,12 @@
 						visible: true
 					}, // 9
 					{
+                        data: "harga",
+                        name: "harga", render: function (d) {
+                            return currencyFormat(d);
+                        },
+                    }, // 9
+					{
 						data: "action",
 						name: "action",
 						visible: true
@@ -378,6 +426,36 @@
 						});
 						if (id_kategori != '') {
 							$('#e_kategori').val(id_kategori);
+						}
+					}
+
+				}
+			});
+		}
+
+		function list_data_paket(id_paket, state) {
+			$.ajax({
+				url: "{{route('api.product.list.paket')}}",
+				type: 'GET',
+				success: function(response) {
+					// $("#breeds").attr('disabled', false);
+					if (state == 'ADD') {
+						$('#paket').empty();
+						$("#paket").append('<option value=0>Pilih Paket</option>');
+						$.each(response, function(key, value) {
+							$("#paket").append('<option value=' + value.id + '>' + value.nama + '</option>');
+						});
+						if (id_paket != '') {
+							$('#paket').val(id_paket);
+						}
+					} else {
+						$('#e_paket').empty();
+						$("#e_paket").append('<option value=0>Pilih Paket</option>');
+						$.each(response, function(key, value) {
+							$("#e_paket").append('<option value=' + value.id + '>' + value.nama + '</option>');
+						});
+						if (id_paket != '') {
+							$('#e_paket').val(id_paket);
 						}
 					}
 
@@ -441,17 +519,21 @@
 			id = data['id'];
 			nama = data['nama'];
 			satuan = data['satuan'];
+			id_paket = data['id_paket'];
 			id_kategori = data['id_kategori'];
 			id_ukuran = data['id_ukuran'];
 			keterangan = data['keterangan'];
 			file_name = data['file_name'];
+			harga = data['harga'];
 
 			$('#e_sysid').val(id);
 			$('#e_nama').val(nama);
 			$('#e_satuan').val(satuan);
 			$('#e_keterangan').val(keterangan);
+			$('#e_harga').val(harga);
 
 			list_data_kategori(id_kategori, 'EDIT');
+			list_data_paket(id_paket, 'EDIT')
 		});
 
 		$('body').on('click', '#delete_data_hdr', function(e) {

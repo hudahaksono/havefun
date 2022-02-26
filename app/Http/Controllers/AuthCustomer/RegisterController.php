@@ -17,7 +17,7 @@ class RegisterController extends Controller
     public function postregistercustomer(Request $request)
     {
         if ($request->nama == "") {
-            return redirect('/register-customer')->with('alert-name', 'Name Tidak Boleh Kosong');
+            return redirect('/register-customer')->with('alert-name', 'Nama Tidak Boleh Kosong');
         } elseif ($request->email == "") {
             return redirect('/register-customer')->with('alert-email', 'email Tidak Boleh Kosong');
         } elseif ($request->no_tlp == "") {
@@ -26,7 +26,7 @@ class RegisterController extends Controller
             return redirect('/register-customer')->with('alert-password', 'Password Tidak Boleh Kosong');
         } elseif ($request->repassword == "") {
             return redirect('/register-customer')->with('alert-password2', 'Ulangi Password Tidak Boleh Kosong');
-        } elseif ($request->password <> $request->password2) {
+        } elseif ($request->password <> $request->repassword) {
             return redirect('/register-customer')->with('alert-salah', 'Password is Not The Same As Repeat Password');
         } else {
             $data =  new UserModels();

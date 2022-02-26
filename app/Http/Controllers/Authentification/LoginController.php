@@ -21,12 +21,14 @@ class LoginController extends Controller
     public function postlogin(Request $request)
     {
         $data = UserModels::where('email', $request->email)->first();
+
         if ($data === null) {
             return redirect('/login')->with('alert-nofind', 'Unregistered Account');
         } else {
             if ($data->jabatan == 1) {
                 if ($data->status_hapus == '0') {
                     if (Hash::check($request->password, $data->password)) {
+                        session::put('sess_id', $data->id);
                         session::put('sess_email', $data->email);
                         session::put('sess_nama', $data->nama);
                         session::put('sess_jabatan', $data->id_golongan);
