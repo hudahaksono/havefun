@@ -66,6 +66,18 @@ Route::get('/product', function () {
     return view('product');
 });
 
+Route::get('/cart', function () {
+    return view('cart');
+});
+
+Route::get('/payment', function () {
+    return view('payment');
+});
+
+Route::get('/transfer', function () {
+    return view('transfer');
+});
+
 
 
 //### Back Web ###//

@@ -50,7 +50,7 @@
                             <a style="color:red" class="dropdown-item" href="/logoutcustomer">Logout</a>
                         </div>
                     </li>
-                    <li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
+                    <li class="nav-item cart"><a href="/cart" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
                     @endif
                 </ul>
             </div>
