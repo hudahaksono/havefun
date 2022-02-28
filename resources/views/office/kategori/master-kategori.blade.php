@@ -65,7 +65,7 @@
                                         <input id="nama" name="nama" class="form-control" type="text" />
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6" hidden="">
                                     <div class="form-group">
                                         <label for="peruntukan">Peruntukan <span style="color: red;">*</span></label>
                                         <select id="peruntukan" class="form-control" name="peruntukan">
@@ -170,7 +170,7 @@
                     {
                         data: "peruntukan",
                         name: "peruntukan",
-                        visible: true
+                        visible: false
                     }, // 4
                     {
                         data: "keterangan",

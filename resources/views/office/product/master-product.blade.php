@@ -72,7 +72,7 @@
 										<input id="nama" name="nama" class="form-control" type="text" />
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4" hidden="">
 									<div class="form-group">
 										<label for="paket">Paket <span style="color: red;">*</span></label>
 										<select id="paket" name="paket" class="form-control" type="email">
@@ -80,7 +80,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<div class="form-group">
 										<label for="kategori">Kategori <span style="color: red;">*</span></label>
 										<select id="kategori" name="kategori" class="form-control" type="email">
@@ -88,7 +88,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<div class="form-group">
 										<label for="harga">Harga <span style="color: red;">*</span></label>
 										<input id="harga" name="harga" class="form-control" type="text" />
@@ -159,7 +159,7 @@
 										<input id="e_nama" name="e_nama" class="form-control" type="text" />
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4" hidden="">
 									<div class="form-group">
 										<label for="e_paket">Paket <span style="color: red;">*</span></label>
 										<select id="e_paket" name="e_paket" class="form-control" type="email">
@@ -167,7 +167,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<div class="form-group">
 										<label for="e_kategori">Kategori <span style="color: red;">*</span></label>
 										<select id="e_kategori" name="e_kategori" class="form-control" type="email">
@@ -175,7 +175,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<div class="form-group">
 										<label for="e_harga">Harga <span style="color: red;">*</span></label>
 										<input id="e_harga" name="e_harga" class="form-control" type="text" />
@@ -337,7 +337,7 @@
 					{
 						data: "nama_paket",
 						name: "nama_paket",
-						visible: true
+						visible: false
 					}, // 5
 					{
 						data: "id_kategori",
