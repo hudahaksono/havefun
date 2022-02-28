@@ -117,9 +117,10 @@ Route::get('/tr-order', 'Transaksi\OrderController@index')->name('trx-order');
 // });
 Route::get('/tr-schedule', 'Transaksi\ScheduleController@index')->name('trx-schedule');
 
-Route::get('/tr-payment', function () {
-    return view('office.transaksi.tr-payment');
-});
+// Route::get('/tr-payment', function () {
+//     return view('office.transaksi.tr-payment');
+// });
+Route::get('/tr-payment', 'Transaksi\PaymentController@index')->name('trx-payment');
 
 // Route::get('/', 'TelegramBotController@sendMessage');
 Route::post('/send-message', 'TelegramBotController@storeMessage');

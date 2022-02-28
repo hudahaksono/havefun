@@ -12,6 +12,6 @@ class ScheduleModels extends Model
     use Notifiable;
 
     protected $fillable = [
-        'id', 'nama', 'tgl_dari', 'tgl_sampai', 'id_order', 'tempat', 'keterangan', 'status', 'user_at'
+        'id', 'nama', 'tgl_dari', 'tgl_sampai', 'no_order', 'tempat', 'keterangan', 'status', 'user_at'
     ];
 }

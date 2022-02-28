@@ -48,5 +48,12 @@ Route::post('/tr-order/destroy-hdr', 'Transaksi\OrderController@destroy_hdr')->n
 Route::post('/tr-order/destroy-dtl', 'Transaksi\OrderController@destroy_dtl')->name('api.order.destroydtl');
 Route::post('/tr-order/proses-po', 'Transaksi\OrderController@proses_po')->name('api.order.proses');
 
+//Payment
+Route::get('/tr-payment/list-data', 'Transaksi\PaymentController@list_data_hdr')->name('api.payment.list');
+Route::post('/tr-payment/store', 'Transaksi\PaymentController@store')->name('api.payment.store');
+
 // Schedule
 Route::get('/tr-schedule/list-data', 'Transaksi\ScheduleController@list_data_hdr')->name('api.schedule.list');
+Route::get('/tr-schedule/list-data-order', 'Transaksi\ScheduleController@list_data_order')->name('api.schedule.listorder');
+Route::post('/tr-schedule/store', 'Transaksi\ScheduleController@store')->name('api.schedule.store');
+Route::post('/tr-schedule/update', 'Transaksi\ScheduleController@update')->name('api.schedule.update');
