@@ -78,6 +78,14 @@ Route::get('/transfer', function () {
     return view('transfer');
 });
 
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+Route::get('/myorder', function () {
+    return view('myorder');
+});
+
 
 
 //### Back Web ###//

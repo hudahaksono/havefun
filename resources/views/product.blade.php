@@ -225,7 +225,7 @@
                                                 <p class="price"><span>Rp. ?</span></p>
                                                 <p>
                                                     <button id="#btn_detail" type="button" class="btn btn-primary btn-outline-primary">View Detail</button>
-                                                    <a href="#" class="btn btn-primary btn-outline-primary">View Detail</a>
+                                                    <!-- <a href="#" class="btn btn-primary btn-outline-primary">View Detail</a> -->
                                                 </p>
                                             </div>
                                         </div>
@@ -246,18 +246,18 @@
             <div class="col-lg-6 mb-5 ftco-animate">
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="images/menu-2.jpg" class="image-popup"><img src="images/menu-2.jpg" class="img-fluid" alt="Colorlib Template"></a>
+                        <a href="images/savana/savana1.jpg" class="image-popup"><img src="images/savana/savana1.jpg" class="img-fluid" alt="Colorlib Template"></a>
                     </div>
                     <div class="col-md-6">
-                        <a href="images/menu-2.jpg" class="image-popup"><img src="images/menu-2.jpg" class="img-fluid" alt="Colorlib Template"></a>
+                        <a href="images/savana/savana2.jpg" class="image-popup"><img src="images/savana/savana2.jpg" class="img-fluid" alt="Colorlib Template"></a>
                     </div>
                 </div>
                 <div class="row pt-4">
                     <div class="col-md-6">
-                        <a href="images/menu-2.jpg" class="image-popup"><img src="images/menu-2.jpg" class="img-fluid" alt="Colorlib Template"></a>
+                        <a href="images/savana/savana3.jpg" class="image-popup"><img src="images/savana/savana3.jpg" class="img-fluid" alt="Colorlib Template"></a>
                     </div>
                     <div class="col-md-6">
-                        <a href="images/menu-2.jpg" class="image-popup"><img src="images/menu-2.jpg" class="img-fluid" alt="Colorlib Template"></a>
+                        <a href="images/savana/savana4.jpg" class="image-popup"><img src="images/savana/savana4.jpg" class="img-fluid" alt="Colorlib Template"></a>
                     </div>
                 </div>
             </div>

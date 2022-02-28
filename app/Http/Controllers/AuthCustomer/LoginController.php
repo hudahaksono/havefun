@@ -32,6 +32,7 @@ class LoginController extends Controller
                         session::put('sess_nama', $data->nama);
                         session::put('sess_no_tlp', $data->no_tlp);
                         session::put('sess_jabatan', $data->jabatan);
+                        session::put('sess_password', $data->password);
                         session(['berhasil_login' => true]);
                         return redirect('/');
                     } else {

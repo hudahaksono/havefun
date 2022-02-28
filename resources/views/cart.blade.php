@@ -25,7 +25,7 @@
                                 </td>
 
                                 <td class="image-prod">
-                                    <div class="img" style="background-image:url(images/menu-2.jpg);"></div>
+                                    <div class="img" style="background-image:url(images/savana/savana2.jpg);"></div>
                                 </td>
 
                                 <td class="product-name">
@@ -48,7 +48,7 @@
                                 </td>
 
                                 <td class="image-prod">
-                                    <div class="img" style="background-image:url(images/dish-2.jpg);"></div>
+                                    <div class="img" style="background-image:url(images/savana/savana1.jpg);"></div>
                                 </td>
 
                                 <td class="product-name">
