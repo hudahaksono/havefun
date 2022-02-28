@@ -170,14 +170,18 @@ class OrderController extends Controller
                 $nestedData['harga'] = $post->harga;
                 if($post->status==1){
                     $nestedData['status_order'] = '<span class="badge badge-success">New Order</span>';
+                    $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='delete_data_dtl' data-toggle='tooltip' title='Delete' data-id='$post->no_order' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i> &nbsp; Hapus </a>";
                 }else if($post->status==2){
                     $nestedData['status_order'] = '<span class="badge badge-warning">Menunggu Pembayaran</span>';
+                    $nestedData['action'] = '-';
                 }else if($post->status==3){
                     $nestedData['status_order'] = '<span class="badge badge-primary">Tindak Lanjut</span>';
+                    $nestedData['action'] = '-';
                 }else{
                     $nestedData['status_order'] = '-';
+                    $nestedData['action'] = '-';
                 }
-                $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='delete_data_dtl' data-toggle='tooltip' title='Delete' data-id='$post->no_order' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i> &nbsp; Hapus </a>";
+                
                 $data[] = $nestedData;
                 $i++;
             }
