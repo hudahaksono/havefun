@@ -35,10 +35,10 @@ class RegisterController extends Controller
             $data->email = $request->email;
             $data->jabatan = 1;
             $data->password = bcrypt($request->password);
-            $data->status_hapus = 5;
+            $data->status_hapus = 0;
             $data->created_at = now();
             $data->save();
-            return redirect('/login-customer')->with('alert-success', 'Registration Is Successful Please Login');
+            return redirect('/login-customer')->with('alert-success', 'Registrasi Berhasil Silahkan Melakukan Login');
         }
     }
 }

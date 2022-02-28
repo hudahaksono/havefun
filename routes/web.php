@@ -53,18 +53,34 @@ Route::post('/master-user/update', 'Master\MasterUserController@update')->name('
 Route::get('/master-user/destroy', 'Master\MasterUserController@destroy')->name('master-user.destroy');
 // });
 
-// Route::get('/login-customer', function () {
-//     return view('login-customer');
-// });
-
-// Route::get('/register-customer', function () {
-//     return view('register-customer');
-// });
-
+//### Front Web ###//
 Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/product', function () {
+    return view('product');
+});
+
+Route::get('/cart', function () {
+    return view('cart');
+});
+
+Route::get('/payment', function () {
+    return view('payment');
+});
+
+Route::get('/transfer', function () {
+    return view('transfer');
+});
+
+
+
+//### Back Web ###//
 Route::get('/dashboard', function () {
     return view('office.dashboard');
 });
