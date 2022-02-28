@@ -149,7 +149,7 @@ class ProductController extends Controller
             $bpp_dtl_attach->file_name_multi    = $fileMultiSimpan;
             $bpp_dtl_attach->keterangan            = $request->input('keterangan');
             $bpp_dtl_attach->status_hapus          = 0;
-            $bpp_dtl_attach->user_at         = $request->session()->get('sess_nama');
+            // $bpp_dtl_attach->user_at         = $request->session()->get('sess_nama');
 
             $bpp_dtl_attach->save();
 
@@ -191,7 +191,7 @@ class ProductController extends Controller
                 'keterangan'    => $request->input('e_keterangan'),
                 'file_name'          => $filenameSimpan,
                 'file_name_multi'          => $fileMultiSimpan,
-                'user_at'      => $request->session()->get('sess_nama')
+                // 'user_at'      => $request->session()->get('sess_nama')
             ];
         } else {
             $data = [
@@ -200,7 +200,7 @@ class ProductController extends Controller
                 'id_kategori'          => $request->input('e_kategori'),
                 'id_ukuran'          => 0,
                 'keterangan'    => $request->input('e_keterangan'),
-                'user_at'      => $request->session()->get('sess_nama')
+                // 'user_at'      => $request->session()->get('sess_nama')
             ];
         }
 
@@ -213,7 +213,7 @@ class ProductController extends Controller
     {
         $data = [
             'status_hapus'  => 1,
-            'user_at'      => $request->session()->get('sess_nama')
+            // 'user_at'      => $request->session()->get('sess_nama')
         ];
 
         BarangModels::where('id', $request->id)->update($data);

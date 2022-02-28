@@ -64,8 +64,7 @@
                                     </span>
                                 </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
                                         <img alt="image" src="{{ asset('assets/img/users/user-2.png') }}" class="rounded-circle">
-                                    </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
-                                            Smith</span> <span class="time messege-text">Request for leave
+                                    </span> <span class="dropdown-item-desc"> <span class="message-user">{{ Session::get('sess_nama') }}</span> <span class="time messege-text">Request for leave
                                             application</span>
                                         <span class="time">5 Min Ago</span>
                                     </span>
@@ -151,7 +150,7 @@
                     </li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="{{ asset('assets/img/user.png') }}" class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
                         <div class="dropdown-menu dropdown-menu-right pullDown">
-                            <div class="dropdown-title">Hello Sarah Smith</div>
+                            <div class="dropdown-title">Hello {{ Session::get('sess_nama') }}</div>
                             <a href="profile.html" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profile
                             </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
