@@ -154,13 +154,13 @@
                 case 'ADD_HDR':
                     reset_input();
                     $("#state").val("ADD");
-                    $('#title_input').html('Tambah Data Kategori Barang');
+                    $('#title_input').html('Tambah Schedule');
                     $('#add_data').show('slow');
                     $('#list_data').hide('slow');
                     break;
                 case 'EDIT_HDR':
                     $("#state").val("EDIT");
-                    $('#title_input').html('Edit Data Kategori Barang');
+                    $('#title_input').html('Edit Schedule');
                     $('#add_data').show('slow');
                     $('#list_data').hide('slow');
                     break;
@@ -202,39 +202,68 @@
         }
 
         function list_data_order() {
-            $("#datatable_list_order").DataTable({
-                destroy: true,
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    url: "{{route('api.schedule.listorder')}}",
-                    type: "GET",
+            $.ajax({
+                type: "get",
+                url: "{{route('api.schedule.listorder')}}",
+                dataType:'JSON',
+                success: function(response) {
+                    // console.log(response.data);
+                    $.each(response.data, function (key, value) {
+                        console.log(value[0]);
+
+                    });
+                    // alert(response[2]);
+                    // for (var key in response) {
+                    //     // alert(response["draw"]);
+                    //     // var flag = response["success"];
+                    //     // var message = response["message"];
+                    // }
                 },
-                columns: [
-                    { data: "id", name: "id", visible: false }, // 0
-                    { data: "DT_RowIndex", name: "DT_RowIndex", orderable: false, searchable: false }, // 1
-                    // { data: "kode", name: "kode", visible: true }, // 2
-                    { data: "no_order", name: "no_order", visible: true }, // 3
-                    { data: "tgl_order", name: "tgl_order", render: function (d) {
-                            return moment(d).format('DD-MM-YYYY');
-                        },
-                    }, // 3
-                    { data: "nama", name: "nama", visible: true }, // 4                
-                ],
-                //      aligment left, right, center row dan coloumn
-                order: [["0", "desc"]],
-                columnDefs: [
-                    { className: "text-center", targets: [0, 1, 2, 3] },                
-                ],
-                bAutoWidth: false,
-                responsive: true,
+                error: function(xhr, status, error) {
+                    var errorMessage = xhr.status + ": " + xhr.statusText;
+                    swal('Error!', errorMessage, {
+                        icon: 'danger',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-danger'
+                            }
+                        }
+                    });
+                },
             });
-            $("#datatable_list_order").css("cursor", "pointer");
+            // $("#datatable_list_order").DataTable({
+            //     destroy: true,
+            //     processing: true,
+            //     serverSide: true,
+            //     ajax: {
+            //         url: "{{route('api.schedule.listorder')}}",
+            //         type: "GET",
+            //     },
+            //     columns: [
+            //         { data: "id", name: "id", visible: false }, // 0
+            //         { data: "DT_RowIndex", name: "DT_RowIndex", orderable: false, searchable: false }, // 1
+            //         // { data: "kode", name: "kode", visible: true }, // 2
+            //         { data: "no_order", name: "no_order", visible: true }, // 3
+            //         { data: "tgl_order", name: "tgl_order", render: function (d) {
+            //                 return moment(d).format('DD-MM-YYYY');
+            //             },
+            //         }, // 3
+            //         { data: "nama", name: "nama", visible: true }, // 4                
+            //     ],
+            //     //      aligment left, right, center row dan coloumn
+            //     order: [["0", "desc"]],
+            //     columnDefs: [
+            //         { className: "text-center", targets: [0, 1, 2, 3] },                
+            //     ],
+            //     bAutoWidth: false,
+            //     responsive: true,
+            // });
+            // $("#datatable_list_order").css("cursor", "pointer");
         }
 
         form_state('LOAD');
         list_data();
-        // list_data_order();
+        list_data_order();
 
         $('#btn_add_data').click(function(event) {
             form_state('ADD_HDR');

@@ -63,13 +63,15 @@ class ScheduleController extends Controller
         );
 
         $totalData = DB::table('qview_order_hdr')
-            ->where('status', '!=', 1)
+            // ->where('status', '!=', 1)
             ->count();
 
         $totalFiltered = $totalData;
 
         $limit = $request->input('length');
         $start = $request->input('start');
+        $limit = 10;
+        $start = 0;
         // $order = $columns[$request->input('order.0.column')];
         $dir = $request->input('order.0.dir');
 
@@ -77,7 +79,7 @@ class ScheduleController extends Controller
             $posts = DB::table('qview_order_hdr')
                 ->offset($start)
                 ->limit($limit)
-                ->where('status', '!=', 1)
+                // ->where('status', '!=', 1)
                 ->orderBy('tgl_order')
                 ->get();
         } else {
@@ -86,17 +88,17 @@ class ScheduleController extends Controller
             $posts =  DB::table('qview_order_hdr')
                 ->offset($start)
                 ->limit($limit)
-                ->where([['status', '!=', 1],['no_order', 'LIKE', "%{$search}%"]])
-                ->Where([['status', '!=', 1],['nama', 'LIKE', "%{$search}%"]])
+                // ->where([['status', '!=', 1],['no_order', 'LIKE', "%{$search}%"]])
+                // ->Where([['status', '!=', 1],['nama', 'LIKE', "%{$search}%"]])
                 ->orderBy('tgl_order')
                 ->get();
 
             $totalFiltered = DB::table('qview_order_hdr')
-                ->where([['status', '!=', 1],['no_order', 'LIKE', "%{$search}%"]])
-                ->Where([['status', '!=', 1],['nama', 'LIKE', "%{$search}%"]])
+                // ->where([['status', '!=', 1],['no_order', 'LIKE', "%{$search}%"]])
+                // ->Where([['status', '!=', 1],['nama', 'LIKE', "%{$search}%"]])
                 ->count();
         }
-
+// dd($posts);
         $data = array();
         $i = $start + 1;
         if (!empty($posts)) {
@@ -129,7 +131,7 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $data_hdr['no_order']       = $request->id_order;
-        $data_hdr['tempat']       = $request->tempat;
+        $data_hdr['tempat']         = $request->tempat;
         $data_hdr['tgl_dari']       = Date('Y-m-d', strtotime($request->tgl_dari));
         $data_hdr['tgl_sampai']     = Date('Y-m-d', strtotime($request->tgl_sampai));
         $data_hdr['keterangan']     = $request->keterangan;

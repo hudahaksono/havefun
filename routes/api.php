@@ -19,9 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Master Paket
 Route::get('/master-paket/list-data', 'Master\PaketController@list_data_hdr')->name('api.paket.list');
+Route::get('/master-paket/list-data-dtl', 'Master\PaketController@list_data_dtl')->name('api.paket.list.dtl');
 Route::post('/master-paket/store', 'Master\PaketController@store')->name('api.paket.store');
+Route::post('/master-paket/store-dtl', 'Master\PaketController@store_dtl')->name('api.paket.store.dtl');
 Route::post('/master-paket/update', 'Master\PaketController@update')->name('api.paket.update');
 Route::post('/master-paket/destroy', 'Master\PaketController@destroy')->name('api.paket.destroy');
+Route::post('/master-paket/destroy-dtl', 'Master\PaketController@destroy_dtl')->name('api.paket.destroy.dtl');
 
 //Master Kategori
 Route::get('/master-kategori/list-data', 'Master\KategoriController@list_data_hdr')->name('api.kategori.list');
