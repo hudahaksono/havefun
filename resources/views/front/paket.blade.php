@@ -5,7 +5,7 @@
         <div class="row justify-content-center mb-5">
             <div class="col-md-7 heading-section text-center ftco-animate">
                 <span class="subheading">Discover</span>
-                <h2 class="mb-4">Produk Kami</h2>
+                <h2 class="mb-4">Paket Dekorasi</h2>
                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
             </div>
         </div>
