@@ -55,35 +55,39 @@ Route::get('/master-user/destroy', 'Master\MasterUserController@destroy')->name(
 
 //### Front Web ###//
 Route::get('/', function () {
-    return view('index');
+    return view('front.index');
 });
 
 Route::get('/about', function () {
-    return view('about');
+    return view('front.about');
 });
 
 Route::get('/product', function () {
-    return view('product');
+    return view('front.product');
+});
+
+Route::get('/paket', function () {
+    return view('front.paket');
 });
 
 Route::get('/cart', function () {
-    return view('cart');
+    return view('front.cart');
 });
 
 Route::get('/payment', function () {
-    return view('payment');
+    return view('front.payment');
 });
 
 Route::get('/transfer', function () {
-    return view('transfer');
+    return view('front.transfer');
 });
 
 Route::get('/profile', function () {
-    return view('profile');
+    return view('front.profile');
 });
 
 Route::get('/myorder', function () {
-    return view('myorder');
+    return view('front.myorder');
 });
 
 

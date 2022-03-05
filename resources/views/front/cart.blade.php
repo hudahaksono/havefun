@@ -1,5 +1,5 @@
 @section('title', 'Cart')
-@include('navbar')
+@include('layouts.navbar')
 <section class="ftco-section ftco-cart">
     <div class="container">
         <div class="row">
@@ -73,4 +73,4 @@
         </div>
     </div>
 </section>
-@include('footbar')
+@include('layouts.footbar')

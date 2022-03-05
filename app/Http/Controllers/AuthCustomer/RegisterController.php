@@ -12,7 +12,7 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('register-customer');
+        return view('front.register-customer');
     }
     public function postregistercustomer(Request $request)
     {

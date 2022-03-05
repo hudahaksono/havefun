@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="{{ asset('images/savana/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
@@ -35,7 +36,7 @@
                     <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="/about" class="nav-link">Tentang Kami</a></li>
                     <li class="nav-item"><a href="/product" class="nav-link">Produk</a></li>
-                    <li class="nav-item"><a href="/vendor" class="nav-link">Vendor Kami</a></li>
+                    <li class="nav-item"><a href="/vendor" class="nav-link">Paket Dekorasi</a></li>
                     <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
                     @if(Session('sess_email')=='')
                     <li class="nav-item"><a href="/register-customer" class="nav-link btn btn-primary">Register</a></li>

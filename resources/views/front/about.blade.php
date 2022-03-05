@@ -1,5 +1,5 @@
 @section('title', 'Tentang Kami')
-@include('navbar')
+@include('layouts.navbar')
 <section class="ftco-about d-md-flex">
     <div class="one-half img" style="background-image: url(images/savana/about.jpg);"></div>
     <div class="one-half ftco-animate">
@@ -269,4 +269,4 @@
         </div>
     </div>
 </section>
-@include('footbar')
+@include('layouts.footbar')

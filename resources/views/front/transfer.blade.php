@@ -1,5 +1,5 @@
 @section('title', 'Transfer')
-@include('navbar')
+@include('layouts.navbar')
 <section class="ftco-section">
     <div class="container">
         <div class="row">
@@ -30,4 +30,4 @@
         </div>
     </div>
 </section>
-@include('footbar')
+@include('layouts.footbar')
