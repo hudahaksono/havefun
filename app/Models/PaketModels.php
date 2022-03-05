@@ -12,6 +12,6 @@ class PaketModels extends Model
     use Notifiable;
 
     protected $fillable = [
-        'id', 'nama', 'keterangan', 'status_hapus', 'created_at', 'updated_at'
+        'id', 'id_kategori', 'nama', 'file_name', 'file_name_multi', 'keterangan', 'harga', 'status_hapus', 'created_at', 'updated_at'
     ];
 }

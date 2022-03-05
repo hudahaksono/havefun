@@ -132,7 +132,7 @@
                     <div class="col-md-12 text-right">
                         <div class="card-body">
                             <button id="save_button" class="btn btn-success"><i class="fas fa-save"></i> Proses PO</button>
-                            &nbsp; <button id="reset_button" class="btn btn-warning"><i class="fas fa-window-restore"></i> Reset Input</button>
+                            &nbsp; <button id="schedule_button" class="btn btn-warning"><i class="fas fa-edit"></i> Schedule</button>
                         </div>
                     </div>
                 </div>
@@ -193,6 +193,73 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="add_data_schedule" class="row" style="display: none;">
+            <div class="col-12 col-sm-12 col-lg-12">
+                <div class="card">
+                    <!-- <h3 class="text-center mt-3 mb-3">Schedule Customers</h3> -->
+                    <div class="container mb-5 mt-5">
+                        <form class="row" id="form_input_schedule">
+                            <div class="col-md-12 text-left">
+                                <div class="form-group">
+                                    <a id="back_schedule" style="color:white" class="btn btn-primary "><i class="fas fa-arrow-left"></i> &nbsp; Kembali</a>
+                                </div>
+                            </div>
+                            <input type="hidden" name="state" id="state">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <h2 class="alert-info font-weight-bold text-center" id="title_input">Tambah Schedule</h2>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="no_order">No. Order <span style="color: red;">*</span></label>
+                                    <input type="hidden" name="id_order" id="id_order_s">
+                                    <input id="no_order_s" name="no_order" class="form-control" type="text" readonly="" />
+                                    <!-- <div class="input-group">
+                                        
+                                        <div class="input-group-append">
+                                            <a href="javascript:void(0)" class="btn btn-success" id="browse_order" data-toggle="tooltip" title="Browse"><span class="fas fa-search"></span>
+                                            </a>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tempat">Tempat <span style="color: red;">*</span></label>
+                                    <input id="tempat" name="tempat" class="form-control" type="text" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tgl_dari">Tgl. Dari <span style="color: red;">*</span></label>
+                                    <input id="tgl_dari" name="tgl_dari" class="form-control" type="date" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tgl_sampai">Tgl. Sampai <span style="color: red;">*</span></label>
+                                    <input id="tgl_sampai" name="tgl_sampai" class="form-control" type="date" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="keterangan_s">Keterangan <span style="color: red;">*</span></label>
+                                    <textarea id="keterangan_s" name="keterangan" class="form-control" type="text" cols="2"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <div class="form-group">
+                                    <a id="save" name="save" style="color:white" class="btn btn-info "><i class="fas fa-save"></i> &nbsp; Simpan</a>
+                                    <a id="batal_schedule" style="color:white" class="btn btn-danger "><i class="fa fa-times-circle"></i> &nbsp; Batal</a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -268,7 +335,7 @@
                 case 'ADD_HDR':
                     reset_input();
                     $("#state").val("ADD");
-                    $('#title_input').html('Tambah Data Kategori Barang');
+                    $('#title_input').html('Tambah Data Barang');
                     $('#lanjut').show('slow');
                     $('#list_data').hide('slow');
                     break;
@@ -276,7 +343,7 @@
                     break;
                 case 'EDIT_HDR':
                     $("#state").val("EDIT");
-                    $('#title_input').html('Edit Data Kategori Barang');
+                    $('#title_input').html('Tambah Data Barang');
                     $('#lanjut').show('slow');
                     $('#list_data').hide('slow');
                     break;
@@ -564,6 +631,9 @@
             $('#no_order').val(no_order);
             $('#f_status').val(f_status);
 
+            $('#no_order_s').val(no_order);
+            $('#id_order_s').val(id);
+
             $('#tgl_order_input').val(tgl_order);
             $('#no_order_input').val(no_order);
             list_data_dtl(no_order);
@@ -831,6 +901,86 @@
                 } else {
                     swal.close();
                 }
+            });
+        });
+
+        $('#schedule_button').click(function(event) {
+            var date = new Date();
+            var currentDate = date.toISOString().substring(0,10);
+            document.getElementById('tgl_dari').value = currentDate;
+            document.getElementById('tgl_sampai').value = currentDate;
+            // no_order = $('#no_order').val();
+            
+            // $('#no_order_s').val(no_order);
+            $('#tempat').val('');
+            // $('#id_order').val(0);
+            $('#keterangan').val('');
+
+            $('#lanjut').hide('slow');
+            $('#add_data_schedule').show('slow');
+        });
+
+        $('#back_schedule,#batal_schedule').click(function(event) {
+            $('#lanjut').show('slow');
+            $('#add_data_schedule').hide('slow');
+        });
+
+        $('#save').click(function(event) {
+            $.ajax({
+                type: "post",
+                url: "{{route('api.schedule.store')}}",
+                data: $("#form_input_schedule").serialize(),
+                success: function(response) {
+                    for (var key in response) {
+                        var flag = response["success"];
+                        var message = response["message"];
+                    }
+
+                    if ($.trim(flag) == "true") {
+                        
+                        list_data();
+                        swal('Success!', message, {
+                            icon: 'success',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-success'
+                                }
+                            }
+                        });
+
+                        $('#lanjut').show('slow');
+                        $('#add_data_schedule').hide('slow');
+                    } else if ($.trim(message) == "true") {
+                        swal('Warning!', message, {
+                            icon: 'warning',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-warning'
+                                }
+                            }
+                        });
+                    } else {
+                        swal('Peringatan!', message, {
+                            icon: 'info',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-info'
+                                }
+                            }
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var errorMessage = xhr.status + ": " + xhr.statusText;
+                    swal('Error!', errorMessage, {
+                        icon: 'danger',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-danger'
+                            }
+                        }
+                    });
+                },
             });
         });
 

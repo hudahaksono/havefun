@@ -83,15 +83,19 @@ class OrderController extends Controller
                 $nestedData['f_status'] = $post->status;
                 if($post->status==1){
                     $nestedData['status_order'] = '<span class="badge badge-success">New Order</span>';
+                    $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='tindak_lanjut' data-toggle='tooltip' title='Tindak Lanjut' data-id='$post->no_order' data-original-title='' class='Edit btn btn-primary btn-sm'><i class='fa fa-location-arrow'></i> &nbsp; Tindak Lanjut </a>
+                                        <a href='javascript:void(0)' id='delete_data_hdr' data-toggle='tooltip' title='Delete' data-id='$post->no_order' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i> &nbsp; Hapus </a>";
                 }else if($post->status==2){
                     $nestedData['status_order'] = '<span class="badge badge-warning">Menunggu Pembayaran</span>';
+                    $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='tindak_lanjut' data-toggle='tooltip' title='Tindak Lanjut' data-id='$post->no_order' data-original-title='' class='Edit btn btn-primary btn-sm'><i class='fa fa-location-arrow'></i> &nbsp; Tindak Lanjut </a>
+                                        <a href='javascript:void(0)' id='delete_data_hdr' data-toggle='tooltip' title='Delete' data-id='$post->no_order' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i> &nbsp; Hapus </a>";
                 }else if($post->status==3){
                     $nestedData['status_order'] = '<span class="badge badge-primary">Tindak Lanjut</span>';
+                    $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='sudah_tindak_lanjut' data-toggle='tooltip' title='Tindak Lanjut' data-id='$post->no_order' data-original-title='' class='Edit btn btn-primary btn-sm'><i class='fa fa-location-arrow'></i> &nbsp; Sudah Di Tindak Lanjut </a>";
                 }else{
                     $nestedData['status_order'] = '-';
                 }
-                $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='tindak_lanjut' data-toggle='tooltip' title='Tindak Lanjut' data-id='$post->no_order' data-original-title='' class='Edit btn btn-primary btn-sm'><i class='fa fa-location-arrow'></i> &nbsp; Tindak Lanjut </a>
-                                        <a href='javascript:void(0)' id='delete_data_hdr' data-toggle='tooltip' title='Delete' data-id='$post->no_order' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i> &nbsp; Hapus </a>";
+                
                 $data[] = $nestedData;
                 $i++;
             }
