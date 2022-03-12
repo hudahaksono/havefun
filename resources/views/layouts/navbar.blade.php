@@ -33,11 +33,11 @@
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="/about" class="nav-link">Tentang Kami</a></li>
-                    <li class="nav-item"><a href="/product" class="nav-link">Produk</a></li>
-                    <li class="nav-item"><a href="/paket" class="nav-link">Paket Dekorasi</a></li>
-                    <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+                    <li id="nav-home" class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+                    <li id="nav-tentang-kami" class="nav-item"><a href="/about" class="nav-link">Tentang Kami</a></li>
+                    <li id="nav-produk" class="nav-item"><a href="/product" class="nav-link">Produk</a></li>
+                    <li id="nav-paket" class="nav-item"><a href="/paket" class="nav-link">Paket Dekorasi</a></li>
+                    <li id="nav-contact" class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
                     @if(Session('sess_email')=='')
                     <li class="nav-item"><a href="/register-customer" class="nav-link btn btn-primary">Register</a></li>
                     <li class="nav-item"><a href="/login-customer" class="nav-link btn btn-info">Login</a></li>

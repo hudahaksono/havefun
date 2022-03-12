@@ -276,7 +276,8 @@ class OrderController extends Controller
     {
         $no_order       = $request->no_order_input;
         $tgl_order      = $request->tgl_order_input;
-        $id_user        = Session::get('sess_nama');
+        $session_user = $request->detail_sess_nama;
+        $session_id = $request->detail_sess_id;
         $id_product     = $request->barang_id;
         // session::put('sess_nama', 'test message 1');
         // dd(Session::get('sess_nama'));
@@ -288,10 +289,11 @@ class OrderController extends Controller
             $order_save                  = new OrderModels();
             $order_save->no_order        = $no_order;
             $order_save->tgl_order       = Date('Y-m-d', strtotime($tgl_order));
-            $order_save->id_user         = $id_user;
+            $order_save->id_user         = $session_id;
             $order_save->id_product      = $id_product;
             $order_save->status          = 1;
-            $order_save->user_at         = Session::get('sess_nama');
+            $order_save->status_product  = 1;
+            $order_save->user_at         = $session_user;
 
             $order_save->save();
             

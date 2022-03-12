@@ -60,3 +60,12 @@ Route::get('/tr-schedule/list-data', 'Transaksi\ScheduleController@list_data_hdr
 Route::get('/tr-schedule/list-data-order', 'Transaksi\ScheduleController@list_data_order')->name('api.schedule.listorder');
 Route::post('/tr-schedule/store', 'Transaksi\ScheduleController@store')->name('api.schedule.store');
 Route::post('/tr-schedule/update', 'Transaksi\ScheduleController@update')->name('api.schedule.update');
+
+// FRONT
+Route::get('/fr-produk', 'Front\ProdukController@list_produk')->name('api.fr.produk.list');
+Route::get('/fr-produk/detail', 'Front\ProdukController@detail_produk')->name('api.fr.produk.detail');
+Route::post('/fr-produk/chart/store', 'Front\ProdukController@store_chart')->name('api.fr.produk.store.chart');
+
+// Route::get('/fr-chart/list', 'Front\ChartController@list_produk')->name('api.fr.chart.list');
+Route::post('/fr-payment/order/store', 'Front\PaymentController@store_order')->name('api.fr.payment.store.order');
+Route::get('/fr-payment/list', 'Front\PaymentController@list_produk')->name('api.fr.payment.list');

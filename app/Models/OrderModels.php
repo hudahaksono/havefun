@@ -12,6 +12,6 @@ class OrderModels extends Model
     use Notifiable;
 
     protected $fillable = [
-        'id', 'no_order', 'tgl_order', 'id_user', 'id_product', 'status', 'user_at'
+        'id', 'no_order', 'tgl_order', 'id_user', 'id_product', 'id_chart', 'status', 'status_product', 'user_at'
     ];
 }

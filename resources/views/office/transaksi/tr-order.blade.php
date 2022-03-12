@@ -144,6 +144,8 @@
                     <div id="" class="card full-height">
                         <div class="card-body">
                             <form class="row" id="form_input">
+                                <input type="hidden" id="detail_sess_nama" name="detail_sess_nama" value="{{Session('sess_nama')}}">
+                                <input type="hidden" id="detail_sess_id" name="detail_sess_id" value="{{Session('sess_id')}}">
                                 <div class="col-md-12 text-left">
                                     <div class="form-group">
                                         <a id="back" name="back" style="color:white" class="btn btn-primary "><i class="fas fa-arrow-left"></i> &nbsp; Kembali</a>
@@ -459,13 +461,14 @@
                     {
                         data: "no_order",
                         name: "no_order",
-                        visible: true
+                        visible: false
                     }, // 3
                     {
                         data: "tgl_order",
                         name: "tgl_order", render: function (d) {
                             return moment(d).format("DD-MM-YYYY");
                         },
+                        visible: false
                     }, // 3
                     {
                         data: "id_product",
