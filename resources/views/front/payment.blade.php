@@ -14,7 +14,7 @@
                                     <span>Engagement - Stepa</span>
                                     <span style="color:green">Rp. 15.000.000</span>
                                 </p>
-                                <p class="d-flex">
+                                <!-- <p class="d-flex">
                                     <span>Tambahan Produk</span>
                                     <span>Bunga 7 Rupa</span>
                                     <span style="color:green">Rp. 100.000</span>
@@ -33,7 +33,7 @@
                                     <span>Discount</span>
                                     <span>&nbsp;</span>
                                     <span style="color:red">- Rp. 0</span>
-                                </p>
+                                </p> -->
                                 <hr>
                                 <p class="d-flex total-price">
                                     <span>Grand Total</span>
@@ -46,9 +46,64 @@
                     </div>
                 </form><!-- END -->
 
-
-
                 <div class="row mt-5 pt-3 d-flex">
+                    <div class="col-md-12">
+                        <div class="cart-detail ftco-bg-dark p-3 p-md-4">
+                            <h3 class="billing-heading mb-4">Tempat dan Tanggal Acara</h3>
+                            <form class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Tanggal Acara</label>
+                                        <input class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Alamat Acara</label>
+                                        <textarea class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Provinsi</label>
+                                        <input class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Kota/Kabupaten</label>
+                                        <input class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Kota/Kabupaten</label>
+                                        <input class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Kota/Kabupaten</label>
+                                        <input class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i>&nbsp; Konsultasi Product Dengan Admin
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary"><i class="fa-solid fa-dollar-sign"></i>&nbsp; Lanjut Ke Pembayaran
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="row mt-5 pt-3 d-flex">
                     <div class="col-md-12">
                         <div class="cart-detail ftco-bg-dark p-3 p-md-4">
                             <h3 class="billing-heading mb-4">Metode Transfer</h3>
@@ -76,7 +131,8 @@
                             <p><a href="#" class="btn btn-primary py-3 px-4">Lanjutkan Ke Transfer</a></p>
                         </div>
                     </div>
-                </div>
+                </div> -->
+
             </div>
         </div>
     </div>

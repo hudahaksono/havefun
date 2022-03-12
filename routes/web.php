@@ -62,21 +62,13 @@ Route::get('/about', function () {
     return view('front.about');
 });
 
-Route::get('/product', function () {
-    return view('front.product');
-});
+Route::get('/product', 'Front\ProdukController@index')->name('f-produk');
 
-Route::get('/paket', function () {
-    return view('front.paket');
-});
+Route::get('/paket', 'Front\PaketController@index')->name('f-paket');
 
-Route::get('/cart', function () {
-    return view('front.cart');
-});
+Route::get('/cart', 'Front\ChartController@index')->name('f-chart');
 
-Route::get('/payment', function () {
-    return view('front.payment');
-});
+Route::get('/payment', 'Front\PaymentController@index')->name('f-payment');
 
 Route::get('/transfer', function () {
     return view('front.transfer');
