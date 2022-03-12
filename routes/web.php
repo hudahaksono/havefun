@@ -97,6 +97,10 @@ Route::get('/dashboard', function () {
     return view('office.dashboard');
 });
 
+Route::get('/profile', function () {
+    return view('office.profile');
+});
+
 // Master Paket //
 Route::get('/master-paket', 'Master\PaketController@index')->name('master-paket');
 
