@@ -23,7 +23,7 @@ class ProdukController extends Controller
     {
         $id_kategori = $request->id_kategori;
         $data = DB::table('qview_mst_barang')
-            ->where('id_kategori',$id_kategori)
+            ->where([['id_kategori','=',$id_kategori],['status_hapus','=',0]])
             ->get();
         return response()->json($data);
     }
@@ -32,7 +32,7 @@ class ProdukController extends Controller
     {
         $id = $request->id;
         $data = DB::table('qview_mst_barang')
-            ->where('id',$id)
+            ->where([['id','=',$id],['status_hapus','=',0]])
             ->first();
         return response()->json($data);
     }

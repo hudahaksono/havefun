@@ -78,9 +78,7 @@ Route::get('/profile', function () {
     return view('front.profile');
 });
 
-Route::get('/myorder', function () {
-    return view('front.myorder');
-});
+Route::get('/myorder', 'Front\OrderController@index')->name('f-myorder');
 
 
 

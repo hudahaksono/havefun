@@ -62,10 +62,18 @@ Route::post('/tr-schedule/store', 'Transaksi\ScheduleController@store')->name('a
 Route::post('/tr-schedule/update', 'Transaksi\ScheduleController@update')->name('api.schedule.update');
 
 // FRONT
+// PRODUCT
 Route::get('/fr-produk', 'Front\ProdukController@list_produk')->name('api.fr.produk.list');
 Route::get('/fr-produk/detail', 'Front\ProdukController@detail_produk')->name('api.fr.produk.detail');
 Route::post('/fr-produk/chart/store', 'Front\ProdukController@store_chart')->name('api.fr.produk.store.chart');
 
 // Route::get('/fr-chart/list', 'Front\ChartController@list_produk')->name('api.fr.chart.list');
 Route::post('/fr-payment/order/store', 'Front\PaymentController@store_order')->name('api.fr.payment.store.order');
+Route::post('/fr-payment/payment/store', 'Front\PaymentController@store_payment')->name('api.fr.payment.store.payment');
 Route::get('/fr-payment/list', 'Front\PaymentController@list_produk')->name('api.fr.payment.list');
+
+// PAKET
+Route::get('/fr-paket', 'Front\PaketController@list_produk')->name('api.fr.paket.list');
+Route::get('/fr-paket/detail', 'Front\PaketController@detail_produk')->name('api.fr.paket.detail');
+Route::get('/fr-paket/detail-product', 'Front\PaketController@detail_produk_paket')->name('api.fr.paket.detail.produk');
+Route::post('/fr-paket/chart/store', 'Front\PaketController@store_chart')->name('api.fr.paket.store.chart');

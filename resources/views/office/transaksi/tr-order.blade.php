@@ -90,6 +90,8 @@
                         <div class="card-body">
                             <input type="hidden" id="f_status" name="f_status">
                             <input type="hidden" id="no_order" name="no_order">
+                            <input type="hidden" id="sess_nama" name="sess_nama" value="{{Session('sess_nama')}}">
+                                <input type="hidden" id="sess_id" name="sess_id" value="{{Session('sess_id')}}">
                             <div class="col-md-12 mb-3">
                                 <button id="tambah_data" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Produk</button>
                             </div>
@@ -169,7 +171,7 @@
                                         <input id="tgl_order_input" name="tgl_order_input" class="form-control" type="text" readonly="">
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-9">
                                     <div class="form-group">
                                         <label for="barang">Nama Produk <span style="color: red;">*</span></label>
                                         <div class="input-group">
@@ -180,6 +182,12 @@
                                                 </a>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="harga">Qty<span style="color: red;">*</span></label>
+                                        <input id="qty" name="qty" class="form-control" type="text">
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-right">
@@ -548,10 +556,12 @@
         }
 
         function proses_po(no_order,f_status) {
+            sess_nama = $('#sess_nama').val();
+            sess_id = $('#sess_id').val();
             $.ajax({
                 type: "post",
                 url: "{{route('api.order.proses')}}",
-                data: {no_order:no_order, f_status:f_status},
+                data: {no_order:no_order, f_status:f_status, sess_nama:sess_nama, sess_id:sess_id},
                 success: function(response) {
                     for (var key in response) {
                         var flag = response["success"];
@@ -655,6 +665,7 @@
         $('#tambah_data').click(function() {
             $('#barang_id').val(0);
             $('#barang').val('');
+            $('#qty').val(1);
             $('#lanjut').hide('slow');
             $('#add_data').show('slow');
         });

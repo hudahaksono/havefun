@@ -13,12 +13,20 @@ class ChartController extends Controller
     {
         $session_user = Session()->get('sess_nama');
         // dd($session_user);
+        $data_paket = DB::table('ttrx_chart')
+                ->join('tmst_paket', 'tmst_paket.id', '=', 'ttrx_chart.id_paket')
+                ->leftJoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+                ->select('ttrx_chart.*', 'tmst_paket.nama', 'tmst_paket.harga', 'tmst_paket.file_name', 'ttrx_order.no_order')
+                ->wherenull('ttrx_order.no_order')
+                ->where('ttrx_chart.user_at',$session_user);
+        
         $data = DB::table('ttrx_chart')
                 ->join('tmst_product', 'tmst_product.id', '=', 'ttrx_chart.id_product')
                 ->leftJoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
                 ->select('ttrx_chart.*', 'tmst_product.nama', 'tmst_product.harga', 'tmst_product.file_name', 'ttrx_order.no_order')
                 ->wherenull('ttrx_order.no_order')
                 ->where('ttrx_chart.user_at',$session_user)
+                ->union($data_paket)
                 ->get();
         // dd($data);
         return view('front.cart',compact('data'));
