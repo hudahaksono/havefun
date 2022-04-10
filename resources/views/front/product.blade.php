@@ -438,52 +438,57 @@
         });
 
         $('#btn_chart').click(function(event) {
-            id_product = $('#detail_id').val();
-            qty_product = $('#quantity').val();
-            session_nama = $('#detail_sess_nama').val();
-            $.ajax({
-                type: "post",
-                url: "{{route('api.fr.produk.store.chart')}}",
-                data: {id:id_product,qty:qty_product,session_nama:session_nama},
-                success: function(response) {
-                    for (var key in response) {
-                        var flag = response["success"];
-                        var message = response["message"];
-                    }
-
-                    if ($.trim(flag) == "true") {
-                        swal('Success!', message, {
-                            icon: 'success',
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-success'
-                                }
-                            }
-                        });
-                        window.location ="{{route('f-chart')}}";
-                    } else {
-                        swal('Peringatan!', message, {
-                            icon: 'warning',
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-info'
-                                }
-                            }
-                        });
-                    }
-                },
-                error: function(xhr, status, error) {
-                    var errorMessage = xhr.status + ": " + xhr.statusText;
-                    swal('Error!', errorMessage, {
-                        icon: 'danger',
-                        buttons: {
-                            confirm: {
-                                className: 'btn btn-danger'
-                            }
+            if($('#detail_sess_nama').val().length==0){
+                window.location ="{{route('login-customer')}}";
+            }else{
+                id_product = $('#detail_id').val();
+                qty_product = $('#quantity').val();
+                session_nama = $('#detail_sess_nama').val();
+                $.ajax({
+                    type: "post",
+                    url: "{{route('api.fr.produk.store.chart')}}",
+                    data: {id:id_product,qty:qty_product,session_nama:session_nama},
+                    success: function(response) {
+                        for (var key in response) {
+                            var flag = response["success"];
+                            var message = response["message"];
                         }
-                    });
-                },
-            });
+
+                        if ($.trim(flag) == "true") {
+                            swal('Success!', message, {
+                                icon: 'success',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-success'
+                                    }
+                                }
+                            });
+                            window.location ="{{route('f-chart')}}";
+                        } else {
+                            swal('Peringatan!', message, {
+                                icon: 'warning',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-info'
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = xhr.status + ": " + xhr.statusText;
+                        swal('Error!', errorMessage, {
+                            icon: 'danger',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-danger'
+                                }
+                            }
+                        });
+                    },
+                });
+            }
+            
         });
         
     });
