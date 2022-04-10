@@ -122,8 +122,11 @@ class OrderController extends Controller
             4 => 'action'
         );
 
+        $data_paket = DB::table('qview_order_dtl_paket')
+                        ->where('no_order', '=', $no_order);
         $totalData = DB::table('qview_order_dtl')
             ->where('no_order', '=', $no_order)
+            ->union($data_paket)
             ->count();
 
         $totalFiltered = $totalData;
@@ -134,26 +137,37 @@ class OrderController extends Controller
         $dir = $request->input('order.0.dir');
 
         if (empty($request->input('search.value'))) {
+            $data_paket = DB::table('qview_order_dtl_paket')
+                        ->offset($start)
+                        ->limit($limit)
+                        ->where('no_order', '=', $no_order);
             $posts = DB::table('qview_order_dtl')
                 ->offset($start)
                 ->limit($limit)
                 ->where('no_order', '=', $no_order)
                 ->orderBy('tgl_order')
+                ->union($data_paket)
                 ->get();
         } else {
             $search = $request->input('search.value');
 
+            $data_paket = DB::table('qview_order_dtl_paket')
+                        ->offset($start)
+                        ->limit($limit)
+                        ->Where([['no_order', '=', $no_order],['product_name', 'LIKE', "%{$search}%"]]);
             $posts =  DB::table('qview_order_dtl')
                 ->offset($start)
                 ->limit($limit)
                 // ->where([['no_order', 'LIKE', "%{$search}%"]])
                 ->Where([['no_order', '=', $no_order],['product_name', 'LIKE', "%{$search}%"]])
                 ->orderBy('tgl_order')
+                ->union($data_paket)
                 ->get();
 
             $totalFiltered = DB::table('qview_order_dtl')
                 // ->where([['no_order', 'LIKE', "%{$search}%"]])
                 ->Where([['no_order', '=', $no_order],['product_name', 'LIKE', "%{$search}%"]])
+                ->union($data_paket)
                 ->count();
         }
 
@@ -276,9 +290,10 @@ class OrderController extends Controller
     {
         $no_order       = $request->no_order_input;
         $tgl_order      = $request->tgl_order_input;
-        $session_user = $request->detail_sess_nama;
-        $session_id = $request->detail_sess_id;
+        $session_user   = $request->detail_sess_nama;
+        $session_id     = $request->detail_sess_id;
         $id_product     = $request->barang_id;
+        $qty            = $request->qty;
         // session::put('sess_nama', 'test message 1');
         // dd(Session::get('sess_nama'));
         $data_cek = OrderModels::where([['no_order','=',$no_order],['id_product','=',$id_product]])->count();
@@ -291,6 +306,7 @@ class OrderController extends Controller
             $order_save->tgl_order       = Date('Y-m-d', strtotime($tgl_order));
             $order_save->id_user         = $session_id;
             $order_save->id_product      = $id_product;
+            $order_save->qty             = $qty;
             $order_save->status          = 1;
             $order_save->status_product  = 1;
             $order_save->user_at         = $session_user;
@@ -351,24 +367,27 @@ class OrderController extends Controller
             $total = floatval($total) + floatval($harga);
             $id_user = $value->id_user;
         }
-        $year = date('Y');
-        $month = date('m');
-        $last_doc_no = Helper::create_doc_no('PAYMENT', $month, $year);
-        $no_payment = 'INV-'.Helper::right($year, 2) . $month . "-" .Helper::right("0000" . $last_doc_no, 4);
-        // $no_payment = 'INV-2215-0001';
 
-        $payment                    = new PaymentModels();
+        if($request->f_status==1){
+            $year = date('Y');
+            $month = date('m');
+            $last_doc_no = Helper::create_doc_no('PAYMENT', $month, $year);
+            $no_payment = 'INV-'.Helper::right($year, 2) . $month . "-" .Helper::right("0000" . $last_doc_no, 4);
+            // $no_payment = 'INV-2215-0001';
 
-        $payment->no_payment        = $no_payment;
-        $payment->tgl_payment       = date('Y-m-d');
-        $payment->total_payment     = $total;
-        $payment->id_user           = $id_user;
-        // $payment->id_order          = $id_order;
-        $payment->no_order          = $request->no_order;
-        $payment->status            = 0;
-        $payment->user_at         = Session::get('sess_nama');
+            $payment                    = new PaymentModels();
 
-        $payment->save();
+            $payment->no_payment        = $no_payment;
+            $payment->tgl_payment       = date('Y-m-d');
+            $payment->total_payment     = $total;
+            $payment->id_user           = $request->sess_id;
+            // $payment->id_order          = $id_order;
+            $payment->no_order          = $request->no_order;
+            $payment->status            = 0;
+            $payment->user_at           = $request->sess_nama;
+
+            $payment->save();
+        }
 
         $msg = 'Data berhasil di hapus';
         return response()->json(['success' => true, 'message' => $msg]);

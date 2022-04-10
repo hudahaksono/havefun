@@ -14,7 +14,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="text-center">
+                            @foreach ($data as $value)
+                                <tr class="text-center">
+                                    <td class="image-prod">
+                                        <div class="img" style="background-image:url(produk/{{$value->file_name}}"></div>
+                                    </td>
+                                    <td class="product-name">
+                                        <!-- <h3>{{ $value->no_order }}</h3> -->
+                                        <h3>{{ $value->product_name }}</h3>
+                                    </td>
+                                    <td class="price">Rp. {{number_format($value->harga,0,",",".")}}</td>
+                                    @if($value->status==1)
+                                        <td style="color:yellow;font-weight:bold" class="price">Menunggu Konfirmasi</td>
+                                    @else
+                                        <td style="color:green;font-weight:bold" class="price">Sudah Dibayarkan</td>
+                                    @endif
+                                    
+                                </tr>
+                            @endforeach
+                            <!-- <tr class="text-center">
                                 <td class="image-prod">
                                     <div class="img" style="background-image:url(images/savana/savana1.jpg);"></div>
                                 </td>
@@ -33,7 +51,7 @@
                                 </td>
                                 <td class="price">Rp. 5.000.000</td>
                                 <td style="color:yellow;font-weight:bold" class="price">Menunggu Konfirmasi</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>

@@ -68,9 +68,13 @@
                     for (var key in response) {
                         var flag = response["success"];
                         var message = response["message"];
+                        var no_order = response["no_order"];
                     }
+                    
+                    // url = "{{route('f-payment', ['no_order' => '" + no_order + "'])}}";
+                    url = "/payment?no_order=" + no_order;
                     if ($.trim(flag) == "true") {
-                        window.location ="{{route('f-payment')}}";
+                        window.location = url;
                     }else{
                         swal('Peringatan!', message, {
                             icon: 'warning',
