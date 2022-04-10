@@ -1,4 +1,4 @@
-@section('title', 'Master Access')
+@section('title', 'Master akses')
 @include('office.layouts.header')
 <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
@@ -12,6 +12,10 @@
                     <div class="container mb-5">
                         <div class="row">
                             <div class="col-md-12 mb-3">
+                                <button id="add_button" class="btn btn-primary"><i class="fas fa-plus"></i> Add Data</button>
+                                <a href="https://wa.me/+6287875333551" class="btn btn-success"><i class="fas fa-plus"></i> WA</a>
+                            </div>
+                            <div class="col-md-12">
                                 <div class="table-responsive">
                                     <table id="tbl_user" class="table table-striped table-hover dataTable no-footer" style="width:100%" role="grid">
                                         <thead style="color:white;font-weight:bold" class="bg-primary text-center">
@@ -20,22 +24,11 @@
                                                 <td>No</td>
                                                 <td>Email</td>
                                                 <td>Name</td>
-                                                <td>No Hanphone</td>
                                                 <td>Role</td>
                                                 <td>Action</td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <!-- <tr>
-                                                <td>1</td>
-                                                <td>huda@gmail.com</td>
-                                                <td>Nur Hudha Haksono</td>
-                                                <td>Admin</td>
-                                                <td style="text-align: center;">
-                                                    <button class="btn btn-info"><i class="fas fa-edit"></i> Edit</button>
-                                                    &nbsp; <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
-                                                </td>
-                                            </tr> -->
                                             <tr>
 
                                             </tr>
@@ -118,7 +111,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{route('master-akses.list-data')}}",
+                    url: "{{route('master-user.list-data')}}",
                     type: "GET",
                 },
                 columns: [{
@@ -143,20 +136,15 @@
                         visible: true
                     }, // 3
                     {
-                        data: "no_tlp",
-                        name: "no_tlp",
+                        data: "role",
+                        name: "role",
                         visible: true
                     }, // 4
-                    {
-                        data: "jabatan",
-                        name: "jabatan",
-                        visible: true
-                    }, // 5
                     {
                         data: "action",
                         name: "action",
                         visible: true
-                    }, // 6
+                    }, // 5
                 ],
                 //      aligment left, right, center row dan coloumn
                 order: [
@@ -164,7 +152,7 @@
                 ],
                 columnDefs: [{
                         className: "text-center",
-                        targets: [0, 1, 2, 3, 4, 5, 6]
+                        targets: [0, 1, 2, 3, 4, 5]
                     },
                     {
                         width: "20%",
@@ -174,6 +162,7 @@
                 bAutoWidth: false,
                 responsive: true,
             });
+            $("#tbl_user").css("cursor", "pointer");
         }
 
         $('#add_button').click(function(event) {
@@ -287,17 +276,18 @@
             $('#add_data').show('slow');
         });
 
-        $('body').on('click', '#accept', function(e) {
+        $('body').on('click', '#delete', function(e) {
             var $row = $(this).closest("tr");
             var data = $('#tbl_user').DataTable().row($row).data();
 
             id = data['id'];
             swal({
-                title: 'Anda Yakin Mengkonfirmasi Akun Ini ?',
+                title: 'Yakin Menghapus Data Ini ?',
+                text: "Jika Dihapus Data Akan Hilang Pada Table Ini",
                 type: 'warning',
                 buttons: {
                     confirm: {
-                        text: 'Ya',
+                        text: 'Ya, Hapus!',
                         className: 'btn btn-danger'
                     },
                     cancel: {
@@ -310,7 +300,7 @@
                 if (Delete) {
                     $.ajax({
                         type: "get",
-                        url: "{{route('master-akses.accept')}}",
+                        url: "{{route('master-user.destroy')}}",
                         data: {
                             id: id
                         },

@@ -33,7 +33,7 @@ class RegisterController extends Controller
             $data->nama = $request->name;
             $data->no_tlp = $request->no_tlp;
             $data->email = $request->email;
-            $data->jabatan = 1;
+            $data->jabatan = 2; // 2 Unruk Di konfirmasi Menjadi 3
             $data->password = bcrypt($request->password);
             $data->status_hapus = 0;
             $data->created_at = now();

@@ -168,6 +168,9 @@ return [
 
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
 
+        // DomPDF //
+        Barryvdh\DomPDF\ServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -231,8 +234,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Telegram' => Telegram\Bot\Laravel\Facades\Telegram::class,
 
-        'Telegram' => Telegram\Bot\Laravel\Facedes\Telegram::class
-
+        'Telegram' => Telegram\Bot\Laravel\Facedes\Telegram::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

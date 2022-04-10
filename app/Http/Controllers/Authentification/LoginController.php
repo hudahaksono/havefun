@@ -25,7 +25,7 @@ class LoginController extends Controller
         if ($data === null) {
             return redirect('/login')->with('alert-nofind', 'Unregistered Account');
         } else {
-            if ($data->jabatan == 1) {
+            if ($data->jabatan == 4 || $data->jabatan == 3) {
                 if ($data->status_hapus == '0') {
                     if (Hash::check($request->password, $data->password)) {
                         session::put('sess_id', $data->id);

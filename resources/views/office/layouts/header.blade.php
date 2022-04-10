@@ -84,7 +84,7 @@
                                 <i class="far fa-user"></i> Profile
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="auth-login.html" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+                            <a href="/logout" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
                                 Logout
                             </a>
                         </div>
@@ -116,18 +116,21 @@
                         </li>
                         <li class="menu-header">Transaction</li>
                         <li class="dropdown">
-                            <a href="/tr-order" class="nav-link"><i data-feather="file-text"></i><span>Customer Order</span></a>
+                            <a href="/tr-order" class="nav-link"><i data-feather="shopping-cart"></i><span>Customer Order</span></a>
                         </li>
                         <li class="dropdown">
                             <a href="/tr-schedule" class="nav-link"><i data-feather="calendar"></i><span>Customer Schedule</span></a>
                         </li>
                         <li class="dropdown">
-                            <a href="/tr-payment" class="nav-link"><i data-feather="shopping-cart"></i><span>Payment Order</span></a>
+                            <a href="/tr-payment" class="nav-link"><i data-feather="credit-card"></i><span>Payment Order</span></a>
                         </li>
                         <li class="dropdown">
                             <a href="/tr-payment-done" class="nav-link"><i data-feather="dollar-sign"></i><span>Payment Done (Lunas)</span></a>
                         </li>
                         <li class="menu-header">Reporting</li>
+                        <li class="dropdown">
+                            <a href="/tr-payment-done" class="nav-link"><i data-feather="file-text"></i><span>Invoice</span></a>
+                        </li>
                         <li class="dropdown">
                             <a href="/rpt-message" class="nav-link"><i data-feather="message-square"></i><span>Message Website</span></a>
                         </li>

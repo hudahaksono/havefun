@@ -13,6 +13,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <button id="add_button" class="btn btn-primary"><i class="fas fa-plus"></i> Add Data</button>
+                                <a href="https://wa.me/+6287875333551" class="btn btn-success"><i class="fas fa-plus"></i> WA</a>
                             </div>
                             <div class="col-md-12">
                                 <div class="table-responsive">

@@ -1,16 +1,4 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // login //
 Route::get('/login-customer', 'AuthCustomer\LoginController@index')->name('login-customer');
 Route::post('/postlogincustomer', 'AuthCustomer\LoginController@postlogincustomer')->name('postlogincustomer');
@@ -42,15 +30,6 @@ Route::get('/otokabe', 'Monitoring\OtokabeController@index')->name('otokabe');
 // Monitoring Marketplace
 Route::get('/marketplace', 'Monitoring\MarketController@index')->name('marketplace');
 
-// Dashboard //
-Route::get('/dashboard', 'Menu\MenuController@index')->name('dashboard');
-
-// Master //
-Route::get('/master-user', 'Master\MasterUserController@index')->name('master-user');
-Route::get('/master-user/list-data', 'Master\MasterUserController@list_data')->name('master-user.list-data');
-Route::post('/master-user/store', 'Master\MasterUserController@store')->name('master-user.store');
-Route::post('/master-user/update', 'Master\MasterUserController@update')->name('master-user.update');
-Route::get('/master-user/destroy', 'Master\MasterUserController@destroy')->name('master-user.destroy');
 // });
 
 //### Front Web ###//
@@ -82,8 +61,6 @@ Route::get('/myorder', function () {
     return view('front.myorder');
 });
 
-
-
 //### Back Web ###//
 Route::get('/dashboard', function () {
     return view('office.dashboard');
@@ -92,6 +69,22 @@ Route::get('/dashboard', function () {
 Route::get('/profile', function () {
     return view('office.profile');
 });
+
+// Dashboard //
+Route::get('/dashboard', 'Menu\MenuController@index')->name('dashboard');
+
+// Master //
+Route::get('/master-user', 'Master\MasterUserController@index')->name('master-user');
+Route::get('/master-user/list-data', 'Master\MasterUserController@list_data')->name('master-user.list-data');
+Route::post('/master-user/store', 'Master\MasterUserController@store')->name('master-user.store');
+Route::post('/master-user/update', 'Master\MasterUserController@update')->name('master-user.update');
+Route::get('/master-user/destroy', 'Master\MasterUserController@destroy')->name('master-user.destroy');
+
+Route::get('/master-akses', 'Master\MasterAksesController@index')->name('master-akses');
+Route::get('/master-akses/list-data', 'Master\MasterAksesController@list_data')->name('master-akses.list-data');
+Route::post('/master-akses/store', 'Master\MasterAksesController@store')->name('master-akses.store');
+Route::post('/master-akses/update', 'Master\MasterAksesController@update')->name('master-akses.update');
+Route::get('/master-akses/destroy', 'Master\MasterAksesController@destroy')->name('master-akses.destroy');
 
 // Master Paket //
 Route::get('/master-paket', 'Master\PaketController@index')->name('master-paket');
@@ -127,3 +120,8 @@ Route::post('/send-message', 'TelegramBotController@storeMessage');
 Route::get('/send-photo', 'TelegramBotController@sendPhoto');
 Route::post('/store-photo', 'TelegramBotController@storePhoto');
 Route::get('/updated-activity', 'TelegramBotController@updatedActivity');
+
+// PdF //
+Route::get('invoice-lunas', 'Transaksi\InvoiceController@generatelunas');
+// PdF //
+Route::get('invoice-outstanding', 'Transaksi\InvoiceController@generateoutstanding');
