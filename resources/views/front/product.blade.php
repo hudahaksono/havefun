@@ -275,6 +275,7 @@
             </div>
             <div class="col-lg-6 product-details pl-md-5 ftco-animate">
                 <input type="hidden" id="detail_id">
+                <input type="hidden" id="detail_sess_id" name="detail_sess_id" value="{{Session('sess_id')}}">
                 <input type="hidden" id="detail_sess_nama" value="{{Session('sess_nama')}}">
                 <h3 id="detail_title">Engagement - Lite</h3>
                 <p class="price"><span id="detail_harga">Rp. 5.000.000</span></p>
@@ -296,7 +297,7 @@
                 </div>
                 <p>
                     <a href="javascript:void(0)" id="btn_chart" class="btn btn-primary py-3 px-5"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</a>
-                    <a href="cart.html" class="btn btn-primary py-3 px-5"><i class="fa-solid fa-dollar-sign"></i> Order</a>
+                    <a href="javascript:void(0)" id="btn_order" class="btn btn-primary py-3 px-5"><i class="fa-solid fa-dollar-sign"></i> Order</a>
                 </p>
             </div>
         </div>
@@ -489,6 +490,62 @@
                 });
             }
             
+        });
+
+        $('#btn_order').click(function(event) {
+            session_id = $('#detail_sess_id').val();
+            session_nama = $('#detail_sess_nama').val();
+            id_product = $('#detail_id').val();
+            qty_product = $('#quantity').val();
+            
+            if($('#detail_sess_nama').val().length==0){
+                window.location ="{{route('login-customer')}}";
+            }else{
+                $.ajax({
+                    type: "post",
+                    url: "{{route('api.fr.produk.store.barang')}}",
+                    data: {id_product:id_product,qty_product:qty_product,session_nama:session_nama,session_id:session_id},
+                    success: function(response) {
+                        for (var key in response) {
+                            var flag = response["success"];
+                            var message = response["message"];
+                            var no_order = response["no_order"];
+                        }
+
+                        if ($.trim(flag) == "true") {
+                            // swal('Success!', message, {
+                            //     icon: 'success',
+                            //     buttons: {
+                            //         confirm: {
+                            //             className: 'btn btn-success'
+                            //         }
+                            //     }
+                            // });
+                            window.location ="/payment?no_order=" + no_order;
+                        } else {
+                            swal('Peringatan!', message, {
+                                icon: 'warning',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-info'
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = xhr.status + ": " + xhr.statusText;
+                        swal('Error!', errorMessage, {
+                            icon: 'danger',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-danger'
+                                }
+                            }
+                        });
+                    },
+                });
+            }
         });
         
     });

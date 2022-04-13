@@ -110,6 +110,7 @@
                                 <li id="master-user"><a class="nav-link" href="/master-user">Master User</a></li>
                                 <li id="master-access"><a class="nav-link" href="/master-akses">Master Access</a></li>
                                 <li id="master-kategori"><a class="nav-link" href="/master-kategori">Master Kategori</a></li>
+                                <li id="master-kategori-paket"><a class="nav-link" href="/master-kategori-paket">Master Kategori Paket</a></li>
                                 <li id="master-product"><a class="nav-link" href="/master-product">Master Product</a></li>
                                 <li id="master-paket"><a class="nav-link" href="/master-paket">Master Paket</a></li>
                             </ul>

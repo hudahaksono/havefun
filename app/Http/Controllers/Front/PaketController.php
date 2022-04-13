@@ -4,16 +4,18 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\OrderModels;
 use App\Models\ChartModels;
-use Redirect, Response, DB;
+use App\Helpers\Helper;
 use Illuminate\Support\Facades\Session;
+use Redirect, Response, DB;
 
 class PaketController extends Controller
 {
     public function index()
     {
-        $kategori = DB::table('tmst_kategori')->where('status_hapus',0)->get();
-        $kategori_first = DB::table('tmst_kategori')->where('status_hapus',0)->first();
+        $kategori = DB::table('tmst_kategori_paket')->where('status_hapus',0)->get();
+        $kategori_first = DB::table('tmst_kategori_paket')->where('status_hapus',0)->first();
         $id_kategori_first = $kategori_first->id;
         return view('front.paket', compact('kategori','id_kategori_first'));
     }
@@ -74,5 +76,38 @@ class PaketController extends Controller
                 return response()->json(['success' => false,'message'=>$e->getMessage()]);
             }
         }
+    }
+
+    public function store_barang(Request $request)
+    {
+        try {
+            $year = date('Y');
+            $month = date('m');
+            $last_doc_no = Helper::create_doc_no('ORDER', $month, $year);
+            $no_order = 'NP-'.Helper::right($year, 2) . $month . "-" .Helper::right("0000" . $last_doc_no, 4);
+            $session_user = $request->session_nama;
+            $session_id   = $request->session_id;
+            $id_product   = $request->id_product;
+            $qty_product  = $request->qty_product;
+
+            $order_save                  = new OrderModels();
+            $order_save->no_order        = $no_order;
+            $order_save->tgl_order       = Date('Y-m-d');
+            $order_save->id_user         = $session_id;
+            $order_save->id_paket      = $id_product;
+            
+            // $order_save->id_chart        = $value;
+            $order_save->qty             = $qty_product;
+            $order_save->status          = 1;
+            $order_save->user_at         = $session_user;
+
+            $order_save->save();
+
+            $msg = 'Data berhasil di simpan';
+            return response()->json(['success' => true, 'message' => $msg, 'no_order' => $no_order]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false,'message'=>$e->getMessage()]);
+        }
+        
     }
 }

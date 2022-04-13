@@ -48,7 +48,7 @@ class OrderController extends Controller
                 ->offset($start)
                 ->limit($limit)
                 // ->where('status_hapus', '=', 0)
-                ->orderBy('tgl_order')
+                ->orderBy('status')
                 ->get();
         } else {
             $search = $request->input('search.value');
@@ -58,7 +58,7 @@ class OrderController extends Controller
                 ->limit($limit)
                 ->where([['no_order', 'LIKE', "%{$search}%"]])
                 ->Where([['nama', 'LIKE', "%{$search}%"]])
-                ->orderBy('tgl_order')
+                ->orderBy('status')
                 ->get();
 
             $totalFiltered = DB::table('qview_order_hdr')
@@ -83,15 +83,14 @@ class OrderController extends Controller
                 $nestedData['f_status'] = $post->status;
                 if($post->status==1){
                     $nestedData['status_order'] = '<span class="badge badge-success">New Order</span>';
-                    $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='tindak_lanjut' data-toggle='tooltip' title='Tindak Lanjut' data-id='$post->no_order' data-original-title='' class='Edit btn btn-primary btn-sm'><i class='fa fa-location-arrow'></i> &nbsp; Tindak Lanjut </a>
-                                        <a href='javascript:void(0)' id='delete_data_hdr' data-toggle='tooltip' title='Delete' data-id='$post->no_order' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i> &nbsp; Hapus </a>";
+                    $nestedData['action'] = "<a href='javascript:void(0)' id='tindak_lanjut' data-toggle='tooltip' title='Proses' data-id='$post->no_order' data-original-title='' class='Edit btn btn-primary btn-sm'><i class='fa fa-location-arrow'></i></a>
+                                        <a href='javascript:void(0)' id='delete_data_hdr' data-toggle='tooltip' title='Delete' data-id='$post->no_order' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
                 }else if($post->status==2){
                     $nestedData['status_order'] = '<span class="badge badge-warning">Menunggu Pembayaran</span>';
-                    $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='tindak_lanjut' data-toggle='tooltip' title='Tindak Lanjut' data-id='$post->no_order' data-original-title='' class='Edit btn btn-primary btn-sm'><i class='fa fa-location-arrow'></i> &nbsp; Tindak Lanjut </a>
-                                        <a href='javascript:void(0)' id='delete_data_hdr' data-toggle='tooltip' title='Delete' data-id='$post->no_order' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i> &nbsp; Hapus </a>";
+                    $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='delete_data_hdr' data-toggle='tooltip' title='Delete' data-id='$post->no_order' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i> &nbsp; Hapus </a>";
                 }else if($post->status==3){
-                    $nestedData['status_order'] = '<span class="badge badge-primary">Tindak Lanjut</span>';
-                    $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='sudah_tindak_lanjut' data-toggle='tooltip' title='Tindak Lanjut' data-id='$post->no_order' data-original-title='' class='Edit btn btn-primary btn-sm'><i class='fa fa-location-arrow'></i> &nbsp; Sudah Di Tindak Lanjut </a>";
+                    $nestedData['status_order'] = '<span class="badge badge-primary">Pembayaran Berhasil</span>';
+                    $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='sudah_tindak_lanjut' data-toggle='tooltip' title='Detail' data-id='$post->no_order' data-original-title='' class='Edit btn btn-primary btn-sm'><i class='fa fa-info'></i> &nbsp;Detail </a>";
                 }else{
                     $nestedData['status_order'] = '-';
                 }
@@ -145,7 +144,7 @@ class OrderController extends Controller
                 ->offset($start)
                 ->limit($limit)
                 ->where('no_order', '=', $no_order)
-                ->orderBy('tgl_order')
+                ->orderBy('status')
                 ->union($data_paket)
                 ->get();
         } else {
@@ -160,7 +159,7 @@ class OrderController extends Controller
                 ->limit($limit)
                 // ->where([['no_order', 'LIKE', "%{$search}%"]])
                 ->Where([['no_order', '=', $no_order],['product_name', 'LIKE', "%{$search}%"]])
-                ->orderBy('tgl_order')
+                ->orderBy('status')
                 ->union($data_paket)
                 ->get();
 
@@ -186,6 +185,7 @@ class OrderController extends Controller
                 $nestedData['email'] = $post->email;
                 $nestedData['no_tlp'] = $post->no_tlp;
                 $nestedData['harga'] = $post->harga;
+                $nestedData['kategori'] = $post->kategori;
                 if($post->status==1){
                     $nestedData['status_order'] = '<span class="badge badge-success">New Order</span>';
                     $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='delete_data_dtl' data-toggle='tooltip' title='Delete' data-id='$post->no_order' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i> &nbsp; Hapus </a>";
@@ -238,20 +238,24 @@ class OrderController extends Controller
 
         if (empty($request->input('search.value'))) {
             $posts = DB::table('tmst_product')
+                ->select(DB::raw('tmst_product.*,tmst_kategori.nama as nama_kategori'))
+                ->join('tmst_kategori','tmst_product.id_kategori','=','tmst_kategori.id')
                 ->offset($start)
                 ->limit($limit)
-                ->where('status_hapus', '=', 0)
-                ->orderBy('nama')
+                ->where('tmst_product.status_hapus', '=', 0)
+                ->orderBy('tmst_product.nama')
                 ->get();
         } else {
             $search = $request->input('search.value');
 
             $posts =  DB::table('tmst_product')
+                ->select(DB::raw('tmst_product.*,tmst_kategori.nama as nama_kategori'))
+                ->join('tmst_kategori','tmst_product.id_kategori','=','tmst_kategori.id')
                 ->offset($start)
                 ->limit($limit)
                 // ->where([['status_hapus', '=', 0], ['kode', 'LIKE', "%{$search}%"]])
-                ->Where([['status_hapus', '=', 0], ['nama', 'LIKE', "%{$search}%"]])
-                ->orderBy('nama')
+                ->Where([['tmst_product.status_hapus', '=', 0], ['tmst_product.nama', 'LIKE', "%{$search}%"]])
+                ->orderBy('tmst_product.nama')
                 ->get();
 
             $totalFiltered = DB::table('tmst_product')
@@ -270,6 +274,83 @@ class OrderController extends Controller
                 $nestedData['nama'] = $post->nama;
                 $nestedData['keterangan'] = $post->keterangan;
                 $nestedData['harga'] = $post->harga;
+                $nestedData['kategori'] = $post->nama_kategori;
+                
+                $data[] = $nestedData;
+                $i++;
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($request->input('draw')),
+            "recordsTotal"    => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data"            => $data
+        );
+
+        echo json_encode($json_data);
+    }
+
+    public function list_data_paket(Request $request)
+    {
+        $columns = array(
+            0 => 'id',
+            1 => 'DT_RowIndex',
+            2 => 'nama',
+            3 => 'keterangan',
+            4 => 'action'
+        );
+
+        $totalData = DB::table('tmst_paket')
+            ->where('status_hapus', '=', 0)
+            ->count();
+
+        $totalFiltered = $totalData;
+
+        $limit = $request->input('length');
+        $start = $request->input('start');
+        $order = $columns[$request->input('order.0.column')];
+        $dir = $request->input('order.0.dir');
+
+        if (empty($request->input('search.value'))) {
+            $posts = DB::table('tmst_paket')
+                ->select(DB::raw('tmst_paket.*,tmst_kategori_paket.nama as nama_kategori'))
+                ->join('tmst_kategori_paket','tmst_paket.id_kategori','=','tmst_kategori_paket.id')
+                ->offset($start)
+                ->limit($limit)
+                ->where('tmst_paket.status_hapus', '=', 0)
+                ->orderBy('tmst_paket.nama')
+                ->get();
+        } else {
+            $search = $request->input('search.value');
+
+            $posts =  DB::table('tmst_paket')
+                ->select(DB::raw('tmst_paket.*,tmst_kategori_paket.nama as nama_kategori'))
+                ->join('tmst_kategori_paket','tmst_paket.id_kategori','=','tmst_kategori_paket.id')
+                ->offset($start)
+                ->limit($limit)
+                // ->where([['status_hapus', '=', 0], ['kode', 'LIKE', "%{$search}%"]])
+                ->Where([['tmst_paket.status_hapus', '=', 0], ['tmst_paket.nama', 'LIKE', "%{$search}%"]])
+                ->orderBy('tmst_paket.nama')
+                ->get();
+
+            $totalFiltered = DB::table('tmst_paket')
+                // ->where([['status_hapus', '=', 0], ['kode', 'LIKE', "%{$search}%"]])
+                ->Where([['status_hapus', '=', 0], ['nama', 'LIKE', "%{$search}%"]])
+                ->count();
+        }
+
+        $data = array();
+        $i = $start + 1;
+        if (!empty($posts)) {
+            foreach ($posts as $post) {
+                $nestedData['id'] = $post->id;
+                $nestedData['DT_RowIndex'] = $i;
+                // $nestedData['kode'] = $post->kode;
+                $nestedData['nama'] = $post->nama;
+                $nestedData['keterangan'] = $post->keterangan;
+                $nestedData['harga'] = $post->harga;
+                $nestedData['kategori'] = $post->nama_kategori;
                 
                 $data[] = $nestedData;
                 $i++;
@@ -306,6 +387,38 @@ class OrderController extends Controller
             $order_save->tgl_order       = Date('Y-m-d', strtotime($tgl_order));
             $order_save->id_user         = $session_id;
             $order_save->id_product      = $id_product;
+            $order_save->qty             = $qty;
+            $order_save->status          = 1;
+            $order_save->status_product  = 1;
+            $order_save->user_at         = $session_user;
+
+            $order_save->save();
+            
+            $msg = 'Data berhasil di simpan';
+            return response()->json(['success' => true, 'message' => $msg]);
+        }
+    }
+
+    public function store_paket(Request $request)
+    {
+        $no_order       = $request->no_order_input;
+        $tgl_order      = $request->tgl_order_input;
+        $session_user   = $request->detail_sess_nama;
+        $session_id     = $request->detail_sess_id;
+        $id_product     = $request->barang_id;
+        $qty            = $request->qty;
+        // session::put('sess_nama', 'test message 1');
+        // dd(Session::get('sess_nama'));
+        $data_cek = OrderModels::where([['no_order','=',$no_order],['id_product','=',$id_product]])->count();
+        if ($data_cek>0) {
+            $msg = 'Tidak bisa input produk yang sama';
+            return response()->json(['success' => false, 'message' => $msg]);
+        }else{
+            $order_save                  = new OrderModels();
+            $order_save->no_order        = $no_order;
+            $order_save->tgl_order       = Date('Y-m-d', strtotime($tgl_order));
+            $order_save->id_user         = $session_id;
+            $order_save->id_paket      = $id_product;
             $order_save->qty             = $qty;
             $order_save->status          = 1;
             $order_save->status_product  = 1;
@@ -391,5 +504,38 @@ class OrderController extends Controller
 
         $msg = 'Data berhasil di hapus';
         return response()->json(['success' => true, 'message' => $msg]);
+    }
+
+    public function get_total(Request $request)
+    {
+        $no_order = $request->no_order;
+        $cek_barang = DB::table('qview_order_dtl')->where('no_order',$no_order)->count();
+        $cek_paket = DB::table('qview_order_dtl_paket')->where('no_order',$no_order)->count();
+
+        if($cek_barang>0 && $cek_paket>0){
+            $order_barang = DB::table('qview_order_dtl')
+                                ->select(DB::raw('sum(harga) as total'))
+                                ->where('no_order',$no_order);
+            $order_paket = DB::table('qview_order_dtl_paket')
+                                ->select(DB::raw('sum(harga) as total'))
+                                ->where('no_order',$no_order)
+                                ->union($order_barang)
+                                ->first();
+        }elseif($cek_barang>0 && $cek_paket==0){
+            $order_paket = DB::table('qview_order_dtl')
+                                ->select(DB::raw('sum(harga) as total'))
+                                ->where('no_order',$no_order)
+                                ->first();
+        }else{
+            $order_paket = DB::table('qview_order_dtl_paket')
+                                ->select(DB::raw('sum(harga) as total'))
+                                ->where('no_order',$no_order)
+                                ->first();
+        }
+        $total = $order_paket->total;
+
+        $cek_schedule = DB::table('ttrx_schedule')->where('no_order',$no_order)->count();
+        
+        return response()->json(['total' => $total, 'jadwal' => $cek_schedule]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Transaksi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\OrderModels;
 use App\Models\PaymentModels;
 use App\Models\PaymentActualModels;
 
@@ -113,6 +114,7 @@ class PaymentController extends Controller
 
     public function store(Request $request)
     {
+        $no_order               = $request->no_order;
         $id_payment             = $request->id_payment;
         $actual_payment_input   = $request->actual_payment;
         $data = DB::table('ttrx_payment')
@@ -130,6 +132,7 @@ class PaymentController extends Controller
         }else{
             $status = 1;
             PaymentModels::where('id', $id_payment)->update(['status' => 1]);
+            OrderModels::where('no_order', $no_order)->update(['status' => 3]);
         }
         
         try {

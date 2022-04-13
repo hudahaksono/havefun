@@ -53,6 +53,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <input type="hidden" id="no_order">
                                     <input type="hidden" id="id_payment" name="id_payment">
                                     <label for="harga">No. Payment <span style="color: red;">*</span></label>
                                     <input id="no_payment" name="no_payment" class="form-control" type="text" readonly="">
@@ -210,6 +211,7 @@
             var data = $('#tbl_list_hdr').DataTable().row($row).data();
 
             id = data['id'];
+            no_order = data['no_order'];
             no_payment = data['no_payment'];
             tgl_payment = data['tgl_payment'];
             total_payment = data['total_payment'];
@@ -217,6 +219,7 @@
             os_payment = amountToFloat(total_payment) - amountToFloat(actual_payment);
 
             $('#id_payment').val(id);
+            $('#no_order').val(no_order);
             $('#no_payment').val(no_payment);
             $('#tgl_payment').val(moment(tgl_payment).format("DD-MM-YYYY"));
             $('#total_payment').val(currencyFormat(total_payment));
@@ -237,8 +240,10 @@
 
         $('.btn_save').click(function(event) {
             id_payment = $('#id_payment').val();
-            actual_payment = $('#actual_payment').val();
-            os_payment = $('.os_payment').val();
+            actual_payment = parseFloat($('#actual_payment').val());
+            os_payment = parseFloat($('.os_payment').val());
+            no_order = $('#no_order').val();
+            
             if(actual_payment > os_payment){
                 swal('Peringatan!', 'Input payment lebih besar dari outstanding payment', {
                             icon: 'info',
@@ -253,7 +258,7 @@
             $.ajax({
                 type: "post",
                 url: "{{route('api.payment.store')}}",
-                data: {id_payment:id_payment, actual_payment:actual_payment},
+                data: {id_payment:id_payment, actual_payment:actual_payment,no_order:no_order},
                 success: function(response) {
                     for (var key in response) {
                         var flag = response["success"];
