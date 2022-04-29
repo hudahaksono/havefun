@@ -28,7 +28,8 @@ class MasterUserController extends Controller
             2 => 'email',
             3 => 'nama',
             4 => 'jabatan',
-            5 => 'action'
+            5 => 'no_tlp',
+            6 => 'action'
         );
 
         $totalData = DB::table('mst_users')
@@ -76,8 +77,18 @@ class MasterUserController extends Controller
                 $nestedData['DT_RowIndex'] = $i;
                 $nestedData['email'] = $post->email;
                 $nestedData['nama'] = $post->nama;
-                $nestedData['jabatan'] = $post->jabatan;
-                $nestedData['role'] = 'Admin';
+                $nestedData['no_tlp'] = $post->no_tlp;
+
+                if ($post->jabatan == 1) {
+                    $nestedData['jabatan'] = 'Customer';
+                } elseif ($post->jabatan == 2) {
+                    $nestedData['jabatan'] = 'Belum Di Definisikan';
+                } elseif ($post->jabatan == 3) {
+                    $nestedData['jabatan'] = 'Users Admin';
+                } elseif ($post->jabatan == 4) {
+                    $nestedData['jabatan'] = 'Administrator Website';
+                }
+
                 $nestedData['action'] = "&nbsp;<a href='javascript:void(0)' id='edit' data-toggle='tooltip' title='Edit' data-id='$post->id' data-original-title='' class='Edit btn btn-info btn-sm'><i class='fas fa-edit'></i> &nbsp; Edit</a>
                                         <a href='javascript:void(0)' id='delete' data-toggle='tooltip' title='Delete' data-id='$post->id' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-times-circle'></i> &nbsp; Hapus</a>";
                 $data[] = $nestedData;
@@ -97,14 +108,12 @@ class MasterUserController extends Controller
     public function store(Request $request)
     {
         $data =  new UserModels();
-        // $data->nip = $request->nip;
         $data->nama = $request->name;
         $data->email = $request->email;
-        // $data->id_unit_kerja = $request->unit;
-        // $data->id_jabatan = $request->jabatan;
-        $data->status_hapus = 0;
-        // $data->username = 'admin';
+        $data->no_tlp = $request->no_tlp;
+        $data->jabatan = $request->jabatan;
         $data->password = bcrypt('admin');
+        $data->status_hapus = 0;
         $data->save();
 
         $msg = 'Data berhasil di simpan';
@@ -117,6 +126,8 @@ class MasterUserController extends Controller
         $data = [
             'nama'        => $request->name,
             'email'       => $request->email,
+            'no_tlp'       => $request->no_tlp,
+            'jabatan'       => $request->jabatan,
             'updated_at'  => $date
         ];
 
@@ -128,7 +139,10 @@ class MasterUserController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->id;
-        UserModels::where('id', $id)->delete();
+        $data = [
+            'status_hapus' => 1
+        ];
+        UserModels::where('id', $request->$id)->update($data);
         $msg = 'Data berhasil di hapus';
         return response()->json(['success' => true, 'message' => $msg]);
     }

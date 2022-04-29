@@ -13,34 +13,23 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <button id="add_button" class="btn btn-primary"><i class="fas fa-plus"></i> Add Data</button>
-                                <a href="https://wa.me/+6287875333551" class="btn btn-success"><i class="fas fa-plus"></i> WA</a>
                             </div>
                             <div class="col-md-12">
                                 <div class="table-responsive">
-                                    <table id="tbl_user" class="table table-striped table-hover dataTable no-footer" style="width:100%" role="grid">
+                                    <table id="tbl_user" class="table table-striped table-hover dataTable no-footer" style="width:100%" jabatan="grid">
                                         <thead style="color:white;font-weight:bold" class="bg-primary text-center">
                                             <tr>
                                                 <td>Id</td>
                                                 <td>No</td>
                                                 <td>Email</td>
                                                 <td>Name</td>
-                                                <td>Role</td>
+                                                <td>No Handphone</td>
+                                                <td>Jabatan</td>
                                                 <td>Action</td>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <!-- <tr>
-                                                <td>1</td>
-                                                <td>huda@gmail.com</td>
-                                                <td>Nur Hudha Haksono</td>
-                                                <td>Admin</td>
-                                                <td style="text-align: center;">
-                                                    <button class="btn btn-info"><i class="fas fa-edit"></i> Edit</button>
-                                                    &nbsp; <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
-                                                </td>
-                                            </tr> -->
                                             <tr>
-
                                             </tr>
                                         </tbody>
                                     </table>
@@ -81,14 +70,21 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="role" class="col-sm-3 col-form-label">Role</label>
+                                        <label for="no_tlp" class="col-sm-3 col-form-label">No Handphone</label>
                                         <div class="col-sm-9">
-                                            <select id="role" name="role" class="form-control">
+                                            <input class="form-control" id="no_tlp" name="no_tlp" placeholder="Nomor Handphone">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="jabatan" class="col-sm-3 col-form-label">Jabatan</label>
+                                        <div class="col-sm-9">
+                                            <select id="jabatan" name="jabatan" class="form-control">
                                                 <option value="0" selected>
-                                                    <== Choice Role==>
+                                                    <== Choice jabatan==>
                                                 </option>
-                                                <option value="1">Admin</option>
-                                                <option value="2">Users</option>
+                                                <option value="4">Administrator Website</option>
+                                                <option value="3">Users Admin</option>
+                                                <option value="1">Customer</option>
                                             </select>
                                         </div>
                                     </div>
@@ -146,15 +142,20 @@
                         visible: true
                     }, // 3
                     {
-                        data: "role",
-                        name: "role",
+                        data: "no_tlp",
+                        name: "no_tlp",
                         visible: true
                     }, // 4
+                    {
+                        data: "jabatan",
+                        name: "jabatan",
+                        visible: true
+                    }, // 5
                     {
                         data: "action",
                         name: "action",
                         visible: true
-                    }, // 5
+                    }, // 6
                 ],
                 //      aligment left, right, center row dan coloumn
                 order: [
@@ -162,7 +163,7 @@
                 ],
                 columnDefs: [{
                         className: "text-center",
-                        targets: [0, 1, 2, 3, 4, 5]
+                        targets: [0, 1, 2, 3, 4, 5, 6]
                     },
                     {
                         width: "20%",
@@ -178,9 +179,9 @@
         $('#add_button').click(function(event) {
             $('#email').val('');
             $('#name').val('');
-            $('#role').val(0);
+            $('#no_tlp').val('');
+            $('#jabatan').val(0);
             $('#sysid').val(0);
-
             $('#list_data').hide('slow');
             $('#add_data').show('slow');
         });
@@ -260,7 +261,8 @@
         $('#reset_button').click(function(event) {
             $('#email').val('');
             $('#name').val('');
-            $('#role').val(0);
+            $('#no_tlp').val('');
+            $('#jabatan').val(0);
             $('#sysid').val(0);
         });
 
@@ -275,11 +277,13 @@
             id_edit = id;
             nama = data['nama'];
             email = data['email'];
-            role = data['role'];
+            no_tlp = data['no_tlp'];
+            jabatan = data['jabatan'];
 
             $('#email').val(email);
             $('#name').val(nama);
-            $('#role').val(0);
+            $('#no_tlp').val(no_tlp);
+            $('#jabatan').val(jabatan);
             $('#sysid').val(id_edit);
             $('.text_title').html('Edit Data Users');
             $('#list_data').hide('slow');
@@ -291,6 +295,7 @@
             var data = $('#tbl_user').DataTable().row($row).data();
 
             id = data['id'];
+
             swal({
                 title: 'Yakin Menghapus Data Ini ?',
                 text: "Jika Dihapus Data Akan Hilang Pada Table Ini",
