@@ -89,6 +89,8 @@ Route::get('/master-paket', 'Master\PaketController@index')->name('master-paket'
 
 // Master Kategori //
 Route::get('/master-kategori', 'Master\KategoriController@index')->name('master-kategori');
+
+Route::get('/master-kategori-paket', 'Master\KategoriPaketController@index')->name('master-kategori-paket');
 // Route::get('/master-kategori/list-data', 'Master\KategoriController@list_data_hdr');
 // Route::post('/master-kategori/store', 'Master\KategoriController@store');
 // Route::post('/master-kategori/update', 'Master\KategoriController@update');

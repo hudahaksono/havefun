@@ -14,9 +14,12 @@
                 <div class="row">
                     <div class="col-md-12 nav-link-wrap mb-5">
                         <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active" id="tab-1" data-toggle="pill" href="#1" role="tab" aria-controls="v-pills-1" aria-selected="true">Paket Lite</a>
+                            @foreach ($kategori as $kat)
+                                <a class="nav-link" id="tab-{{ $kat->id }}" data-toggle="pill" href="#{{ $kat->id }}" role="tab" aria-controls="v-pills-1" aria-selected="true">{{ $kat->nama }}</a>
+                            @endforeach
+                            <!-- <a class="nav-link active" id="tab-1" data-toggle="pill" href="#1" role="tab" aria-controls="v-pills-1" aria-selected="true">Paket Lite</a>
                             <a class="nav-link" id="tab-2" data-toggle="pill" href="#2" role="tab" aria-controls="v-pills-2" aria-selected="false">Paket Medium</a>
-                            <a class="nav-link" id="tab-3" data-toggle="pill" href="#3" role="tab" aria-controls="v-pills-3" aria-selected="false">Paket Stepa</a>
+                            <a class="nav-link" id="tab-3" data-toggle="pill" href="#3" role="tab" aria-controls="v-pills-3" aria-selected="false">Paket Stepa</a> -->
                             
                         </div>
                     </div>
@@ -92,6 +95,7 @@
             </div>
             <div class="col-lg-6 product-details pl-md-5 ftco-animate">
                 <input type="hidden" id="detail_id">
+                <input type="hidden" id="detail_sess_id" name="detail_sess_id" value="{{Session('sess_id')}}">
                 <input type="hidden" id="detail_sess_nama" value="{{Session('sess_nama')}}">
                 <h3 id="detail_title">Engagement - Lite</h3>
                 <p class="price"><span id="detail_harga">Rp. 5.000.000</span></p>
@@ -113,7 +117,7 @@
                 </div>
                 <p>
                     <a href="javascript:void(0)" id="btn_chart" class="btn btn-primary py-3 px-5"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</a>
-                    <a href="cart.html" class="btn btn-primary py-3 px-5"><i class="fa-solid fa-dollar-sign"></i> Order</a>
+                    <a href="javascript:void(0)" id="btn_order" class="btn btn-primary py-3 px-5"><i class="fa-solid fa-dollar-sign"></i> Order</a>
                 </p>
             </div>
         </div>
@@ -297,6 +301,62 @@
                     });
                 },
             });
+        });
+
+        $('#btn_order').click(function(event) {
+            session_id = $('#detail_sess_id').val();
+            session_nama = $('#detail_sess_nama').val();
+            id_product = $('#detail_id').val();
+            qty_product = $('#quantity').val();
+            
+            if($('#detail_sess_nama').val().length==0){
+                window.location ="{{route('login-customer')}}";
+            }else{
+                $.ajax({
+                    type: "post",
+                    url: "{{route('api.fr.produk.store.paket')}}",
+                    data: {id_product:id_product,qty_product:qty_product,session_nama:session_nama,session_id:session_id},
+                    success: function(response) {
+                        for (var key in response) {
+                            var flag = response["success"];
+                            var message = response["message"];
+                            var no_order = response["no_order"];
+                        }
+
+                        if ($.trim(flag) == "true") {
+                            // swal('Success!', message, {
+                            //     icon: 'success',
+                            //     buttons: {
+                            //         confirm: {
+                            //             className: 'btn btn-success'
+                            //         }
+                            //     }
+                            // });
+                            window.location ="/payment?no_order=" + no_order;
+                        } else {
+                            swal('Peringatan!', message, {
+                                icon: 'warning',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-info'
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = xhr.status + ": " + xhr.statusText;
+                        swal('Error!', errorMessage, {
+                            icon: 'danger',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-danger'
+                                }
+                            }
+                        });
+                    },
+                });
+            }
         });
 
     });

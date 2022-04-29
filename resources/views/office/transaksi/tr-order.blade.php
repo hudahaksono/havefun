@@ -93,7 +93,8 @@
                             <input type="hidden" id="sess_nama" name="sess_nama" value="{{Session('sess_nama')}}">
                                 <input type="hidden" id="sess_id" name="sess_id" value="{{Session('sess_id')}}">
                             <div class="col-md-12 mb-3">
-                                <button id="tambah_data" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Produk</button>
+                                <button id="tambah_data" class="btn btn-info"><i class="fas fa-plus"></i> Tambah Produk</button>
+                                <button id="tambah_data_paket" class="btn btn-info"><i class="fas fa-plus"></i> Tambah Paket</button>
                             </div>
                             <div class="col-md-12">
                             <!-- <div class="card-body">
@@ -108,6 +109,7 @@
                                             <td>Tanggal Order</td>
                                             <td>Id Product</td>
                                             <td>Nama Product</td>
+                                            <td>Kategori</td>
                                             <td>Harga</td>
                                             <td>Status</td>
                                             <td>Action</td>
@@ -130,11 +132,39 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-12 text-right">
+                    <div class="row">
                         <div class="card-body">
-                            <button id="save_button" class="btn btn-success"><i class="fas fa-save"></i> Proses PO</button>
-                            &nbsp; <button id="schedule_button" class="btn btn-warning"><i class="fas fa-edit"></i> Schedule</button>
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <label for="diskon" class="col-md-2" style="color:red">Diskon (Rp)</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="diskon" name="diskon" placeholder="Masukan Potongan Harga">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <input type="hidden" id="total_hide">
+                                    <label for="diskon" class="col-md-2 font-weight-bold" style="font-size: 14px;">Total Bayar</label>
+                                    <div class="col-md-6">
+                                        <span id="total" class="font-weight-bold" style="color:blue;">Rp. 600.000</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-left">
+                            <div class="card-body" id='schedule_meet'>
+                                <span style="color:#ffa426;font-weight: bold;"><i class="fa fa-check"></i> Schedule meeting sudah ditambahkan</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div class="card-body">
+                                <button id="save_button" class="btn btn-success"><i class="fas fa-save"></i> Proses PO</button>
+                                &nbsp; <button id="schedule_button" class="btn btn-warning"><i class="fas fa-edit"></i> Schedule</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -199,6 +229,74 @@
                                         </button> -->
                                         <a id="simpan" style="color:white" class="btn btn-info "><i class="fa fa-save"></i> &nbsp; Simpan</a>
                                         <a id="batal" name="batal" style="color:white" class="btn btn-danger "><i class="fa fa-times-circle"></i> &nbsp; Batal</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="add_data_paket" class="page-inner mt--5" style="display: none;">
+            <div class="row mt--2">
+                <div class="col-md-12">
+                    <div id="" class="card full-height">
+                        <div class="card-body">
+                            <form class="row" id="form_input_paket">
+                                <input type="hidden" id="detail_sess_nama_p" name="detail_sess_nama" value="{{Session('sess_nama')}}">
+                                <input type="hidden" id="detail_sess_id_p" name="detail_sess_id" value="{{Session('sess_id')}}">
+                                <div class="col-md-12 text-left">
+                                    <div class="form-group">
+                                        <a id="back_p" name="back" style="color:white" class="btn btn-primary "><i class="fas fa-arrow-left"></i> &nbsp; Kembali</a>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="sysid_p" name="sysid">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <h2 class="alert-info font-weight-bold text-center" id="title_input">Tambah Data Paket</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="harga">No. Order <span style="color: red;">*</span></label>
+                                        <input id="no_order_input_p" name="no_order_input" class="form-control" type="text" readonly="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="harga">Tgl. Order <span style="color: red;">*</span></label>
+                                        <input id="tgl_order_input_p" name="tgl_order_input" class="form-control" type="text" readonly="">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="barang">Nama Produk <span style="color: red;">*</span></label>
+                                        <div class="input-group">
+                                            <input type="hidden" id="barang_id_p" name="barang_id">
+                                            <input id="barang_p" name="barang" class="form-control" type="text" readonly>
+                                            <div class="input-group-append">
+                                                <a href="javascript:void(0)" class="btn btn-success browse_barang_p" id="browse_barang_p" data-toggle="tooltip" title="Browse"><span class="fas fa-search"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="harga">Qty<span style="color: red;">*</span></label>
+                                        <input id="qty_p" name="qty" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-right">
+                                    <div class="form-group">
+                                        <!-- <button style="color:white" type="submit" class="btn btn-info waves-effect waves-dark btn-upload" data-toggle="tooltip" title="Save">
+                                            <span class="btn-label">
+                                                <i class="fas fa-save"></i>
+                                            </span> Simpan
+                                        </button> -->
+                                        <a id="simpan_p" style="color:white" class="btn btn-info "><i class="fa fa-save"></i> &nbsp; Simpan</a>
+                                        <a id="batal_p" name="batal" style="color:white" class="btn btn-danger "><i class="fa fa-times-circle"></i> &nbsp; Batal</a>
                                     </div>
                                 </div>
                             </form>
@@ -283,6 +381,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body" style="overflow: hidden;">
+                        <input type="hidden" id="ket_barang">
                         <div class="table-responsive">
                             <table id="datatable_list_barang" class="table text-nowrap table-bordered">
                                 <thead style="color:white;font-weight:bold" class="bg-primary text-center">
@@ -290,6 +389,7 @@
                                         <th class="align-middle text-uppercase">ID</th>
                                         <th class="align-middle text-uppercase">No.</th>
                                         <th class="align-middle text-uppercase">Nama</th>
+                                        <th class="align-middle text-uppercase">Kategori</th>
                                         <th class="align-middle text-uppercase">Harga</th>
                                         <th class="align-middle text-uppercase">Keterangan</th>
                                     </tr>
@@ -427,11 +527,11 @@
                 ],
                 //      aligment left, right, center row dan coloumn
                 order: [
-                    ["0", "desc"]
+                    ["3", "desc"]
                 ],
                 columnDefs: [{
                         className: "text-center",
-                        targets: [0, 1, 2, 3, 4, 5]
+                        targets: [0, 1, 2, 3, 4, 5, 7, 8]
                     },
                     {
                         width: "20%",
@@ -489,6 +589,11 @@
                         visible: true
                     }, // 4
                     {
+                        data: "kategori",
+                        name: "kategori",
+                        visible: true
+                    }, // 4
+                    {
                         data: "harga",
                         name: "harga", render: function (d) {
                             return currencyFormat(d);
@@ -511,7 +616,11 @@
                 ],
                 columnDefs: [{
                         className: "text-center",
-                        targets: [0, 1, 2, 3, 4, 5]
+                        targets: [0, 1, 2, 3, 4, 5, 6, 9]
+                    },
+                    {
+                        className: "text-right",
+                        targets: [7]
                     },
                     {
                         width: "20%",
@@ -524,13 +633,18 @@
             $("#tbl_list_dtl").css("cursor", "pointer");
         }
 
-        function list_data_barang() {
+        function list_data_barang(ket) {
+            if(ket=='B'){
+                url = "{{route('api.order.list.barang')}}";
+            }else{
+                url = "{{route('api.order.list.paket')}}";
+            }
             $("#datatable_list_barang").DataTable({
                 destroy: true,
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{route('api.order.list.barang')}}",
+                    url: url,
                     type: "GET",
                 },
                 columns: [
@@ -538,6 +652,7 @@
                     { data: "DT_RowIndex", name: "DT_RowIndex", orderable: false, searchable: false }, // 1
                     // { data: "kode", name: "kode", visible: true }, // 2
                     { data: "nama", name: "nama", visible: true }, // 3
+                    { data: "kategori", name: "kategori", visible: true }, // 3
                     { data: "harga", name: "harga", render: function (d) {
                             return currencyFormat(d);
                         },
@@ -616,8 +731,40 @@
             });
         }
 
+        function get_total(no_order)
+        {
+            $.ajax({
+                type: "get",
+                url: "{{route('api.order.total')}}",
+                data: {no_order:no_order},
+                success: function(response) {
+                    total = 'Rp. ' + currencyFormat(response.total);
+                    jadwal = response.jadwal;
+                    $('#total_hide').val(amountToFloat(response.total));
+                    $('#total').html(total);
+                    if(jadwal>0){
+                        $('#schedule_meet').attr("hidden",true);
+                    }else{
+                        $('#schedule_meet').attr("hidden",false);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var errorMessage = xhr.status + ": " + xhr.statusText;
+                    swal('Error!', errorMessage, {
+                        icon: 'danger',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-danger'
+                            }
+                        }
+                    });
+                },
+            });
+        }
+
         form_state('LOAD');
         list_data();
+
 
         $('body').on('click', '#tindak_lanjut', function(e) {
             var $row = $(this).closest("tr");
@@ -649,7 +796,10 @@
 
             $('#tgl_order_input').val(tgl_order);
             $('#no_order_input').val(no_order);
+            $('#tgl_order_input_p').val(tgl_order);
+            $('#no_order_input_p').val(no_order);
             list_data_dtl(no_order);
+            get_total(no_order);
         });
 
         $('#save_button').click(function() {
@@ -670,14 +820,31 @@
             $('#add_data').show('slow');
         });
 
-        $('#back,#batal').click(function() {
+        // ADD DETAIL PAKET
+        $('#tambah_data_paket').click(function() {
+            $('#barang_id_p').val(0);
+            $('#barang_p').val('');
+            $('#qty_p').val(1);
+            $('#lanjut').hide('slow');
+            $('#add_data_paket').show('slow');
+        });
+
+        $('#back,#back_p,#batal,#batal_p').click(function() {
             $('#list_data').hide('slow');
             $('#lanjut').show('slow');
             $('#add_data').hide('slow');
         });
 
         $('#browse_barang').click(function(event) {
-            list_data_barang();
+            list_data_barang('B');
+            $('#ket_barang').val('B');
+            $('#modal_browse_barang').modal();
+            $('#modal_browse_barang').appendTo("body"); //Agar posisi modal paling awal
+        });
+
+        $('#browse_barang_p').click(function(event) {
+            list_data_barang('P');
+            $('#ket_barang').val('P');
             $('#modal_browse_barang').modal();
             $('#modal_browse_barang').appendTo("body"); //Agar posisi modal paling awal
         });
@@ -701,10 +868,18 @@
             var idx = table.cell(".selected", 0).index();
             var data = table.row(idx.row).data();
 
+            var ket = $('#ket_barang').val();
             var id_barang = data["id"];
             var nama_barang = data["nama"];
-            $('#barang_id').val(id_barang);
-            $('#barang').val(nama_barang);
+
+            if(ket == 'B'){
+                $('#barang_id').val(id_barang);
+                $('#barang').val(nama_barang);
+            }else{
+                $('#barang_id_p').val(id_barang);
+                $('#barang_p').val(nama_barang);
+            }
+            
         });
 
         $('#simpan').click(function(event) {
@@ -712,6 +887,67 @@
                 type: "post",
                 url: "{{route('api.order.store')}}",
                 data: $("#form_input").serialize(),
+                success: function(response) {
+                    for (var key in response) {
+                        var flag = response["success"];
+                        var message = response["message"];
+                    }
+
+                    if ($.trim(flag) == "true") {
+                        var oTableHdr = $("#tbl_list_dtl").dataTable();
+                        oTableHdr.fnDraw(false);
+
+                        swal('Success!', message, {
+                            icon: 'success',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-success'
+                                }
+                            }
+                        });
+
+                        $('#lanjut').show('slow');
+                        $('#add_data').hide('slow');
+                        // form_state('LOAD');
+                    } else if ($.trim(message) == "true") {
+                        swal('Warning!', message, {
+                            icon: 'warning',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-warning'
+                                }
+                            }
+                        });
+                    } else {
+                        swal('Peringatan!', message, {
+                            icon: 'info',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-info'
+                                }
+                            }
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var errorMessage = xhr.status + ": " + xhr.statusText;
+                    swal('Error!', errorMessage, {
+                        icon: 'danger',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-danger'
+                            }
+                        }
+                    });
+                },
+            });
+        });
+
+        $('#simpan_p').click(function(event) {
+            $.ajax({
+                type: "post",
+                url: "{{route('api.order.paket.store')}}",
+                data: $("#form_input_paket").serialize(),
                 success: function(response) {
                     for (var key in response) {
                         var flag = response["success"];
@@ -961,7 +1197,7 @@
                                 }
                             }
                         });
-
+                        get_total($('#no_order_s').val());
                         $('#lanjut').show('slow');
                         $('#add_data_schedule').hide('slow');
                     } else if ($.trim(message) == "true") {
@@ -998,5 +1234,29 @@
             });
         });
 
+        // $('#diskon').change(function(event) {
+        //     total = $('#total_hide').val();
+        //     alert(total);
+        // });
+
+        $('#diskon').keypress(function (e) {
+            if(e.which == 13){
+                total_awal = amountToFloat($('#total_hide').val());
+                diskon = amountToFloat($(this).val());
+                if(diskon>total_awal){
+                    swal('Peringatan!', 'Diskon tidak boleh lebih besar dari Total Bayar !!!', {
+                            icon: 'info',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-info'
+                                }
+                            }
+                        });
+                }
+                total = total_awal - diskon;
+                // $('#total_hide').val(amountToFloat(response.total));
+                $('#total').html('Rp. ' + currencyFormat(total));
+            }
+        });
     });
 </script>

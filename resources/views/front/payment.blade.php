@@ -62,7 +62,7 @@
                             <form class="row" id="add_payment">
                                 <input type="hidden" id="sess_nama" name="sess_nama" value="{{Session('sess_nama')}}">
                                 <input type="hidden" id="sess_id" name="sess_id" value="{{Session('sess_id')}}">
-                                <input type="hidden" name="no_order" value="{{$no_order}}">
+                                <input type="hidden" id="no_order" name="no_order" value="{{$no_order}}">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Tanggal Acara</label>
@@ -145,6 +145,22 @@
 
         // window.open(url, '_blank').focus();
     }
+
+    $('#konsultasi_wa').click(function(event) {
+        if($('#alamat_acara').val().length==0){
+            swal('Peringatan!', 'Alamat belum di isi !!! ', {
+                                icon: 'warning',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-info'
+                                    }
+                                }
+                            });
+            return false;
+        }
+        no_order = $('#no_order').val();
+        gotowhatsapp(no_order);
+    });
 
     $(document).ready(function() {
         $('#lanjut_pembayaran').click(function(event) {
