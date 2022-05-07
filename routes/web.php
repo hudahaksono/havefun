@@ -33,9 +33,10 @@ Route::get('/marketplace', 'Monitoring\MarketController@index')->name('marketpla
 // });
 
 //### Front Web ###//
-Route::get('/', function () {
-    return view('front.index');
-});
+// Route::get('/', function () {
+//     return view('front.index');
+// });
+Route::get('/', 'Front\FrontController@index');
 
 Route::get('/about', function () {
     return view('front.about');
@@ -86,6 +87,10 @@ Route::get('/master-akses/destroy', 'Master\MasterAksesController@destroy')->nam
 
 // Master Paket //
 Route::get('/master-paket', 'Master\PaketController@index')->name('master-paket');
+
+// Master Paket //
+Route::get('/master-banner', 'Master\BannerController@index')->name('master-banner');
+Route::get('/master-banner/view_file/{filename}', 'Master\BannerController@view_filename');
 
 // Master Kategori //
 Route::get('/master-kategori', 'Master\KategoriController@index')->name('master-kategori');

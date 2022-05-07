@@ -3,22 +3,18 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use App\Models\BarangModels;
-use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Support\Facades\File;
+use App\Models\BannerModels;
 use App\Helpers\Helper;
+use Redirect, Response, DB;
 
-use Datatables;
-use Redirect, Response;
-use DateTime;
-use DB;
-
-class ProductController extends Controller
+class BannerController extends Controller
 {
     public function index()
     {
+        // date_default_timezone_set('Asia/Jakarta');
         $date_now = now();
         $date = date("Y-m-d H:i:s", strtotime($date_now . ' -10 hour'));
         // dd($date);
@@ -36,7 +32,8 @@ class ProductController extends Controller
                         ->select(DB::raw('nama,timediff("'.$date_now.'",created_at) as selisih '))
                         ->where('created_at','>=',$date)
                         ->get();
-        return view('office.product.master-product', compact('order_baru','pembayaran','user_baru'));
+        // dd($user_baru);
+        return view('office.banner.banner', compact('order_baru','pembayaran','user_baru'));
     }
 
     public function list_data_hdr(Request $request)
@@ -44,43 +41,43 @@ class ProductController extends Controller
         $columns = array(
             0 => 'id',
             1 => 'DT_RowIndex',
-            2 => 'ukuran',
-            3 => 'keterangan',
-            4 => 'action'
+            2 => 'nama',
+            3 => 'file_name',
+            4 => 'keterangan'
         );
 
-        $totalData = DB::table('qview_mst_barang')
-            ->where('status_hapus', '=', 0)
+        $totalData = DB::table('tmst_banner')
             ->count();
 
         $totalFiltered = $totalData;
 
         $limit = $request->input('length');
         $start = $request->input('start');
-        // $order = $columns[$request->input('order.0.column')];
+        $order = $columns[$request->input('order.0.column')];
         $dir = $request->input('order.0.dir');
 
         if (empty($request->input('search.value'))) {
-            $posts = DB::table('qview_mst_barang')
+            $posts = DB::table('tmst_banner')
                 ->offset($start)
                 ->limit($limit)
-                ->where('status_hapus', '=', 0)
-                ->orderBy('nama')
+                ->orderBy($order,$dir)
                 ->get();
         } else {
             $search = $request->input('search.value');
 
-            $posts =  DB::table('qview_mst_barang')
+            $posts =  DB::table('tmst_banner')
                 ->offset($start)
                 ->limit($limit)
-                ->where([['status_hapus', '=', 0], ['nama', 'LIKE', "%{$search}%"]])
-                ->Where([['status_hapus', '=', 0], ['nama_kategori', 'LIKE', "%{$search}%"]])
-                ->orderBy('nama')
+                ->where([['nama', 'LIKE', "%{$search}%"]])
+                ->Where([['keterangan', 'LIKE', "%{$search}%"]])
+                ->Where([['file_name', 'LIKE', "%{$search}%"]])
+                ->orderBy($order,$dir)
                 ->get();
 
-            $totalFiltered = DB::table('qview_mst_barang')
-                ->where([['status_hapus', '=', 0], ['nama', 'LIKE', "%{$search}%"]])
-                ->Where([['status_hapus', '=', 0], ['nama_kategori', 'LIKE', "%{$search}%"]])
+            $totalFiltered = DB::table('tmst_banner')
+                ->where([['nama', 'LIKE', "%{$search}%"]])
+                ->Where([['keterangan', 'LIKE', "%{$search}%"]])
+                ->Where([['file_name', 'LIKE', "%{$search}%"]])
                 ->count();
         }
 
@@ -91,16 +88,8 @@ class ProductController extends Controller
                 $nestedData['id'] = $post->id;
                 $nestedData['DT_RowIndex'] = $i;
                 $nestedData['nama'] = $post->nama;
-                $nestedData['satuan'] = $post->satuan;
-                $nestedData['id_kategori'] = $post->id_kategori;
-                $nestedData['nama_kategori'] = $post->nama_kategori;
-                $nestedData['id_paket'] = $post->id_paket;
-                $nestedData['nama_paket'] = $post->nama_paket;
-                $nestedData['id_ukuran'] = 0;
-                $nestedData['ukuran'] = '';
                 $nestedData['keterangan'] = $post->keterangan;
                 $nestedData['file_name'] = $post->file_name;
-                $nestedData['harga'] = $post->harga;
                 $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='edit_data_hdr' data-toggle='tooltip' title='Edit' data-id='$post->id' data-original-title='' class='Edit btn btn-warning btn-sm'><i class='fas fa-pencil-alt'></i> &nbsp; Edit </a>
                                         <a href='javascript:void(0)' id='delete_data_hdr' data-toggle='tooltip' title='Delete' data-id='$post->id' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i> &nbsp; Hapus </a>";
                 $data[] = $nestedData;
@@ -118,22 +107,6 @@ class ProductController extends Controller
         echo json_encode($json_data);
     }
 
-    public function list_data_paket(Request $request)
-    {
-        $data = DB::table('tmst_paket')
-            ->where('status_hapus', '=', 0)
-            ->get();
-        return response()->json($data);
-    }
-
-    public function list_data_kategori(Request $request)
-    {
-        $data = DB::table('tmst_kategori')
-            ->where('status_hapus', '=', 0)
-            ->get();
-        return response()->json($data);
-    }
-
     public function store(Request $request)
     {
         // var_dump ($request->file('filename'));
@@ -149,23 +122,16 @@ class ProductController extends Controller
                 $fileMulti = $filenameSimpan . ',' . $fileMulti;
 
                 // $path = $file->storeAs("public/produk", $filenameSimpan);
-                $resorce->move(\base_path() . "/public/produk", $filenameSimpan);
+                $resorce->move(\base_path() . "/public/banner", $filenameSimpan);
             }
             $fileMultiSimpan = Helper::left($fileMulti, strlen($fileMulti) - 1);
 
-            $bpp_dtl_attach                     = new BarangModels();
+            $bpp_dtl_attach                     = new BannerModels();
 
-            $bpp_dtl_attach->id_paket           = $request->input('paket');
-            $bpp_dtl_attach->id_kategori        = $request->input('kategori');
-            $bpp_dtl_attach->id_ukuran          = 0;
             $bpp_dtl_attach->nama               = $request->input('nama');
-            $bpp_dtl_attach->satuan             = $request->input('satuan');
-            $bpp_dtl_attach->harga             = $request->input('harga');
             $bpp_dtl_attach->file_name          = $filenameSimpan;
-            $bpp_dtl_attach->file_name_multi    = $fileMultiSimpan;
-            $bpp_dtl_attach->keterangan            = $request->input('keterangan');
-            $bpp_dtl_attach->status_hapus          = 0;
-            // $bpp_dtl_attach->user_at         = $request->session()->get('sess_nama');
+            $bpp_dtl_attach->keterangan         = $request->input('keterangan');
+            $bpp_dtl_attach->user_at            = $request->input('sess_nama');
 
             $bpp_dtl_attach->save();
 
@@ -175,64 +141,56 @@ class ProductController extends Controller
         }
     }
 
-    public function update(Request $request, BarangModels $barangModels)
+    public function update(Request $request)
     {
         $fileMulti = '';
-        if ($request->file('e_filename')) {
-            foreach ($request->file('e_filename') as $file) {
+        if ($request->file('filename')) {
+            foreach ($request->file('filename') as $file) {
                 $resorce            = $file;
                 $filenameWithExt    = $file->getClientOriginalName();
                 $filename           = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 $extension          = $file->getClientOriginalExtension();
                 $filenameSimpan     = str_replace(" ", "", $filename) . "_" . time() . "." . $extension;
                 $fileMulti = $filenameSimpan . ',' . $fileMulti;
-
-                // $path = $file->storeAs("public/produk", $filenameSimpan);
-                $resorce->move(\base_path() . "/public/produk", $filenameSimpan);
+                $resorce->move(\base_path() . "/public/banner", $filenameSimpan);
             }
             $fileMultiSimpan = Helper::left($fileMulti, strlen($fileMulti) - 1);
 
-            $databarang = DB::table('tmst_product')->where('id', $request->e_sysid)->first();
-            $fildelete = $databarang->file_name_multi;
-            $pathdelete = base_path() . "/public/produk";
+            $databarang = DB::table('tmst_banner')->where('id', $request->sysid)->first();
+            $fildelete = $databarang->file_name;
+            $pathdelete = base_path() . "/public/banner";
             foreach (explode(',', $fildelete) as $row) {
                 File::delete($pathdelete . '/' . $row);
             }
 
             $data = [
-                'nama'          => $request->input('e_nama'),
-                'satuan'          => $request->input('e_satuan'),
-                'id_kategori'          => $request->input('e_kategori'),
-                'id_ukuran'          => 0,
-                'keterangan'    => $request->input('e_keterangan'),
+                'nama'          => $request->input('nama'),
+                'keterangan'    => $request->input('keterangan'),
                 'file_name'          => $filenameSimpan,
-                'file_name_multi'          => $fileMultiSimpan,
-                // 'user_at'      => $request->session()->get('sess_nama')
+                'user_at'      => $request->input('sess_nama')
             ];
         } else {
             $data = [
-                'nama'          => $request->input('e_nama'),
-                'satuan'          => $request->input('e_satuan'),
-                'id_kategori'          => $request->input('e_kategori'),
-                'id_ukuran'          => 0,
-                'keterangan'    => $request->input('e_keterangan'),
-                // 'user_at'      => $request->session()->get('sess_nama')
+                'nama'          => $request->input('nama'),
+                'keterangan'    => $request->input('keterangan'),
+                'user_at'      => $request->input('sess_nama')
             ];
         }
 
-        BarangModels::where('id', $request->e_sysid)->update($data);
+        BannerModels::where('id', $request->sysid)->update($data);
         $msg = 'Data berhasil di ubah';
         return response()->json(['success' => true]);
     }
 
     public function destroy(Request $request)
     {
-        $data = [
-            'status_hapus'  => 1,
-            // 'user_at'      => $request->session()->get('sess_nama')
-        ];
-
-        BarangModels::where('id', $request->id)->update($data);
+        $databarang = DB::table('tmst_banner')->where('id', $request->id)->first();
+        $fildelete = $databarang->file_name;
+        $pathdelete = base_path() . "/public/banner";
+        foreach (explode(',', $fildelete) as $row) {
+            File::delete($pathdelete . '/' . $row);
+        }
+        BannerModels::where('id', $request->id)->delete();
         $msg = 'Data berhasil di hapus';
         return response()->json(['success' => true, 'message' => $msg]);
     }
@@ -240,7 +198,7 @@ class ProductController extends Controller
     public function view_filename($filename)
     {
         // $path = storage_path('app/public/Procurement/BPP-REPORT/' . $request->file_name);
-        $path = base_path() . "/public/produk/" . $filename;
+        $path = base_path() . "/public/banner/" . $filename;
         $path = str_replace(" ", "", $path);
         if (File::exists($path)) {
             $file = File::get($path);

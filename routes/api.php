@@ -88,3 +88,9 @@ Route::get('/fr-paket', 'Front\PaketController@list_produk')->name('api.fr.paket
 Route::get('/fr-paket/detail', 'Front\PaketController@detail_produk')->name('api.fr.paket.detail');
 Route::get('/fr-paket/detail-product', 'Front\PaketController@detail_produk_paket')->name('api.fr.paket.detail.produk');
 Route::post('/fr-paket/chart/store', 'Front\PaketController@store_chart')->name('api.fr.paket.store.chart');
+
+//Master Banner
+Route::get('/master-banner/list-data', 'Master\BannerController@list_data_hdr')->name('api.banner.list');
+Route::post('/master-banner/store', 'Master\BannerController@store')->name('api.banner.store');
+Route::post('/master-banner/update', 'Master\BannerController@update')->name('api.banner.update');
+Route::post('/master-banner/destroy', 'Master\BannerController@destroy')->name('api.banner.destroy');
