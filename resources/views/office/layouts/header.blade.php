@@ -42,26 +42,69 @@
                                 Notifications
                             </div>
                             <div class="dropdown-list-content dropdown-list-icons">
-                                <a href="#" class="dropdown-item dropdown-item-unread"> <span class="dropdown-item-icon bg-primary text-white"> <i class="fas
-												fa-code"></i>
-                                    </span> <span class="dropdown-item-desc"> Template update is
-                                        available now! <span class="time">2 Min
-                                            Ago</span>
+                                <!-- <a href="#" class="dropdown-item dropdown-item-unread"> 
+                                    <span class="dropdown-item-icon bg-primary text-white"> 
+                                        <i class="fas fa-code"></i>
+                                    </span> 
+                                    <span class="dropdown-item-desc"> 
+                                        Template update is available now! 
+                                        <span class="time">2 Min Ago</span>
                                     </span>
-                                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i class="far
-												fa-user"></i>
-                                    </span> <span class="dropdown-item-desc"> <b>You</b> and <b>Dedik
-                                            Sugiharto</b> are now friends <span class="time">10 Hours
-                                            Ago</span>
-                                    </span>
-                                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-success text-white"> <i class="fas
+                                </a>  -->
+                                @foreach ($user_baru as $user)
+                                    <a href="#" class="dropdown-item"> 
+                                        <span class="dropdown-item-icon bg-info text-white"> <i class="far fa-user"></i>
+                                        </span> 
+                                        <span class="dropdown-item-desc"> User baru di tambahkan <b>{{ $user->nama }}</b> 
+                                            <span class="time">
+                                                @if(date("H",strtotime($user->selisih))>0)
+                                                    {{date("H",strtotime($user->selisih))}} Hours Ago
+                                                @else
+                                                    {{date("i",strtotime($user->selisih))}} Min Ago
+                                                @endif
+                                            </span>
+                                        </span>
+                                    </a> 
+                                @endforeach
+                                @foreach ($order_baru as $order)
+                                    <a href="#" class="dropdown-item"> 
+                                        <span class="dropdown-item-icon bg-info text-white"> <i class="fas fa-shopping-cart"></i>
+                                        </span> 
+                                        <span class="dropdown-item-desc"> Order baru di tambahkan <b>{{ $order->no_order }}</b> 
+                                            <span class="time">
+                                                @if(date("H",strtotime($order->selisih))>0)
+                                                    {{date("H",strtotime($order->selisih))}} Hours Ago
+                                                @else
+                                                    {{date("i",strtotime($order->selisih))}} Min Ago
+                                                @endif
+                                            </span>
+                                        </span>
+                                    </a> 
+                                @endforeach
+                                @foreach ($pembayaran as $bayar)
+                                    <a href="#" class="dropdown-item"> 
+                                        <span class="dropdown-item-icon bg-success text-white"> <i class="fas fa-check"></i>
+                                        </span> 
+                                        <span class="dropdown-item-desc"> Payment baru di tambahkan <b>{{ $bayar->no_payment }}</b> 
+                                            <span class="time">
+                                                @if(date("H",strtotime($bayar->selisih))>0)
+                                                    {{date("H",strtotime($bayar->selisih))}} Hours Ago
+                                                @else
+                                                    {{date("i",strtotime($bayar->selisih))}} Min Ago
+                                                @endif
+                                            </span>
+                                        </span>
+                                    </a> 
+                                @endforeach
+                                <!-- <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-success text-white"> <i class="fas
 												fa-check"></i>
                                     </span> <span class="dropdown-item-desc"> <b>Kusnaedi</b> has
                                         moved task <b>Fix bug header</b> to <b>Done</b> <span class="time">12
                                             Hours
                                             Ago</span>
                                     </span>
-                                </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-danger text-white"> <i class="fas fa-exclamation-triangle"></i>
+                                </a> 
+                                <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-danger text-white"> <i class="fas fa-exclamation-triangle"></i>
                                     </span> <span class="dropdown-item-desc"> Low disk space. Let's
                                         clean it! <span class="time">17 Hours Ago</span>
                                     </span>
@@ -70,7 +113,7 @@
                                     </span> <span class="dropdown-item-desc"> Welcome to Otika
                                         template! <span class="time">Yesterday</span>
                                     </span>
-                                </a>
+                                </a> -->
                             </div>
                             <div class="dropdown-footer text-center">
                                 <a href="#">View All <i class="fas fa-chevron-right"></i></a>
@@ -102,7 +145,7 @@
                             <a href="/dashboard" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
                         </li>
                         <li class="dropdown" id="drop-dashboard">
-                            <a href="/banner" class="nav-link"><i data-feather="star"></i><span>Banner</span></a>
+                            <a href="/master-banner" class="nav-link"><i data-feather="star"></i><span>Banner</span></a>
                         </li>
                         <li class="dropdown" id="drop-master">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="database"></i><span>Master Data</span></a>
@@ -113,6 +156,7 @@
                                 <li id="master-kategori-paket"><a class="nav-link" href="/master-kategori-paket">Master Kategori Paket</a></li>
                                 <li id="master-product"><a class="nav-link" href="/master-product">Master Product</a></li>
                                 <li id="master-paket"><a class="nav-link" href="/master-paket">Master Paket</a></li>
+                                <!-- <li id="master-banner"><a class="nav-link" href="/master-banner">Master Banner</a></li> -->
                             </ul>
                         </li>
                         <li class="menu-header">Transaction</li>

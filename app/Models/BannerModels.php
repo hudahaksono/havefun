@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class PaymentActualModels extends Model
+class BannerModels extends Model
 {
-    protected $table = 'ttrx_actual_payment';
+    protected $table = 'tmst_banner';
 
     use Notifiable;
 
     protected $fillable = [
-        'id', 'id_payment', 'actual_payment', 'flag_dp'
+        'id', 'nama', 'file_name', 'keterangan', 'user_at', 'created_at', 'updated_at'
     ];
 }
