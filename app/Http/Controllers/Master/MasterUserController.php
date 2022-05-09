@@ -22,21 +22,21 @@ class MasterUserController extends Controller
         $date = date("Y-m-d H:i:s", strtotime($date_now . ' -10 hour'));
         // dd($date);
         $order_baru = DB::table('ttrx_order')
-                        ->select(DB::raw('no_order,timediff("'.$date_now.'",created_at) as selisih '))
-                        ->where('status',1)
-                        ->where('created_at','>=',$date)
-                        ->get();
+            ->select(DB::raw('no_order,timediff("' . $date_now . '",created_at) as selisih '))
+            ->where('status', 1)
+            ->where('created_at', '>=', $date)
+            ->get();
         $pembayaran = DB::table('ttrx_payment')
-                        ->leftJoin('ttrx_actual_payment', 'ttrx_payment.id', '=', 'ttrx_actual_payment.id_payment')
-                        ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.total_payment', 'ttrx_actual_payment.flag_dp', DB::raw('timediff("'.$date_now.'",ttrx_actual_payment.created_at) as selisih'))
-                        ->where('ttrx_actual_payment.created_at','>=',$date)
-                        ->get();
+            ->leftJoin('ttrx_actual_payment', 'ttrx_payment.id', '=', 'ttrx_actual_payment.id_payment')
+            ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.total_payment', 'ttrx_actual_payment.flag_dp', DB::raw('timediff("' . $date_now . '",ttrx_actual_payment.created_at) as selisih'))
+            ->where('ttrx_actual_payment.created_at', '>=', $date)
+            ->get();
         $user_baru = DB::table('mst_users')
-                        ->select(DB::raw('nama,timediff("'.$date_now.'",created_at) as selisih '))
-                        ->where('created_at','>=',$date)
-                        ->get();
+            ->select(DB::raw('nama,timediff("' . $date_now . '",created_at) as selisih '))
+            ->where('created_at', '>=', $date)
+            ->get();
 
-        return view('office.master-user', compact('order_baru','pembayaran','user_baru'));
+        return view('office.master-user', compact('order_baru', 'pembayaran', 'user_baru'));
     }
 
     public function list_data(Request $request)
@@ -155,13 +155,14 @@ class MasterUserController extends Controller
         return response()->json(['success' => true, 'message' => $msg]);
     }
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $id = $request->id;
+        $date_time = new DateTime;
         $data = [
-            'status_hapus' => 1
+            'status_hapus' => 1,
+            'updated_at' => $date_time
         ];
-        UserModels::where('id', $request->$id)->update($data);
+        UserModels::where('id', $id)->update($data);
         $msg = 'Data berhasil di hapus';
         return response()->json(['success' => true, 'message' => $msg]);
     }

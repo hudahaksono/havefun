@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Monitoring Aplication | @yield('title')</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
@@ -52,49 +53,49 @@
                                     </span>
                                 </a>  -->
                                 @foreach ($user_baru as $user)
-                                    <a href="#" class="dropdown-item"> 
-                                        <span class="dropdown-item-icon bg-info text-white"> <i class="far fa-user"></i>
-                                        </span> 
-                                        <span class="dropdown-item-desc"> User baru di tambahkan <b>{{ $user->nama }}</b> 
-                                            <span class="time">
-                                                @if(date("H",strtotime($user->selisih))>0)
-                                                    {{date("H",strtotime($user->selisih))}} Hours Ago
-                                                @else
-                                                    {{date("i",strtotime($user->selisih))}} Min Ago
-                                                @endif
-                                            </span>
+                                <a href="#" class="dropdown-item">
+                                    <span class="dropdown-item-icon bg-info text-white"> <i class="far fa-user"></i>
+                                    </span>
+                                    <span class="dropdown-item-desc"> User baru di tambahkan <b>{{ $user->nama }}</b>
+                                        <span class="time">
+                                            @if(date("H",strtotime($user->selisih))>0)
+                                            {{date("H",strtotime($user->selisih))}} Hours Ago
+                                            @else
+                                            {{date("i",strtotime($user->selisih))}} Min Ago
+                                            @endif
                                         </span>
-                                    </a> 
+                                    </span>
+                                </a>
                                 @endforeach
                                 @foreach ($order_baru as $order)
-                                    <a href="#" class="dropdown-item"> 
-                                        <span class="dropdown-item-icon bg-info text-white"> <i class="fas fa-shopping-cart"></i>
-                                        </span> 
-                                        <span class="dropdown-item-desc"> Order baru di tambahkan <b>{{ $order->no_order }}</b> 
-                                            <span class="time">
-                                                @if(date("H",strtotime($order->selisih))>0)
-                                                    {{date("H",strtotime($order->selisih))}} Hours Ago
-                                                @else
-                                                    {{date("i",strtotime($order->selisih))}} Min Ago
-                                                @endif
-                                            </span>
+                                <a href="#" class="dropdown-item">
+                                    <span class="dropdown-item-icon bg-info text-white"> <i class="fas fa-shopping-cart"></i>
+                                    </span>
+                                    <span class="dropdown-item-desc"> Order baru di tambahkan <b>{{ $order->no_order }}</b>
+                                        <span class="time">
+                                            @if(date("H",strtotime($order->selisih))>0)
+                                            {{date("H",strtotime($order->selisih))}} Hours Ago
+                                            @else
+                                            {{date("i",strtotime($order->selisih))}} Min Ago
+                                            @endif
                                         </span>
-                                    </a> 
+                                    </span>
+                                </a>
                                 @endforeach
                                 @foreach ($pembayaran as $bayar)
-                                    <a href="#" class="dropdown-item"> 
-                                        <span class="dropdown-item-icon bg-success text-white"> <i class="fas fa-check"></i>
-                                        </span> 
-                                        <span class="dropdown-item-desc"> Payment baru di tambahkan <b>{{ $bayar->no_payment }}</b> 
-                                            <span class="time">
-                                                @if(date("H",strtotime($bayar->selisih))>0)
-                                                    {{date("H",strtotime($bayar->selisih))}} Hours Ago
-                                                @else
-                                                    {{date("i",strtotime($bayar->selisih))}} Min Ago
-                                                @endif
-                                            </span>
+                                <a href="#" class="dropdown-item">
+                                    <span class="dropdown-item-icon bg-success text-white"> <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="dropdown-item-desc"> Payment baru di tambahkan <b>{{ $bayar->no_payment }}</b>
+                                        <span class="time">
+                                            @if(date("H",strtotime($bayar->selisih))>0)
+                                            {{date("H",strtotime($bayar->selisih))}} Hours Ago
+                                            @else
+                                            {{date("i",strtotime($bayar->selisih))}} Min Ago
+                                            @endif
                                         </span>
-                                    </a> 
+                                    </span>
+                                </a>
                                 @endforeach
                                 <!-- <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-success text-white"> <i class="fas
 												fa-check"></i>
@@ -120,7 +121,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="{{ asset('assets/img/user.png') }}" class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
+                    <li class="dropdown"><a style="color: black;" href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"><i class="far fa-user"></i> &nbsp;{{ Session::get('sess_nama') }}<span class="d-sm-none d-lg-inline-block"></span></a>
                         <div class="dropdown-menu dropdown-menu-right pullDown">
                             <div class="dropdown-title">Hello {{ Session::get('sess_nama') }}</div>
                             <a href="profile" class="dropdown-item has-icon">
@@ -155,7 +156,7 @@
                                 <li id="master-kategori"><a class="nav-link" href="/master-kategori">Master Kategori</a></li>
                                 <li id="master-kategori-paket"><a class="nav-link" href="/master-kategori-paket">Master Kategori Paket</a></li>
                                 <li id="master-product"><a class="nav-link" href="/master-product">Master Product</a></li>
-                                <li id="master-paket"><a class="nav-link" href="/master-paket">Master Paket</a></li>
+                                <li id="master-paket"><a style="font-weight:bold" class="nav-link" href="/master-paket">Master Paket</a></li>
                                 <!-- <li id="master-banner"><a class="nav-link" href="/master-banner">Master Banner</a></li> -->
                             </ul>
                         </li>
@@ -169,12 +170,15 @@
                         <li class="dropdown">
                             <a href="/tr-payment" class="nav-link"><i data-feather="credit-card"></i><span>Payment Order</span></a>
                         </li>
-                        <li class="dropdown">
+                        <!-- <li class="dropdown">
                             <a href="/tr-payment-done" class="nav-link"><i data-feather="dollar-sign"></i><span>Payment Done (Lunas)</span></a>
-                        </li>
+                        </li> -->
                         <li class="menu-header">Reporting</li>
                         <li class="dropdown">
-                            <a href="/tr-payment-done" class="nav-link"><i data-feather="file-text"></i><span>Invoice</span></a>
+                            <a href="/rpt-invoice" class="nav-link"><i data-feather="file-text"></i><span>Invoice Outstanding</span></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/rpt-invoice-lunas" class="nav-link"><i data-feather="check-circle"></i><span>Invoice Lunas</span></a>
                         </li>
                         <li class="dropdown">
                             <a href="/rpt-message" class="nav-link"><i data-feather="message-square"></i><span>Message Website</span></a>

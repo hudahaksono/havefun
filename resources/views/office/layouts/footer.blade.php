@@ -1,6 +1,6 @@
 <footer class="main-footer">
     <div class="footer-left">
-        <a href="#">PT. Anomali Lintas Teknologi</a></a>
+        <a href="#">Savana Decoration</a></a>
     </div>
     <div class="footer-right">
     </div>

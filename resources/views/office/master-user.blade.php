@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="table-responsive">
-                                    <table id="tbl_user" class="table table-striped table-hover dataTable no-footer" style="width:100%" jabatan="grid">
+                                    <table id="tbl_user" class="table table-striped table-hover dataTable no-footer" style="width:100%">
                                         <thead style="color:white;font-weight:bold" class="bg-primary text-center">
                                             <tr>
                                                 <td>Id</td>
@@ -79,7 +79,7 @@
                                         <label for="jabatan" class="col-sm-3 col-form-label">Jabatan</label>
                                         <div class="col-sm-9">
                                             <select id="jabatan" name="jabatan" class="form-control">
-                                                <option value="0" selected>
+                                                <option value="0">
                                                     <== Choice jabatan==>
                                                 </option>
                                                 <option value="4">Administrator Website</option>
@@ -108,6 +108,11 @@
 <script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
     $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
         // $('#tbl_user').DataTable();
         list_data();
 
@@ -314,11 +319,8 @@
             }).then((Delete) => {
                 if (Delete) {
                     $.ajax({
-                        type: "get",
-                        url: "{{route('master-user.destroy')}}",
-                        data: {
-                            id: id
-                        },
+                        type: "post",
+                        url: "/master-user/destroy/" + id,
                         success: function(response) {
                             for (var key in response) {
                                 var flag = response["success"];
@@ -326,13 +328,10 @@
 
                             if ($.trim(flag) == "true") {
                                 swal({
-                                    title: 'Berhasil Menghapus Data',
-                                    type: 'success',
-                                    buttons: {
-                                        confirm: {
-                                            className: 'btn btn-info'
-                                        }
-                                    }
+                                    title: "Berhasil Menghapus Data",
+                                    text: "Klik Tombol OK",
+                                    icon: "success",
+                                    button: "OK",
                                 });
                                 var oTableHdr = $("#tbl_user").dataTable();
                                 oTableHdr.fnDraw(false);

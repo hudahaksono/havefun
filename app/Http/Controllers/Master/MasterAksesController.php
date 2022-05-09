@@ -17,24 +17,26 @@ class MasterAksesController extends Controller
 {
     public function index()
     {
+        // date_default_timezone_set('Asia/Jakarta');
         $date_now = now();
         $date = date("Y-m-d H:i:s", strtotime($date_now . ' -10 hour'));
         // dd($date);
         $order_baru = DB::table('ttrx_order')
-                        ->select(DB::raw('no_order,timediff("'.$date_now.'",created_at) as selisih '))
-                        ->where('status',1)
-                        ->where('created_at','>=',$date)
-                        ->get();
+            ->select(DB::raw('no_order,timediff("' . $date_now . '",created_at) as selisih '))
+            ->where('status', 1)
+            ->where('created_at', '>=', $date)
+            ->get();
         $pembayaran = DB::table('ttrx_payment')
-                        ->leftJoin('ttrx_actual_payment', 'ttrx_payment.id', '=', 'ttrx_actual_payment.id_payment')
-                        ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.total_payment', 'ttrx_actual_payment.flag_dp', DB::raw('timediff("'.$date_now.'",ttrx_actual_payment.created_at) as selisih'))
-                        ->where('ttrx_actual_payment.created_at','>=',$date)
-                        ->get();
+            ->leftJoin('ttrx_actual_payment', 'ttrx_payment.id', '=', 'ttrx_actual_payment.id_payment')
+            ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.total_payment', 'ttrx_actual_payment.flag_dp', DB::raw('timediff("' . $date_now . '",ttrx_actual_payment.created_at) as selisih'))
+            ->where('ttrx_actual_payment.created_at', '>=', $date)
+            ->get();
         $user_baru = DB::table('mst_users')
-                        ->select(DB::raw('nama,timediff("'.$date_now.'",created_at) as selisih '))
-                        ->where('created_at','>=',$date)
-                        ->get();
-        return view('office.akses.master-akses', compact('order_baru','pembayaran','user_baru'));
+            ->select(DB::raw('nama,timediff("' . $date_now . '",created_at) as selisih '))
+            ->where('created_at', '>=', $date)
+            ->get();
+
+        return view('office.master-akses', compact('order_baru', 'pembayaran', 'user_baru'));
     }
 
     public function list_data(Request $request)
@@ -44,14 +46,14 @@ class MasterAksesController extends Controller
             1 => 'DT_RowIndex',
             2 => 'email',
             3 => 'nama',
-            4 => 'no_tlp',
-            5 => 'jabatan',
+            4 => 'jabatan',
+            5 => 'no_tlp',
             6 => 'action'
         );
 
         $totalData = DB::table('mst_users')
             ->where('status_hapus', '=', 0)
-            ->where('jabatan', '>', 1)
+            ->where('jabatan', '=', 2)
             ->count();
 
         $totalFiltered = $totalData;
@@ -66,7 +68,7 @@ class MasterAksesController extends Controller
                 ->offset($start)
                 ->limit($limit)
                 ->where('status_hapus', 0)
-                ->where('jabatan', '>', 1)
+                ->where('jabatan', '=', 2)
                 ->orderBy('id')
                 ->get();
         } else {
@@ -97,17 +99,8 @@ class MasterAksesController extends Controller
                 $nestedData['email'] = $post->email;
                 $nestedData['nama'] = $post->nama;
                 $nestedData['no_tlp'] = $post->no_tlp;
-
-                if ($post->jabatan == 2) {
-                    $nestedData['jabatan'] = 'User Baru';
-                } else if ($post->jabatan == 3) {
-                    $nestedData['jabatan'] = 'User Admin';
-                } else {
-                    $nestedData['jabatan'] = 'Administrator Website';
-                }
-
-                $nestedData['action'] = "&nbsp;<a href='javascript:void(0)' id='accept' data-toggle='tooltip' title='Accept' data-id='$post->id' data-original-title='' class='Edit btn btn-info btn-sm'><i class='fas fa-check'></i> &nbsp; Accept</a>
-                                        <a href='javascript:void(0)' id='reject' data-toggle='tooltip' title='Reject' data-id='$post->id' data-original-title='' class='Delete btn btn-danger btn-sm'><i class='fas fa-times-circle'></i> &nbsp; Reject</a>";
+                $nestedData['action'] = "&nbsp;<a href='javascript:void(0)' id='accept' data-toggle='tooltip' title='Accept' data-id='$post->id' data-original-title='' class='Accept btn btn-info btn-sm'><i class='fas fa-check'></i> &nbsp;Accept</a>
+                                        <a href='javascript:void(0)' id='reject' data-toggle='tooltip' title='Reject' data-id='$post->id' data-original-title='' class='Reject btn btn-danger btn-sm'><i class='fas fa-times-circle'></i> &nbsp;Reject</a>";
                 $data[] = $nestedData;
                 $i++;
             }
@@ -122,41 +115,26 @@ class MasterAksesController extends Controller
         echo json_encode($json_data);
     }
 
-    public function store(Request $request)
+    public function accept($id)
     {
-        $data =  new UserModels();
-        // $data->nip = $request->nip;
-        $data->nama = $request->name;
-        $data->email = $request->email;
-        // $data->id_unit_kerja = $request->unit;
-        // $data->id_jabatan = $request->jabatan;
-        $data->status_hapus = 0;
-        // $data->username = 'admin';
-        $data->password = bcrypt('admin');
-        $data->save();
-
-        $msg = 'Data berhasil di simpan';
-        return response()->json(['success' => true, 'message' => $msg]);
-    }
-
-    public function update(Request $request)
-    {
-        $date = new DateTime;
+        $date_time = new DateTime;
         $data = [
-            'nama'        => $request->name,
-            'email'       => $request->email,
-            'updated_at'  => $date
+            'jabatan' => 3,
+            'updated_at' => $date_time
         ];
-
-        UserModels::where('id', $request->sysid)->update($data);
-        $msg = 'Data berhasil di ubah';
+        UserModels::where('id', $id)->update($data);
+        $msg = 'Data berhasil di hapus';
         return response()->json(['success' => true, 'message' => $msg]);
     }
 
-    public function destroy(Request $request)
+    public function reject($id)
     {
-        $id = $request->id;
-        UserModels::where('id', $id)->delete();
+        $date_time = new DateTime;
+        $data = [
+            'status_hapus' => 1,
+            'updated_at' => $date_time
+        ];
+        UserModels::where('id', $id)->update($data);
         $msg = 'Data berhasil di hapus';
         return response()->json(['success' => true, 'message' => $msg]);
     }

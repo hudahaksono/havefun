@@ -72,18 +72,18 @@ Route::get('/profile', function () {
 // Dashboard //
 Route::get('/dashboard', 'Menu\MenuController@index')->name('dashboard');
 
-// Master //
+// Master User //
 Route::get('/master-user', 'Master\MasterUserController@index')->name('master-user');
 Route::get('/master-user/list-data', 'Master\MasterUserController@list_data')->name('master-user.list-data');
 Route::post('/master-user/store', 'Master\MasterUserController@store')->name('master-user.store');
 Route::post('/master-user/update', 'Master\MasterUserController@update')->name('master-user.update');
-Route::get('/master-user/destroy', 'Master\MasterUserController@destroy')->name('master-user.destroy');
+Route::post('/master-user/destroy/{id}', 'Master\MasterUserController@destroy')->name('master-user.destroy');
 
+// Master Akses //
 Route::get('/master-akses', 'Master\MasterAksesController@index')->name('master-akses');
 Route::get('/master-akses/list-data', 'Master\MasterAksesController@list_data')->name('master-akses.list-data');
-Route::post('/master-akses/store', 'Master\MasterAksesController@store')->name('master-akses.store');
-Route::post('/master-akses/update', 'Master\MasterAksesController@update')->name('master-akses.update');
-Route::get('/master-akses/destroy', 'Master\MasterAksesController@destroy')->name('master-akses.destroy');
+Route::post('/master-akses/accept/{id}', 'Master\MasterAksesController@accept')->name('master-akses.accept');
+Route::post('/master-akses/reject/{id}', 'Master\MasterAksesController@reject')->name('master-akses.reject');
 
 // Master Paket //
 Route::get('/master-paket', 'Master\PaketController@index')->name('master-paket');
