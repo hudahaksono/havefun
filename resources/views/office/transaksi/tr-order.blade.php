@@ -673,10 +673,11 @@
         function proses_po(no_order,f_status) {
             sess_nama = $('#sess_nama').val();
             sess_id = $('#sess_id').val();
+            diskon = $('#diskon').val();
             $.ajax({
                 type: "post",
                 url: "{{route('api.order.proses')}}",
-                data: {no_order:no_order, f_status:f_status, sess_nama:sess_nama, sess_id:sess_id},
+                data: {no_order:no_order, f_status:f_status, sess_nama:sess_nama, sess_id:sess_id, diskon:diskon},
                 success: function(response) {
                     for (var key in response) {
                         var flag = response["success"];

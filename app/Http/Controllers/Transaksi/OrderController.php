@@ -491,6 +491,12 @@ class OrderController extends Controller
         
         $harga = 0;
         $total = 0;
+        if($request->diskon){
+            $diskon = $request->diskon;
+        }else{
+            $diskon = 0;
+        }
+        
         foreach ($data_order as $value) {
             $harga = $value->harga;
             $total = floatval($total) + floatval($harga);
@@ -509,6 +515,7 @@ class OrderController extends Controller
             $payment->no_payment        = $no_payment;
             $payment->tgl_payment       = date('Y-m-d');
             $payment->total_payment     = $total;
+            $payment->total_diskon      = $diskon;
             $payment->id_user           = $request->sess_id;
             // $payment->id_order          = $id_order;
             $payment->no_order          = $request->no_order;

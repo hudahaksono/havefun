@@ -26,7 +26,7 @@
                     :
                 </td>
                 <td style="width:30%">
-                    Nur Hudha Haksono
+                    {{ $data_hdr->nama }}
                 </td>
                 <td style="width:19%">
                     Tanggal Acara
@@ -35,7 +35,7 @@
                     :
                 </td>
                 <td style="width:39%">
-                    21-12-2022
+                    {{ date('d-m-Y',strtotime($data_hdr->tgl_acara)) }}
                 </td>
             </tr>
             <!-- Jarak -->
@@ -61,7 +61,7 @@
                     :
                 </td>
                 <td>
-                    08387722798
+                    {{ $data_hdr->no_tlp }}
                 </td>
                 <td>
                     Tempat Acara
@@ -70,7 +70,7 @@
                     :
                 </td>
                 <td>
-                    Jl. Mangga 2 No 29, Kelurahan Jati Makmur, Kecamatan Pondok Gede, Bekasi
+                    {{ $data_hdr->alamat_acara }}
                 </td>
             </tr>
         </table>
@@ -89,21 +89,24 @@
             </thead>
             <tbody>
                 <!-- Product -->
-                <tr>
-                    <td style="text-align: left;">
-                        Engagement - Stepa
-                    </td>
-                    <td style="text-align: right;font-weight:bold">
-                        Rp. 5.000.000
-                    </td>
-                </tr>
+                @php $i=1 @endphp
+                @foreach($data_dtl as $product)
+                    <tr>
+                        <td style="text-align: left;">
+                            {{ $product->product_name }}
+                        </td>
+                        <td style="text-align: right;font-weight:bold">
+                            Rp. {{ number_format($product->harga) }}
+                        </td>
+                    </tr>
+                @endforeach
                 <!-- IF Discount -->
                 <tr>
                     <td style="text-align: left;">
                         Discount
                     </td>
                     <td style="text-align: right;color: red;font-weight:bold">
-                        - Rp. 100.000
+                        - Rp. {{ number_format($data_hdr->total_diskon) }}
                     </td>
                 </tr>
                 <!-- Total -->
@@ -112,16 +115,7 @@
                         Total Dibayarkan
                     </td>
                     <td style="text-align: right;color: green;font-weight:bold">
-                        Rp. 2.000.000
-                    </td>
-                </tr>
-                <!-- Outstanding -->
-                <tr>
-                    <td style="text-align: left;">
-                        Outstanding (Sisa Pembayaran)
-                    </td>
-                    <td style="text-align: right;color: red;font-weight:bold">
-                        Rp. 2.900.000
+                        Rp. {{ number_format($data_hdr->total_payment - $data_hdr->total_diskon) }}
                     </td>
                 </tr>
             </tbody>

@@ -22,6 +22,8 @@
                                                 <td>No. Invoice</td>
                                                 <td>Tgl. Invoice</td>
                                                 <td>No. Order</td>
+                                                <td>Tagihan</td>
+                                                <td>Diskon</td>
                                                 <td>Total Tagihan</td>
                                                 <td>Total Pembayaran</td>
                                                 <td>Outsatnding</td>
@@ -166,6 +168,20 @@
                         visible: true
                     }, // 4
                     {
+                        data: "total_diskon",
+                        name: "total_diskon", render: function (d) {
+                            return currencyFormat(d);
+                        },
+                        visible: true
+                    }, // 4
+                    {
+                        data: "total_tagihan",
+                        name: "total_tagihan", render: function (d) {
+                            return currencyFormat(d);
+                        },
+                        visible: true
+                    }, // 4
+                    {
                         data: "actual_payment",
                         name: "actual_payment", render: function (d) {
                             return currencyFormat(d);
@@ -215,14 +231,15 @@
             no_payment = data['no_payment'];
             tgl_payment = data['tgl_payment'];
             total_payment = data['total_payment'];
+            total_tagihan = data['total_tagihan'];
             actual_payment = data['actual_payment'];
-            os_payment = amountToFloat(total_payment) - amountToFloat(actual_payment);
+            os_payment = amountToFloat(total_tagihan) - amountToFloat(actual_payment);
 
             $('#id_payment').val(id);
             $('#no_order').val(no_order);
             $('#no_payment').val(no_payment);
             $('#tgl_payment').val(moment(tgl_payment).format("DD-MM-YYYY"));
-            $('#total_payment').val(currencyFormat(total_payment));
+            $('#total_payment').val(currencyFormat(total_tagihan));
             $('#actual_payment').val(0);
             $('.os_payment').val(os_payment);
             $('#os_payment').html('Outstanding Payment : '+currencyFormat(os_payment));

@@ -94,3 +94,7 @@ Route::get('/master-banner/list-data', 'Master\BannerController@list_data_hdr')-
 Route::post('/master-banner/store', 'Master\BannerController@store')->name('api.banner.store');
 Route::post('/master-banner/update', 'Master\BannerController@update')->name('api.banner.update');
 Route::post('/master-banner/destroy', 'Master\BannerController@destroy')->name('api.banner.destroy');
+
+// Invoice
+Route::get('/invoice-lunas/list-data', 'Transaksi\InvoiceController@list_data_hdr')->name('api.payment.list.invoice');
+Route::get('/invoice-outstanding/list-data', 'Transaksi\InvoiceController@list_data_hdr_os')->name('api.payment.list.invoice.os');

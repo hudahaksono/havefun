@@ -12,6 +12,6 @@ class PaymentModels extends Model
     use Notifiable;
 
     protected $fillable = [
-        'id', 'no_payment', 'tgl_payment', 'total_payment', 'id_user', 'id_order', 'no_order', 'tgl_acara', 'alamat_acara', 'status', 'user_at'
+        'id', 'no_payment', 'tgl_payment', 'total_payment', 'total_diskon', 'id_user', 'id_order', 'no_order', 'tgl_acara', 'alamat_acara', 'status', 'user_at'
     ];
 }
