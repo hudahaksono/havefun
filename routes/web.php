@@ -130,6 +130,9 @@ Route::post('/store-photo', 'TelegramBotController@storePhoto');
 Route::get('/updated-activity', 'TelegramBotController@updatedActivity');
 
 // PdF //
-Route::get('invoice-lunas', 'Transaksi\InvoiceController@generatelunas');
+Route::get('invoice-lunas', 'Transaksi\InvoiceController@index');
+Route::get('invoice-lunas/generate', 'Transaksi\InvoiceController@generatelunas');
+
 // PdF //
-Route::get('invoice-outstanding', 'Transaksi\InvoiceController@generateoutstanding');
+Route::get('invoice-outstanding', 'Transaksi\InvoiceController@index_os');
+Route::get('invoice-outstanding/generate', 'Transaksi\InvoiceController@generateoutstanding');

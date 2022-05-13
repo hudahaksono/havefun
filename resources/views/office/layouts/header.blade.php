@@ -161,26 +161,26 @@
                             </ul>
                         </li>
                         <li class="menu-header">Transaction</li>
-                        <li class="dropdown">
+                        <li class="dropdown" id="drop-order">
                             <a href="/tr-order" class="nav-link"><i data-feather="shopping-cart"></i><span>Customer Order</span></a>
                         </li>
-                        <li class="dropdown">
+                        <li class="dropdown" id="drop-schedule">
                             <a href="/tr-schedule" class="nav-link"><i data-feather="calendar"></i><span>Customer Schedule</span></a>
                         </li>
-                        <li class="dropdown">
+                        <li class="dropdown" id="drop-payment">
                             <a href="/tr-payment" class="nav-link"><i data-feather="credit-card"></i><span>Payment Order</span></a>
                         </li>
                         <!-- <li class="dropdown">
                             <a href="/tr-payment-done" class="nav-link"><i data-feather="dollar-sign"></i><span>Payment Done (Lunas)</span></a>
                         </li> -->
                         <li class="menu-header">Reporting</li>
-                        <li class="dropdown">
-                            <a href="/rpt-invoice" class="nav-link"><i data-feather="file-text"></i><span>Invoice Outstanding</span></a>
+                        <li class="dropdown" id="drop-invoice-os">
+                            <a href="/invoice-outstanding" class="nav-link"><i data-feather="file-text"></i><span>Invoice Outstanding</span></a>
                         </li>
-                        <li class="dropdown">
-                            <a href="/rpt-invoice-lunas" class="nav-link"><i data-feather="check-circle"></i><span>Invoice Lunas</span></a>
+                        <li class="dropdown" id="drop-invoice-ls">
+                            <a href="/invoice-lunas" class="nav-link"><i data-feather="check-circle"></i><span>Invoice Lunas</span></a>
                         </li>
-                        <li class="dropdown">
+                        <li class="dropdown" id="drop-message">
                             <a href="/rpt-message" class="nav-link"><i data-feather="message-square"></i><span>Message Website</span></a>
                         </li>
                     </ul>

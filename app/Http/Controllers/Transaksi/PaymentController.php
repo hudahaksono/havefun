@@ -50,8 +50,8 @@ class PaymentController extends Controller
         $totalData = DB::table('ttrx_payment')
                         ->join('mst_users', 'ttrx_payment.id_user', '=', 'mst_users.id')
                         ->leftJoin('ttrx_actual_payment', 'ttrx_payment.id', '=', 'ttrx_actual_payment.id_payment')
-                        ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', DB::raw('SUM(ttrx_actual_payment.actual_payment) as actual_payment'))
-                        ->groupBy('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment')
+                        ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', DB::raw('SUM(ttrx_actual_payment.actual_payment) as actual_payment'), 'ttrx_payment.total_diskon')
+                        ->groupBy('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', 'ttrx_payment.total_diskon')
                         ->where('status', '=', 0)
                         ->count();
 
@@ -66,8 +66,8 @@ class PaymentController extends Controller
             $posts = DB::table('ttrx_payment')
                         ->join('mst_users', 'ttrx_payment.id_user', '=', 'mst_users.id')
                         ->leftJoin('ttrx_actual_payment', 'ttrx_payment.id', '=', 'ttrx_actual_payment.id_payment')
-                        ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', DB::raw('SUM(ttrx_actual_payment.actual_payment) as actual_payment'))
-                        ->groupBy('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment')
+                        ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', DB::raw('SUM(ttrx_actual_payment.actual_payment) as actual_payment'), 'ttrx_payment.total_diskon')
+                        ->groupBy('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', 'ttrx_payment.total_diskon')
                         ->offset($start)
                         ->limit($limit)
                         ->where('status', '=', 0)
@@ -78,8 +78,8 @@ class PaymentController extends Controller
             $posts =  DB::table('ttrx_payment')
                         ->join('mst_users', 'ttrx_payment.id_user', '=', 'mst_users.id')
                         ->leftJoin('ttrx_actual_payment', 'ttrx_payment.id', '=', 'ttrx_actual_payment.id_payment')
-                        ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', DB::raw('SUM(ttrx_actual_payment.actual_payment) as actual_payment'))
-                        ->groupBy('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment')
+                        ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', DB::raw('SUM(ttrx_actual_payment.actual_payment) as actual_payment'), 'ttrx_payment.total_diskon')
+                        ->groupBy('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', 'ttrx_payment.total_diskon')
                         ->offset($start)
                         ->limit($limit)
                         ->where([['status', '=', 0],['ttrx_payment.no_payment', 'LIKE', "%{$search}%"]])
@@ -91,8 +91,8 @@ class PaymentController extends Controller
             $totalFiltered = DB::table('ttrx_payment')
                         ->join('mst_users', 'ttrx_payment.id_user', '=', 'mst_users.id')
                         ->leftJoin('ttrx_actual_payment', 'ttrx_payment.id', '=', 'ttrx_actual_payment.id_payment')
-                        ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', DB::raw('SUM(ttrx_actual_payment.actual_payment) as actual_payment'))
-                        ->groupBy('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment')
+                        ->select('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', DB::raw('SUM(ttrx_actual_payment.actual_payment) as actual_payment'), 'ttrx_payment.total_diskon')
+                        ->groupBy('ttrx_payment.id', 'ttrx_payment.no_payment', 'ttrx_payment.tgl_payment', 'ttrx_payment.no_order', 'mst_users.nama', 'ttrx_payment.total_payment', 'ttrx_payment.total_diskon')
                         ->where([['status', '=', 0],['ttrx_payment.no_payment', 'LIKE', "%{$search}%"]])
                         ->Where([['status', '=', 0],['ttrx_payment.no_order', 'LIKE', "%{$search}%"]])
                         ->Where([['status', '=', 0],['mst_users.nama', 'LIKE', "%{$search}%"]])
@@ -109,8 +109,10 @@ class PaymentController extends Controller
                 $nestedData['tgl_payment'] = $post->tgl_payment;
                 $nestedData['no_order'] = $post->no_order;
                 $nestedData['total_payment'] = $post->total_payment;
+                $nestedData['total_diskon'] = $post->total_diskon;
+                $nestedData['total_tagihan'] = $post->total_payment - $post->total_diskon;
                 $nestedData['actual_payment'] = $post->actual_payment;
-                $nestedData['os_payment'] = floatval($post->total_payment) - ($post->actual_payment);
+                $nestedData['os_payment'] = floatval($post->total_payment)  - $post->total_diskon - ($post->actual_payment);
                 $nestedData['nama'] = $post->nama;
                 
                 $nestedData['action'] = "&emsp;<a href='javascript:void(0)' id='tindak_lanjut' data-toggle='tooltip' title='Tindak Lanjut' data-id='$post->id' data-original-title='' class='Edit btn btn-primary btn-sm'><i class='fa fa-location-arrow'></i> &nbsp; Payment </a>";
