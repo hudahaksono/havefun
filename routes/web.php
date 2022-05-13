@@ -38,6 +38,9 @@ Route::get('/marketplace', 'Monitoring\MarketController@index')->name('marketpla
 // });
 Route::get('/', 'Front\FrontController@index');
 
+Route::post('/store-message', 'Front\FrontController@store');
+Route::post('/store-message2', 'Front\FrontController@store2');
+
 Route::get('/about', function () {
     return view('front.about');
 });

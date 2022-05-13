@@ -17,21 +17,21 @@
         </div>
     </div> -->
     @foreach ($banner as $bann)
-        <div class="slider-item" style="background-image: url(banner/{{ $bann->file_name }});">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+    <div class="slider-item" style="background-image: url(banner/{{ $bann->file_name }});">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-                    <div class="col-md-8 col-sm-12 text-center ftco-animate">
-                        <span class="subheading">Welcome</span>
-                        <h1 class="mb-4">SAVANNA DECORATION</h1>
-                        <p class="mb-4 mb-md-5">Ganti Kata Kata Lu bays</p>
-                        <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Product</a></p>
-                    </div>
-
+                <div class="col-md-8 col-sm-12 text-center ftco-animate">
+                    <span class="subheading">Welcome</span>
+                    <h1 class="mb-4">SAVANNA DECORATION</h1>
+                    <p class="mb-4 mb-md-5">Ganti Kata Kata Lu bays</p>
+                    <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Product</a></p>
                 </div>
+
             </div>
         </div>
+    </div>
     @endforeach
     <!-- <div class="slider-item" style="background-image: url(images/savana/savana2.jpg);">
         <div class="overlay"></div>
@@ -96,38 +96,34 @@
             </div>
             <div class="book p-4">
                 <h3>Masih Mau Konsep Dekorasi Seperti Apa ?<br>Yuk Konsultasi Dulu</h3>
-                <form action="#" class="appointment-form">
+                <form id="form_input" action="#" class="appointment-form">
                     <div class="d-md-flex">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nama">
+                            <input id="nama" name="nama" type="text" class="form-control" placeholder="Nama">
                         </div>
                         <div class="form-group ml-md-4">
-                            <input type="text" class="form-control" placeholder="Email">
+                            <input id="email" name="email" type="text" class="form-control" placeholder="Email">
                         </div>
                     </div>
                     <div class="d-md-flex">
                         <div class="form-group">
                             <div class="input-wrap">
                                 <div class="icon"><span class="ion-md-calendar"></span></div>
-                                <input type="text" class="form-control appointment_date" placeholder="Tanggal">
+                                <input id="tanggal" name="tanggal" type="text" class="form-control appointment_date" placeholder="Tanggal Acara">
                             </div>
                         </div>
                         <div class="form-group ml-md-4">
-                            <div class="input-wrap">
-                                <div class="icon"><span class="ion-ios-clock"></span></div>
-                                <input type="text" class="form-control appointment_time" placeholder="Jam">
-                            </div>
-                        </div>
-                        <div class="form-group ml-md-4">
-                            <input type="text" class="form-control" placeholder="No Handphone">
+                            <input id="no_tlp" name="no_tlp" type="text" class="form-control" placeholder="No Handphone">
                         </div>
                     </div>
                     <div class="d-md-flex">
                         <div class="form-group">
-                            <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Pesan"></textarea>
+                            <textarea id="pesan" name="pesan" cols="50" rows="2" class="form-control" placeholder="Pesan"></textarea>
                         </div>
-                        <div class="form-group ml-md-4">
-                            <input type="submit" value="Submit" class="btn btn-white py-3 px-4">
+                    </div>
+                    <div class="d-md-flex">
+                        <div class="form-group">
+                            <button id="submit" type="button" class="btn btn-white py-3 px-4">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -400,38 +396,34 @@
             </div>
             <div class="col-md-6 appointment ftco-animate">
                 <h3 class="mb-3">Masih Mau Konsep Dekorasi Seperti Apa ?<br>Yuk Konsultasi Dulu</h3>
-                <form action="#" class="appointment-form">
+                <form id="form_input2" action="#" class="appointment-form">
                     <div class="d-md-flex">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nama">
+                            <input name="nama2" id="nama2" type="text" class="form-control" placeholder="Nama">
                         </div>
                         <div class="form-group ml-md-4">
-                            <input type="text" class="form-control" placeholder="Email">
+                            <input name="email2" id="email2" type="text" class="form-control" placeholder="Email">
                         </div>
                     </div>
                     <div class="d-md-flex">
                         <div class="form-group">
                             <div class="input-wrap">
                                 <div class="icon"><span class="ion-md-calendar"></span></div>
-                                <input type="text" class="form-control appointment_date" placeholder="Tanggal">
+                                <input name="tanggal2" id="tanggal2" type="text" class="form-control appointment_date" placeholder="Tanggal Acara">
                             </div>
                         </div>
                         <div class="form-group ml-md-4">
-                            <div class="input-wrap">
-                                <div class="icon"><span class="ion-ios-clock"></span></div>
-                                <input type="text" class="form-control appointment_time" placeholder="Jam">
-                            </div>
-                        </div>
-                        <div class="form-group ml-md-4">
-                            <input type="text" class="form-control" placeholder="No Handphone">
+                            <input name="no_tlp2" id="no_tlp2" type="text" class="form-control" placeholder="No Handphone">
                         </div>
                     </div>
                     <div class="d-md-flex">
                         <div class="form-group">
-                            <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Pesan"></textarea>
+                            <textarea name="pesan2" id="pesan2" name="" id="" cols="50" rows="2" class="form-control" placeholder="Pesan"></textarea>
                         </div>
-                        <div class="form-group ml-md-4">
-                            <input type="submit" value="Submit" class="btn btn-primary py-3 px-4">
+                    </div>
+                    <div class="d-md-flex">
+                        <div class="form-group">
+                            <button name="submit2" id="submit2" type="button" class="btn btn-white py-3 px-4">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -440,3 +432,225 @@
     </div>
 </section>
 @include('layouts.footbar')
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        function reset_input() {
+            $('#nama').val('');
+            $('#email').val('');
+            $('#tanggal').val(0);
+            $('#no_tlp').val('');
+            $('#pesan').val('');
+        }
+
+        function reset_input2() {
+            $('#nama2').val('');
+            $('#email2').val('');
+            $('#tanggal2').val(0);
+            $('#no_tlp2').val('');
+            $('#pesan2').val('');
+        }
+
+        $('#submit').click(function() {
+            var nama = document.getElementById("nama").value;
+            var email = document.getElementById("email").value;
+            var tanggal = document.getElementById("tanggal").value;
+            var no_tlp = document.getElementById("no_tlp").value;
+            var pesan = document.getElementById("pesan").value;
+            if (nama == "") {
+                swal("Peringatan!", "Nama tidak boleh kosong!", {
+                    icon: "info",
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-info'
+                        }
+                    },
+                });
+            } else if (tanggal == "") {
+                swal("Peringatan!", "Tanggal tidak boleh kosong!", {
+                    icon: "info",
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-info'
+                        }
+                    },
+                });
+            } else if (no_tlp == "") {
+                swal("Peringatan!", "No Handphone tidak boleh kosong!", {
+                    icon: "info",
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-info'
+                        }
+                    },
+                });
+            } else if (pesan == "") {
+                swal("Peringatan!", "Pesan tidak boleh kosong!", {
+                    icon: "info",
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-info'
+                        }
+                    },
+                });
+            } else {
+                $.ajax({
+                    type: "post",
+                    url: "/store-message",
+                    data: $("#form_input").serialize(),
+                    success: function(response) {
+                        for (var key in response) {
+                            var flag = response["success"];
+                            var message = response["message"];
+                        }
+
+                        if ($.trim(flag) == "true") {
+                            swal('Success!', message, {
+                                icon: 'success',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-success'
+                                    }
+                                }
+                            });
+                            reset_input();
+                        } else if ($.trim(message) == "true") {
+                            swal('Warning!', message, {
+                                icon: 'warning',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-warning'
+                                    }
+                                }
+                            });
+                        } else {
+                            swal('Peringatan!', message, {
+                                icon: 'info',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-info'
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = xhr.status + ": " + xhr.statusText;
+                        swal('Error!', errorMessage, {
+                            icon: 'danger',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-danger'
+                                }
+                            }
+                        });
+                    },
+                });
+            }
+        });
+
+        $('#submit2').click(function() {
+            var nama2 = document.getElementById("nama2").value;
+            var email2 = document.getElementById("email2").value;
+            var tanggal2 = document.getElementById("tanggal2").value;
+            var no_tlp2 = document.getElementById("no_tlp2").value;
+            var pesan2 = document.getElementById("pesan2").value;
+            if (nama2 == "") {
+                swal("Peringatan!", "Nama tidak boleh kosong!", {
+                    icon: "info",
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-info'
+                        }
+                    },
+                });
+            } else if (tanggal2 == "") {
+                swal("Peringatan!", "Tanggal tidak boleh kosong!", {
+                    icon: "info",
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-info'
+                        }
+                    },
+                });
+            } else if (no_tlp2 == "") {
+                swal("Peringatan!", "No Handphone tidak boleh kosong!", {
+                    icon: "info",
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-info'
+                        }
+                    },
+                });
+            } else if (pesan2 == "") {
+                swal("Peringatan!", "Pesan tidak boleh kosong!", {
+                    icon: "info",
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-info'
+                        }
+                    },
+                });
+            } else {
+                $.ajax({
+                    type: "post",
+                    url: "/store-message2",
+                    data: $("#form_input2").serialize(),
+                    success: function(response) {
+                        for (var key in response) {
+                            var flag = response["success"];
+                            var message = response["message"];
+                        }
+
+                        if ($.trim(flag) == "true") {
+                            swal('Success!', message, {
+                                icon: 'success',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-success'
+                                    }
+                                }
+                            });
+                            reset_input2();
+                        } else if ($.trim(message) == "true") {
+                            swal('Warning!', message, {
+                                icon: 'warning',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-warning'
+                                    }
+                                }
+                            });
+                        } else {
+                            swal('Peringatan!', message, {
+                                icon: 'info',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-info'
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = xhr.status + ": " + xhr.statusText;
+                        swal('Error!', errorMessage, {
+                            icon: 'danger',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-danger'
+                                }
+                            }
+                        });
+                    },
+                });
+            }
+        });
+
+    });
+</script>
