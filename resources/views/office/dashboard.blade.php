@@ -14,9 +14,9 @@
                             <div class="row ">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                                     <div class="card-content">
-                                        <h5 class="font-15">Users</h5>
-                                        <h2 class="mb-3 font-18">258</h2>
-                                        <p class="mb-0"><span class="col-green">+ 20</span> Bulan ini</p>
+                                        <h5 class="font-15">Pengguna</h5>
+                                        <h2 style="color:blue" id="pengguna" class="mb-3 font-18"></h2>
+                                        <!-- <p class="mb-0"><span class="col-green">+ 20</span> Bulan ini</p> -->
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -37,8 +37,8 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                                     <div class="card-content">
                                         <h5 class="font-15"> Customers</h5>
-                                        <h2 class="mb-3 font-18">1,287</h2>
-                                        <p class="mb-0"><span class="col-orange">09%</span> Decrease</p>
+                                        <h2 style="color:blue" id="customer" class="mb-3 font-18"></h2>
+                                        <!-- <p class="mb-0"><span class="col-orange">09%</span> Decrease</p> -->
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -58,8 +58,8 @@
                             <div class="row ">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                                     <div class="card-content">
-                                        <h5 class="font-15">Project Progress</h5>
-                                        <h2 class="mb-3 font-18">3</h2>
+                                        <h5 class="font-15">Pembayaran Outstanding</h5>
+                                        <h2 style="color:blue" id="jumlah_outstanding" class="mb-3 font-18">3</h2>
                                         <!-- <p class="mb-0"><span class="col-green">18%</span>
                                             Increase</p> -->
                                     </div>
@@ -81,8 +81,8 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                                     <div class="card-content">
-                                        <h5 class="font-15">Project Done</h5>
-                                        <h2 class="mb-3 font-18">120</h2>
+                                        <h5 class="font-15">Pembayaran Lunas</h5>
+                                        <h2 style="color:blue" id="jumlah_lunas" class="mb-3 font-18"></h2>
                                         <!-- <p class="mb-0"><span class="col-green">42%</span> Increase</p> -->
                                     </div>
                                 </div>
@@ -103,13 +103,13 @@
                     <!-- <h3 class="text-center mt-3 mb-3">Dashboard</h3> -->
                     <div class="container mb-5">
                         <div class="row mt-3">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <h4 class="text-center">Penjualan Tahun 2022</h4>
-                                <canvas id="batang" width="100%"></canvas>
-                            </div>
-                            <div class="col-md-6">
-                                <h4 class="text-center">Jumlah Product Terjual</h4>
-                                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <canvas id="batang" width="100%"></canvas>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -123,43 +123,39 @@
                     <div class="container mb-5">
                         <div class="row mt-3">
                             <div class="col-md-12">
-                                <h4 class="text-center">Schedule Meet & Project</h4>
-                                <div class="table-responsive">
-                                    <table id="tbl_shcedule" class="table table-striped table-hover dataTable no-footer" style="width:100%" role="grid">
-                                        <thead style="color:white;font-weight:bold" class="bg-primary text-center">
-                                            <tr>
-                                                <td>Id</td>
-                                                <td>No</td>
-                                                <td>Client Name</td>
-                                                <td>Status</td>
-                                                <td>Action</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>Nur Hudha Haksono</td>
-                                                <td>
-                                                    <div class="badge badge-warning badge-shadow">In Progress</div>
-                                                </td>
-                                                <td>
-                                                    <a style="color:white" class="btn btn-info">Detail</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>Ludiono</td>
-                                                <td>
-                                                    <div class="badge badge-success badge-shadow">Done</div>
-                                                </td>
-                                                <td>
-                                                    <a style="color:white" class="btn btn-info">Detail</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 class="text-center">TOP 4 Product Terjual</h4>
+                                        <div class="table-responsive">
+                                            <table id="tbl_product" class="table table-striped table-hover dataTable no-footer" style="width:100%" role="grid">
+                                                <thead style="color:white;font-weight:bold" class="bg-primary text-center">
+                                                    <tr>
+                                                        <td>No</td>
+                                                        <td>Nama Product</td>
+                                                        <td>Jumlah Terjual</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="bodyproduct">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="text-center">TOP 4 Paket Terjual</h4>
+                                        <div class="table-responsive">
+                                            <table id="tbl_paket" class="table table-striped table-hover dataTable no-footer" style="width:100%" role="grid">
+                                                <thead style="color:white;font-weight:bold" class="bg-primary text-center">
+                                                    <tr>
+                                                        <td>No</td>
+                                                        <td>Nama Paket</td>
+                                                        <td>Jumlah Terjual</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="bodypaket">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -174,68 +170,166 @@
 <script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
     $(document).ready(function() {
-        $('#tbl_shcedule').DataTable();
-    });
-    const ctx = document.getElementById('batang').getContext('2d');
-    const batang = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [
-                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-            ],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3, 6, 9, 20, 20, 22, 39],
-                backgroundColor: [
-                    '#0004ff',
-                    '#0004ff',
-                    '#0004ff',
-                    '#0004ff',
-                    '#0004ff',
-                    '#0004ff',
-                    '#0004ff',
-                    '#0004ff',
-                    '#0004ff',
-                    '#0004ff',
-                    '#0004ff',
-                    '#0004ff',
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-    var xValues = ["Engagement", "Intimate Akad", "Wedding Outdoor", "Wedding Hall", "Wedding Home", "Custom Wedding Decoration"];
-    var yValues = [55, 49, 44, 24, 15, 59];
-    var barColors = [
-        "#b91d47",
-        "#00aba9",
-        "#2b5797",
-        "#e8c3b9",
-        "#1e7145",
-        "#17a2b8"
-    ];
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
 
-    new Chart("myChart", {
-        type: "doughnut",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        // options: {
-        //     title: {
-        //         display: true,
-        //         text: "Jumlah Product Terjual"
-        //     }
-        // }
+        $.ajax({
+            type: "GET",
+            url: "/dashboard/list-data",
+            success: function(response) {
+                for (var key in response) {
+                    var user = response.user;
+                    var customer = response.customer;
+                    var jumlah_outstanding = response.jumlah_outstanding;
+                    var jumlah_lunas = response.jumlah_lunas;
+
+                    // 4 Card Pengguna
+                    $('#pengguna').text(user + " Orang");
+                    $('#customer').text(customer + " Orang");
+                    $('#jumlah_outstanding').text(jumlah_outstanding + " Transaksi");
+                    $('#jumlah_lunas').text(jumlah_lunas + " Transaksi");
+                }
+
+                var januari = [];
+                var februari = [];
+                var maret = [];
+                var april = [];
+                var mei = [];
+                var juni = [];
+                var juli = [];
+                var agustus = [];
+                var september = [];
+                var oktober = [];
+                var november = [];
+                var desember = [];
+
+                $.each(response.jumlah_pembelian, function(key, value) {
+                    januari.push(value.januari);
+                    februari.push(value.februari);
+                    maret.push(value.maret);
+                    april.push(value.april);
+                    mei.push(value.mei);
+                    juni.push(value.juni);
+                    juli.push(value.juli);
+                    agustus.push(value.agustus);
+                    september.push(value.september);
+                    oktober.push(value.oktober);
+                    november.push(value.november);
+                    desember.push(value.desember);
+
+                });
+
+                // Diagram Jumlah Pembelian
+                const ctx = document.getElementById('batang').getContext('2d');
+                const batang = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                        ],
+                        datasets: [{
+                            label: 'Total Order Tahun 2022',
+                            data: [
+                                januari,
+                                februari,
+                                maret,
+                                april,
+                                mei,
+                                juni,
+                                juli,
+                                agustus,
+                                september,
+                                oktober,
+                                november,
+                                desember
+                            ],
+                            backgroundColor: '#0004ff',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+
+                if (response.top_product != "") {
+                    var n = 1;
+                    for (res of response.top_product) {
+                        $("#bodyproduct").append(`
+                        <tr>
+                            <td style="text-align:center">
+                                ${[n]}
+                            </td>
+                            <td style="text-align:left">
+                                ${res["namaproduct"]}
+                            </td>
+                            <td style="text-align:center">
+                                ${res["jumlah"]}
+                            </td>
+                        </tr>
+                    `)
+                        n++;
+                    }
+
+                } else {
+                    $("#bodyproduct").append(`
+                        <tr>
+                            <td style="text-align:center;font-weight:bold" colspan="3">
+                               Tidak Ada Data
+                            </td>
+                        </tr>
+                    `)
+                }
+
+                if (response.top_paket != "") {
+                    var n = 1;
+                    for (res of response.top_paket) {
+                        $("#bodypaket").append(`
+                        <tr>
+                            <td style="text-align:center">
+                                ${[n]}
+                            </td>
+                            <td style="text-align:left">
+                                ${res["namapaket"]}
+                            </td>
+                            <td style="text-align:center">
+                                ${res["jumlah"]}
+                            </td>
+                        </tr>
+                    `)
+                        n++;
+                    }
+
+                } else {
+                    $("#bodypaket").append(`
+                        <tr>
+                            <td style="text-align:center;font-weight:bold" colspan="3">
+                               Tidak Ada Data
+                            </td>
+                        </tr>
+                    `)
+                }
+            },
+            error: function(xhr, status, error) {
+                var errorMessage = xhr.status + ": " + xhr.statusText;
+                swal('Error!', errorMessage, {
+                    icon: 'danger',
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-danger'
+                        }
+
+                    }
+                });
+            },
+        });
     });
 </script>

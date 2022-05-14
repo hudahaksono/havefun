@@ -64,9 +64,6 @@ Route::get('/profile', function () {
 Route::get('/myorder', 'Front\OrderController@index')->name('f-myorder');
 
 //### Back Web ###//
-Route::get('/dashboard', function () {
-    return view('office.dashboard');
-});
 
 Route::get('/profile', function () {
     return view('office.profile');
@@ -74,6 +71,7 @@ Route::get('/profile', function () {
 
 // Dashboard //
 Route::get('/dashboard', 'Menu\MenuController@index')->name('dashboard');
+Route::get('/dashboard/list-data', 'Menu\MenuController@list_data')->name('dashboard.list-data');
 
 // Master User //
 Route::get('/master-user', 'Master\MasterUserController@index')->name('master-user');
@@ -136,3 +134,7 @@ Route::get('invoice-lunas/generate', 'Transaksi\InvoiceController@generatelunas'
 // PdF //
 Route::get('invoice-outstanding', 'Transaksi\InvoiceController@index_os');
 Route::get('invoice-outstanding/generate', 'Transaksi\InvoiceController@generateoutstanding');
+
+// Report //
+Route::get('/rpt-message', 'Report\MessageController@index')->name('rpt-message');
+Route::get('/rpt-message/list-data', 'Report\MessageController@list_data')->name('rpt-message.list-data');
