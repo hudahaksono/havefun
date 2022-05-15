@@ -14,7 +14,35 @@ class FrontController extends Controller
     public function index()
     {
         $banner = DB::table('tmst_banner')->get();
-        return view('front.index', compact('banner'));
+        $total_chart = DB::table('ttrx_chart')
+                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+                    ->wherenull('ttrx_order.status')
+                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
+                    ->count();
+
+        return view('front.index', compact('banner','total_chart'));
+    }
+
+    public function index_about()
+    {
+        $total_chart = DB::table('ttrx_chart')
+                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+                    ->wherenull('ttrx_order.status')
+                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
+                    ->count();
+                    
+        return view('front.about', compact('total_chart'));
+    }
+
+    public function index_profil()
+    {
+        $total_chart = DB::table('ttrx_chart')
+                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+                    ->wherenull('ttrx_order.status')
+                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
+                    ->count();
+                    
+        return view('front.profile', compact('total_chart'));
     }
 
     public function store(Request $request)

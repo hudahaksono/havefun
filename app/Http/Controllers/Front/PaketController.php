@@ -17,7 +17,13 @@ class PaketController extends Controller
         $kategori = DB::table('tmst_kategori_paket')->where('status_hapus',0)->get();
         $kategori_first = DB::table('tmst_kategori_paket')->where('status_hapus',0)->first();
         $id_kategori_first = $kategori_first->id;
-        return view('front.paket', compact('kategori','id_kategori_first'));
+
+        $total_chart = DB::table('ttrx_chart')
+                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+                    ->wherenull('ttrx_order.status')
+                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
+                    ->count();
+        return view('front.paket', compact('kategori','id_kategori_first','total_chart'));
     }
 
     public function list_produk(Request $request)

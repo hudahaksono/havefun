@@ -183,7 +183,8 @@
 <script>
     $('.nav-item').removeClass('active');
     $('#nav-paket').addClass('active');
-    // $('#product_detail').hide();
+    $('.total_chart').html('{{$total_chart}}');
+    
     $('#btn_detail').click(function() {
         $('#product').hide('slow');
         $('#product_detail').show('slow');

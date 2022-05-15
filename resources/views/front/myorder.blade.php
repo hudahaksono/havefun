@@ -60,3 +60,11 @@
     </div>
 </section>
 @include('layouts.footbar')
+<script>
+    $('.nav-item').removeClass('active');
+    $('.total_chart').html('{{$total_chart}}');
+    // $('#nav-drop-login').addClass('active');
+    // $('#nav-drop-login').addClass('show');
+    // $("#dropdown04").attr("aria-expanded","true");
+    // $('#drop-menu').addClass('show');
+</script>

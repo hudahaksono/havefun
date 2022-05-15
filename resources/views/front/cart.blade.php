@@ -58,6 +58,7 @@
 </section>
 @include('layouts.footbar')
 <script>
+    $('.total_chart').html('{{$total_chart}}');
     $(document).ready(function() {
         $('#btn_payment').click(function(event) {
             $.ajax({

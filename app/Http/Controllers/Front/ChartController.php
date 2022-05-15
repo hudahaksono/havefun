@@ -28,8 +28,14 @@ class ChartController extends Controller
                 ->where('ttrx_chart.user_at',$session_user)
                 ->union($data_paket)
                 ->get();
+
+        $total_chart = DB::table('ttrx_chart')
+                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+                    ->wherenull('ttrx_order.status')
+                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
+                    ->count();
         // dd($data);
-        return view('front.cart',compact('data'));
+        return view('front.cart',compact('data','total_chart'));
     }
 
     // public function list_produk(Request $request)

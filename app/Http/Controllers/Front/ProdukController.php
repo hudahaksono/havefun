@@ -17,7 +17,15 @@ class ProdukController extends Controller
         $kategori = DB::table('tmst_kategori')->where('status_hapus',0)->get();
         $kategori_first = DB::table('tmst_kategori')->where('status_hapus',0)->first();
         $id_kategori_first = $kategori_first->id;
-        return view('front.product', compact('kategori','id_kategori_first'));
+
+        //total chart
+        $total_chart = DB::table('ttrx_chart')
+                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+                    ->wherenull('ttrx_order.status')
+                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
+                    ->count();
+        
+        return view('front.product', compact('kategori','id_kategori_first','total_chart'));
     } 
 
     public function list_produk(Request $request)
@@ -44,7 +52,8 @@ class ProdukController extends Controller
         // $session_user = Session('sess_nama');
         // dd($session_user);
         $data_cek = DB::table('ttrx_chart')
-                    ->where([['user_at',$request->session_nama],['id_product',$request->id]])
+                    ->join('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+                    ->where([['ttrx_chart.user_at',$request->session_nama],['ttrx_chart.id_product',$request->id],['ttrx_order.status','<',3]])
                     ->count();
         if($data_cek>0){
             $msg = 'Produk sudah ada di chart !';

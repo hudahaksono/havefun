@@ -146,6 +146,8 @@
         // window.open(url, '_blank').focus();
     }
 
+    $('.total_chart').html('{{$total_chart}}');
+    
     $('#konsultasi_wa').click(function(event) {
         if($('#alamat_acara').val().length==0){
             swal('Peringatan!', 'Alamat belum di isi !!! ', {
