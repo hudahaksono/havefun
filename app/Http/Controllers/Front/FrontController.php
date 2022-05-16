@@ -13,6 +13,9 @@ class FrontController extends Controller
 {
     public function index()
     {
+        $top_product = DB::table('qview_dashboard_top_product')
+                        ->join('tmst_product', 'qview_dashboard_top_product.id_product', '=', 'tmst_product.id')
+                        ->get();
         $banner = DB::table('tmst_banner')->get();
         $total_chart = DB::table('ttrx_chart')
                     ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
@@ -20,7 +23,7 @@ class FrontController extends Controller
                     ->where([['ttrx_chart.user_at',Session('sess_nama')]])
                     ->count();
 
-        return view('front.index', compact('banner','total_chart'));
+        return view('front.index', compact('banner','total_chart','top_product'));
     }
 
     public function index_about()

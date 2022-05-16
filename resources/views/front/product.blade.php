@@ -25,7 +25,7 @@
                             <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Custom Wedding Decoration</a> -->
                         </div>
                     </div>
-                    <div class="col-md-12 d-flex justify-content-center">
+                    <div class="col-md-12">
                         <div class="tab-content ftco-animate" id="v-pills-tabContent">
                             @foreach ($kategori as $kat)
                                 <div class="tab-pane fade show" id="{{ $kat->id }}" role="tabpanel" aria-labelledby="tab-{{ $kat->id }}">
@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                            <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                            <!-- <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                                 <div class="row">
                                     <div class="col-md-4 text-center">
                                         <div class="menu-wrap">
@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!-- <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
                                 <div class="row">
@@ -490,8 +490,7 @@
                         });
                     },
                 });
-            }
-            
+            }    
         });
 
         $('#btn_order').click(function(event) {
