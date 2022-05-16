@@ -85,8 +85,6 @@ class MenuController extends Controller
         $jumlah_pembelian = DB::table('qview_dashboard_penjualan_bulanan')
             ->get();
 
-
-
         return response()
             ->json([
                 'user' => $user,
