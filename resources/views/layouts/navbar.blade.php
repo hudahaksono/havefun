@@ -43,15 +43,15 @@
                     <li class="nav-item"><a href="/login-customer" class="nav-link btn btn-info">Login</a></li>
                     @endif
                     @if(Session('sess_email')!='')
-                    <li class="nav-item dropdown">
+                    <li id="nav-drop-login" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> {{ Session::get('sess_nama') }}</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="/profile">Profile</a>
+                        <div id="drop-menu" class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="/front-profile">Profile</a>
                             <a class="dropdown-item" href="/myorder">My Order</a>
                             <a style="color:red" class="dropdown-item" href="/logoutcustomer">Logout</a>
                         </div>
                     </li>
-                    <li class="nav-item cart"><a href="/cart" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
+                    <li class="nav-item cart"><a href="/cart" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center "><small class="total_chart">1</small></span></a></li>
                     @endif
                 </ul>
             </div>

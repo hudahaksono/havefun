@@ -41,9 +41,7 @@ Route::get('/', 'Front\FrontController@index');
 Route::post('/store-message', 'Front\FrontController@store');
 Route::post('/store-message2', 'Front\FrontController@store2');
 
-Route::get('/about', function () {
-    return view('front.about');
-});
+Route::get('/about', 'Front\FrontController@index_about');
 
 Route::get('/product', 'Front\ProdukController@index')->name('f-produk');
 
@@ -57,9 +55,7 @@ Route::get('/transfer', function () {
     return view('front.transfer');
 });
 
-Route::get('/profile', function () {
-    return view('front.profile');
-});
+Route::get('/front-profile', 'Front\FrontController@index_profil');
 
 Route::get('/myorder', 'Front\OrderController@index')->name('f-myorder');
 

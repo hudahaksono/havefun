@@ -19,6 +19,12 @@ class OrderController extends Controller
             ->union($data_paket)
             ->get();
             // dd($data);
-        return view('front.myorder', compact('data'));
+
+        $total_chart = DB::table('ttrx_chart')
+                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+                    ->wherenull('ttrx_order.status')
+                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
+                    ->count();
+        return view('front.myorder', compact('data','total_chart'));
     } 
 }

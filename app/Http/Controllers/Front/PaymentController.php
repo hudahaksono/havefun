@@ -26,7 +26,14 @@ class PaymentController extends Controller
                 ->union($data_paket)
                 ->get();
                 // dd($data);
-        return view('front.payment',compact('data','no_order'));
+
+        $total_chart = DB::table('ttrx_chart')
+                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+                    ->wherenull('ttrx_order.status')
+                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
+                    ->count();
+                    
+        return view('front.payment',compact('data','no_order','total_chart'));
     }
 
     public function store_payment(Request $request)
@@ -41,8 +48,13 @@ class PaymentController extends Controller
             ];
         OrderModels::where('no_order', $request->no_order)->update($data);
 
+        $data_paket = DB::table('qview_order_dtl_paket')
+                    ->select('harga')
+                    ->where('no_order', $request->no_order);
         $data_order = DB::table('qview_order_dtl')
+                    ->select('harga')
                     ->where('no_order', $request->no_order)
+                    ->union($data_paket)
                     ->get();
         
         $harga = 0;

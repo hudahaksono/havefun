@@ -145,6 +145,8 @@
         $('#product_detail').show('slow');
     });
 
+    $('.total_chart').html('{{$total_chart}}');
+
     $(document).ready(function() {
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

@@ -270,3 +270,8 @@
     </div>
 </section>
 @include('layouts.footbar')
+<script>
+    $('.nav-item').removeClass('active');
+    $('#nav-tentang-kami').addClass('active');
+    $('.total_chart').html('{{$total_chart}}');
+</script>
