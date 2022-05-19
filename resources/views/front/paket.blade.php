@@ -89,6 +89,11 @@
     <div id="product_detail" class="container" style="display:none;">
         <div class="row">
             <div class="col-lg-6 mb-5 ftco-animate">
+                <a href="javascript:void(0)" id="btn_back" class="btn btn-primary py-3 px-5"><i class="fa-solid fa-arrow-left"></i> Back</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 mb-5 ftco-animate">
                 <div class="row" id="list_gambar">
 
                 </div>
@@ -358,6 +363,11 @@
                     },
                 });
             }
+        });
+
+        $('#btn_back').click(function(event) {
+            $('#product').show('slow');
+            $('#product_detail').hide();
         });
 
     });
