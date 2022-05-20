@@ -36,6 +36,17 @@ class PaymentController extends Controller
         return view('front.payment',compact('data','no_order','total_chart'));
     }
 
+    public function index_transfer(Request $request)
+    {
+        $total_chart = DB::table('ttrx_chart')
+                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+                    ->wherenull('ttrx_order.status')
+                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
+                    ->count();
+                    
+        return view('front.transfer',compact('total_chart'));
+    }
+
     public function store_payment(Request $request)
     {
         $no_order = $request->no_order;

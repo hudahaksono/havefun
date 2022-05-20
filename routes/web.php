@@ -51,9 +51,7 @@ Route::get('/cart', 'Front\ChartController@index')->name('f-chart');
 
 Route::get('/payment', 'Front\PaymentController@index')->name('f-payment');
 
-Route::get('/transfer', function () {
-    return view('front.transfer');
-});
+Route::get('/transfer', 'Front\PaymentController@index_transfer')->name('f-transfer');
 
 Route::get('/front-profile', 'Front\FrontController@index_profil');
 
