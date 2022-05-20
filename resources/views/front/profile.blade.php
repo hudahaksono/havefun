@@ -20,7 +20,7 @@
                             <input id="no_tlp" name="no_tlp" class="form-control" value="{{ Session::get('sess_no_tlp') }}" readonly />
                         </div>
                         <div class="col-md-12 text-center pt-4">
-                            <button type="button" class="btn btn-primary" id="btn_password" name="btn_password"><i class="fas fa-key"></i> Ubah Password</button>
+                            <a href="/ubah-password" class="btn btn-primary" id="btn_password" name="btn_password"><i class="fas fa-key"></i> Ubah Password</a>
                         </div>
                     </div>
                 </form>
@@ -29,7 +29,3 @@
     </div>
 </section>
 @include('layouts.footbar')
-<script>
-    $('.nav-item').removeClass('active');
-    $('.total_chart').html('{{$total_chart}}');
-</script>

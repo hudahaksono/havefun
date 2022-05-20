@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
 use App\Models\MessageModels;
+use Illuminate\Support\Facades\Session;
+use App\Models\Auth\UserModels;
 use Redirect, Response, DB;
 use Illuminate\Support\Carbon;
 
@@ -15,34 +17,51 @@ class FrontController extends Controller
     {
         $banner = DB::table('tmst_banner')->get();
         $total_chart = DB::table('ttrx_chart')
-                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
-                    ->wherenull('ttrx_order.status')
-                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
-                    ->count();
+            ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+            ->wherenull('ttrx_order.status')
+            ->where([['ttrx_chart.user_at', Session('sess_nama')]])
+            ->count();
 
-        return view('front.index', compact('banner','total_chart'));
+        return view('front.index', compact('banner', 'total_chart'));
     }
 
     public function index_about()
     {
         $total_chart = DB::table('ttrx_chart')
-                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
-                    ->wherenull('ttrx_order.status')
-                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
-                    ->count();
-                    
+            ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+            ->wherenull('ttrx_order.status')
+            ->where([['ttrx_chart.user_at', Session('sess_nama')]])
+            ->count();
+
         return view('front.about', compact('total_chart'));
     }
 
     public function index_profil()
     {
         $total_chart = DB::table('ttrx_chart')
-                    ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
-                    ->wherenull('ttrx_order.status')
-                    ->where([['ttrx_chart.user_at',Session('sess_nama')]])
-                    ->count();
-                    
+            ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+            ->wherenull('ttrx_order.status')
+            ->where([['ttrx_chart.user_at', Session('sess_nama')]])
+            ->count();
+
         return view('front.profile', compact('total_chart'));
+    }
+
+    public function ubah_password()
+    {
+        $total_chart = DB::table('ttrx_chart')
+            ->leftjoin('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
+            ->wherenull('ttrx_order.status')
+            ->where([['ttrx_chart.user_at', Session('sess_nama')]])
+            ->count();
+
+        return view('front.ubah-password', compact('total_chart'));
+    }
+
+    public function update_password()
+    {
+        $id = Session::get('email');
+        $data = UserModels::where($id)->first();
     }
 
     public function store(Request $request)

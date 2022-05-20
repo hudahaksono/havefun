@@ -13,11 +13,11 @@
                                 @foreach($data as $produk)
                                 <p class="d-flex">
                                     @if($produk->status_product==0)
-                                        <span>Produk</span>
+                                    <span>Produk</span>
                                     @else
-                                        <span>Tambahan Produk</span>
+                                    <span>Tambahan Produk</span>
                                     @endif
-                                    
+
                                     <span>{{$produk->nama}}</span>
                                     <span style="color:green">Rp. {{number_format($produk->qty * $produk->harga,0,",",".")}}</span>
                                     <input type="hidden" value="{{$total = $total + ($produk->qty * $produk->harga)}}">
@@ -47,7 +47,7 @@
                                 <p class="d-flex total-price">
                                     <span>Grand Total</span>
                                     <span>&nbsp;</span>
-                                    <span style="font-weight:bold">Rp.  {{number_format($total,0,",",".")}}</span>
+                                    <span style="font-weight:bold">Rp. {{number_format($total,0,",",".")}}</span>
                                 </p>
                                 <!-- <p><a href="#" class="btn btn-primary py-3 px-4"><i class="fa-solid fa-dollar-sign"></i> Payment</a></p> -->
                             </div>
@@ -97,7 +97,7 @@
 @include('layouts.footbar')
 <script>
     var date = new Date();
-    var currentDate = date.toISOString().substring(0,10);
+    var currentDate = date.toISOString().substring(0, 10);
     document.getElementById('tgl_acara').value = currentDate;
 
     function numberWithCommasdetail(x) {
@@ -108,30 +108,32 @@
         var total = 0;
         var text_send = '';
         $.ajax({
-                url: "{{route('api.fr.payment.list')}}",
-                type: 'GET',
-                data: {no_order:no_order},
-                success: function (response) {
-                    $.each(response, function (key, value) {
-                        if(value.status_product == 0){
-                            status_produk = '- Produk'
-                        }else{
-                            status_produk = '- Tambahan Produk'
-                        }
-                        nama = value.nama;
-                        harga = value.harga * value.qty;
-                        total = total + (value.harga*value.qty);
-                        text = status_produk + ': ' + nama + ' Rp. ' + numberWithCommasdetail(harga) + "%0a";
-                        text_send = text_send + text;
-                        no_order = value.no_order;
-                        // alert(text_send);
-                    });
-                    var text_total = 'Grand Total : *Rp. ' + numberWithCommasdetail(total) +',-*';
-                    var url = "https://wa.me/+6283874722798?text=" + 'Pesanan Saya No : *' + no_order + '*%0a' + text_send + text_total;
-                    window.open(url, '_blank').focus();
-                }
+            url: "{{route('api.fr.payment.list')}}",
+            type: 'GET',
+            data: {
+                no_order: no_order
+            },
+            success: function(response) {
+                $.each(response, function(key, value) {
+                    if (value.status_product == 0) {
+                        status_produk = '- Produk'
+                    } else {
+                        status_produk = '- Tambahan Produk'
+                    }
+                    nama = value.nama;
+                    harga = value.harga * value.qty;
+                    total = total + (value.harga * value.qty);
+                    text = status_produk + ': ' + nama + ' Rp. ' + numberWithCommasdetail(harga) + "%0a";
+                    text_send = text_send + text;
+                    no_order = value.no_order;
+                    // alert(text_send);
+                });
+                var text_total = 'Grand Total : *Rp. ' + numberWithCommasdetail(total) + ',-*';
+                var url = "https://wa.me/+6283874722798?text=" + 'Pesanan Saya No : *' + no_order + '*%0a' + text_send + text_total;
+                window.open(url, '_blank').focus();
+            }
 
-            });
+        });
 
         // name = "ludi";
         // phone = "o811";
@@ -147,17 +149,17 @@
     }
 
     $('.total_chart').html('{{$total_chart}}');
-    
+
     $('#konsultasi_wa').click(function(event) {
-        if($('#alamat_acara').val().length==0){
+        if ($('#alamat_acara').val().length == 0) {
             swal('Peringatan!', 'Alamat belum di isi !!! ', {
-                                icon: 'warning',
-                                buttons: {
-                                    confirm: {
-                                        className: 'btn btn-info'
-                                    }
-                                }
-                            });
+                icon: 'warning',
+                buttons: {
+                    confirm: {
+                        className: 'btn btn-info'
+                    }
+                }
+            });
             return false;
         }
         no_order = $('#no_order').val();
@@ -166,15 +168,15 @@
 
     $(document).ready(function() {
         $('#lanjut_pembayaran').click(function(event) {
-            if($('#alamat_acara').val().length==0){
+            if ($('#alamat_acara').val().length == 0) {
                 swal('Peringatan!', 'Alamat belum di isi !!! ', {
-                                    icon: 'warning',
-                                    buttons: {
-                                        confirm: {
-                                            className: 'btn btn-info'
-                                        }
-                                    }
-                                });
+                    icon: 'warning',
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-info'
+                        }
+                    }
+                });
                 return false;
             }
             swal({
@@ -204,7 +206,7 @@
                                 var message = response["message"];
                                 var no_order = response["no_order"];
                             }
-                            
+
                             // url = "/payment?no_order=" + no_order;
                             url = "/myorder";
                             if ($.trim(flag) == "true") {
@@ -217,7 +219,7 @@
                                         }
                                     }
                                 });
-                            }else{
+                            } else {
                                 swal('Peringatan!', message, {
                                     icon: 'warning',
                                     buttons: {
@@ -233,7 +235,7 @@
                     swal.close();
                 }
             });
-            
+
         });
     });
 </script>

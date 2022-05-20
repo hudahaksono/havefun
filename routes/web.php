@@ -57,6 +57,8 @@ Route::get('/transfer', function () {
 
 Route::get('/front-profile', 'Front\FrontController@index_profil');
 
+Route::get('/ubah-password', 'Front\FrontController@ubah_password');
+
 Route::get('/myorder', 'Front\OrderController@index')->name('f-myorder');
 
 //### Back Web ###//
