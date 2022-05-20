@@ -78,13 +78,11 @@
                                 </div>
                                 <div class="col-md-12 text-center">
                                     <div class="form-group">
-                                        <!-- <button class="btn btn-primary" id="konsultasi_wa"><i class="fa-brands fa-whatsapp"></i>&nbsp; Konsultasi Product Dengan Admin
-                                        </button> -->
                                         <a href="javascript:void(0)" id="konsultasi_wa" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> Lanjut Ke Pembayaran</a>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <a href="javascript:void(0)" id="lanjut_pembayaran" class="btn btn-primary"><i class="fa-solid fa-dollar-sign"></i> Lanjut Ke Pembayaran</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </form>
                         </div>

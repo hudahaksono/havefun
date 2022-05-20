@@ -52,8 +52,10 @@ class ProdukController extends Controller
         // $session_user = Session('sess_nama');
         // dd($session_user);
         $data_cek = DB::table('ttrx_chart')
-                    ->join('ttrx_order', 'ttrx_order.id_chart', '=', 'ttrx_chart.id')
-                    ->where([['ttrx_chart.user_at',$request->session_nama],['ttrx_chart.id_product',$request->id],['ttrx_order.status','<',3]])
+                    ->leftjoin('ttrx_order', 'ttrx_chart.id', '=', 'ttrx_order.id_chart')
+                    // ->wherenull('ttrx_order.no_order')
+                    ->select('ttrx_chart.id','ttrx_order.no_order')
+                    ->where([['ttrx_chart.user_at',$request->session_nama],['ttrx_chart.id_product',$request->id],['ttrx_order.no_order',null]])
                     ->count();
         if($data_cek>0){
             $msg = 'Produk sudah ada di chart !';

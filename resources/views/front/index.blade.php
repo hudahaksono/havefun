@@ -222,7 +222,23 @@
             </div>
         </div>
         <div class="row">
+            @foreach ($top_product as $prod)
             <div class="col-md-3">
+                <div class="menu-entry">
+                    <a href="#" class="img" style="background-image: url(produk/{{$prod->file_name}});"></a>
+                    <div class="text text-center pt-4">
+                        <input type="hidden" id="detail_id_{{$prod->id_product}}" value="{{$prod->id_product}}">
+                        <input type="hidden" id="detail_sess_id_{{$prod->id_product}}" name="detail_sess_id" value="{{Session('sess_id')}}">
+                        <input type="hidden" id="detail_sess_nama_{{$prod->id_product}}" value="{{Session('sess_nama')}}">
+                        <h3><a href="#">{{$prod->nama}}</a></h3>
+                        <p>{{$prod->keterangan}}</p>
+                        <p class="price"><span>Rp. {{ number_format($prod->harga) }}</span></p>
+                        <p><a href="javascript:void(0)" id="btn_chart_{{$prod->id_product}}" onclick="add_chart({{$prod->id_product}})" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            <!-- <div class="col-md-3">
                 <div class="menu-entry">
                     <a href="#" class="img" style="background-image: url(images/savana/savana1.jpg);"></a>
                     <div class="text text-center pt-4">
@@ -265,42 +281,7 @@
                         <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="ftco-gallery">
-    <div class="container-wrap">
-        <div class="row no-gutters">
-            <div class="col-md-3 ftco-animate">
-                <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-1.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-2.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-3.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-4.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
@@ -434,6 +415,66 @@
 @include('layouts.footbar')
 <script>
     $('.total_chart').html('{{$total_chart}}');
+
+    function add_chart(id_product) {
+        id_sess_nama = '#detail_sess_nama_' + id_product;
+        qty_product = 1;
+        session_nama = "{{Session('sess_nama')}}";
+
+        if ($(id_sess_nama).val().length == 0) {
+            window.location = "{{route('login-customer')}}";
+        } else {
+
+            $.ajax({
+                type: "post",
+                url: "{{route('api.fr.produk.store.chart')}}",
+                data: {
+                    id: id_product,
+                    qty: qty_product,
+                    session_nama: session_nama
+                },
+                success: function(response) {
+                    for (var key in response) {
+                        var flag = response["success"];
+                        var message = response["message"];
+                    }
+
+                    if ($.trim(flag) == "true") {
+                        swal('Success!', message, {
+                            icon: 'success',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-success'
+                                }
+                            }
+                        });
+                        window.location = "{{route('f-chart')}}";
+                    } else {
+                        swal('Peringatan!', message, {
+                            icon: 'warning',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-info'
+                                }
+                            }
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var errorMessage = xhr.status + ": " + xhr.statusText;
+                    swal('Error!', errorMessage, {
+                        icon: 'danger',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-danger'
+                            }
+                        }
+                    });
+                },
+            });
+        }
+    }
+
     $(document).ready(function() {
         $.ajaxSetup({
             headers: {
@@ -630,6 +671,63 @@
                         } else {
                             swal('Peringatan!', message, {
                                 icon: 'info',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-info'
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = xhr.status + ": " + xhr.statusText;
+                        swal('Error!', errorMessage, {
+                            icon: 'danger',
+                            buttons: {
+                                confirm: {
+                                    className: 'btn btn-danger'
+                                }
+                            }
+                        });
+                    },
+                });
+            }
+        });
+
+        $('#btn_chart').click(function(event) {
+            if ($('#detail_sess_nama').val().length == 0) {
+                window.location = "{{route('login-customer')}}";
+            } else {
+                id_product = $('#detail_id').val();
+                qty_product = 1;
+                session_nama = $('#detail_sess_nama').val();
+                $.ajax({
+                    type: "post",
+                    url: "{{route('api.fr.produk.store.chart')}}",
+                    data: {
+                        id: id_product,
+                        qty: qty_product,
+                        session_nama: session_nama
+                    },
+                    success: function(response) {
+                        for (var key in response) {
+                            var flag = response["success"];
+                            var message = response["message"];
+                        }
+
+                        if ($.trim(flag) == "true") {
+                            swal('Success!', message, {
+                                icon: 'success',
+                                buttons: {
+                                    confirm: {
+                                        className: 'btn btn-success'
+                                    }
+                                }
+                            });
+                            window.location = "{{route('f-chart')}}";
+                        } else {
+                            swal('Peringatan!', message, {
+                                icon: 'warning',
                                 buttons: {
                                     confirm: {
                                         className: 'btn btn-info'

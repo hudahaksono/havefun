@@ -23,7 +23,7 @@
                             
                         </div>
                     </div>
-                    <div class="col-md-12 d-flex justify-content-center">
+                    <div class="col-md-12">
                         <div class="tab-content ftco-animate" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="1" role="tabpanel" aria-labelledby="tab-1">
                                 <div class="row" id="list-1">
@@ -40,7 +40,7 @@
 
                                 </div>
                             </div>
-                            <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                            <!-- <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                                 <div class="row">
                                     <div class="col-md-4 text-center">
                                         <div class="menu-wrap">
@@ -76,7 +76,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,12 @@
 </section>
 
 <section class="ftco-section">
-    <div id="product_detail" class="container">
+    <div id="product_detail" class="container" style="display:none;">
+        <div class="row">
+            <div class="col-lg-6 mb-5 ftco-animate">
+                <a href="javascript:void(0)" id="btn_back" class="btn btn-primary py-3 px-5"><i class="fa-solid fa-arrow-left"></i> Back</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-6 mb-5 ftco-animate">
                 <div class="row" id="list_gambar">
@@ -184,7 +189,7 @@
     $('.nav-item').removeClass('active');
     $('#nav-paket').addClass('active');
     $('.total_chart').html('{{$total_chart}}');
-    
+
     $('#btn_detail').click(function() {
         $('#product').hide('slow');
         $('#product_detail').show('slow');
@@ -215,7 +220,7 @@
         var kategorti_first = '#tab-1';
         var tab_first = '#1';
         // alert(kategorti_first);
-        produk(1); 
+        produk('{{$id_kategori_first}}'); 
 
         $('a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
             var target = $(e.target).attr("href") // activated tab
@@ -358,6 +363,11 @@
                     },
                 });
             }
+        });
+
+        $('#btn_back').click(function(event) {
+            $('#product').show('slow');
+            $('#product_detail').hide();
         });
 
     });

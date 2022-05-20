@@ -25,7 +25,7 @@
                             <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Custom Wedding Decoration</a> -->
                         </div>
                     </div>
-                    <div class="col-md-12 d-flex justify-content-center">
+                    <div class="col-md-12">
                         <div class="tab-content ftco-animate" id="v-pills-tabContent">
                             @foreach ($kategori as $kat)
                             <div class="tab-pane fade show" id="{{ $kat->id }}" role="tabpanel" aria-labelledby="tab-{{ $kat->id }}">
@@ -34,7 +34,45 @@
                                 </div>
                             </div>
                             @endforeach
-                            <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                            <!-- <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana1.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Lite</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 5.000.000</span></p>
+                                                <p><a href="#" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana2.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Medium</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 7.500.000</span></p>
+                                                <p><a href="#" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana3.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Stepa</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 10.000.000</span></p>
+                                                <p><a href="#" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <!-- <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
                                 <div class="row">
                                     <div class="col-md-4 text-center">
                                         <div class="menu-wrap">
@@ -71,6 +109,138 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana1.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Lite</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 5.000.000</span></p>
+                                                <p><a href="#" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana2.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Medium</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 7.500.000</span></p>
+                                                <p><a href="#" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana3.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Stepa</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 10.000.000</span></p>
+                                                <p><a href="#" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana1.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Lite</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 5.000.000</span></p>
+                                                <p><a href="#" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana2.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Medium</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 7.500.000</span></p>
+                                                <p><a href="#" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana3.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Stepa</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 10.000.000</span></p>
+                                                <p><a href="#" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana1.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Lite</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 5.000.000</span></p>
+                                                <p><a href="#" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana2.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Medium</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 7.500.000</span></p>
+                                                <p><a href="#" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana3.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Stepa</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. 10.000.000</span></p>
+                                                <p><a href="javascript:void(0)" class="btn btn-primary btn-outline-primary">View Detail</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <div class="menu-wrap">
+                                            <a href="#" class="menu-img img mb-4" style="background-image: url(images/savana/savana1.jpg);"></a>
+                                            <div class="text">
+                                                <h3><a href="#">Custom Your Models</a></h3>
+                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                                                <p class="price"><span>Rp. ?</span></p>
+                                                <p>
+                                                    <button id="#btn_detail" type="button" class="btn btn-primary btn-outline-primary">View Detail</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -81,6 +251,11 @@
 
 <section class="ftco-section">
     <div id="product_detail" class="container" style="display: none;">
+        <div class="row">
+            <div class="col-lg-6 mb-5 ftco-animate">
+                <a href="javascript:void(0)" id="btn_back" class="btn btn-primary py-3 px-5"><i class="fa-solid fa-arrow-left"></i> Back</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-6 mb-5 ftco-animate">
                 <div class="row" id="list_gambar">
@@ -271,7 +446,6 @@
                     },
                 });
             }
-
         });
 
         $('#btn_order').click(function(event) {
@@ -333,6 +507,11 @@
                     },
                 });
             }
+        });
+
+        $('#btn_back').click(function(event) {
+            $('#product').show('slow');
+            $('#product_detail').hide();
         });
 
     });

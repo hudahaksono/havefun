@@ -104,41 +104,6 @@
     </div>
 </section>
 
-<section class="ftco-gallery">
-    <div class="container-wrap">
-        <div class="row no-gutters">
-            <div class="col-md-3 ftco-animate">
-                <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-1.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-2.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-3.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 ftco-animate">
-                <a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-4.jpg);">
-                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                        <span class="icon-search"></span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="ftco-section img" id="ftco-testimony" style="background-image: url(images/bg_1.jpg);" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
