@@ -538,7 +538,7 @@
                 gambar_length = gambar_array.length;
                 $('#list_gambar').empty();
                 for (var i = 0; i < gambar_length; i++) {
-                    $('#list_gambar').append('<div class="col-md-6"><a href="images/savana/savana1.jpg" class="image-popup"><img src="produk/' + gambar_array[i] + '" class="img-fluid" alt="Colorlib Template"></a></div>');
+                    $('#list_gambar').append('<div style="padding:20px" class="col-md-6"><a href="images/savana/savana1.jpg" class="image-popup"><img src="produk/' + gambar_array[i] + '" class="img-fluid" alt="Colorlib Template"></a></div>');
                 }
             }
         });

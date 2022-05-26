@@ -9,7 +9,7 @@
                 <br>
                 <h2 class="mb-4">Savanna Decoration</h2>
                 <!-- <p style="color:black;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
-                <p><a href="/product" class="btn btn-primary p-3 px-xl-4 py-xl-3">View Product</a></p>
+                <p><a href="/paket" class="btn btn-primary p-3 px-xl-4 py-xl-3">Lihat Paket Dekorasi</a></p>
             </div>
         </div>
     </div>
