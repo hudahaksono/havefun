@@ -31,7 +31,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                
+
                                             </tr>
                                         </tbody>
                                     </table>
@@ -61,14 +61,20 @@
                                         <table style="width:100%" border="1">
                                             <tr>
                                                 <td style="width: 15%;">Nama</td>
-                                                <td style="width: 15%;"><font id="txt_nama"></font></td>
+                                                <td style="width: 15%;">
+                                                    <font id="txt_nama"></font>
+                                                </td>
                                                 <td style="width: 40%;"></td>
                                                 <td style="width: 10%;">Tanggal Order</td>
-                                                <td style="width: 20%;"><font id="txt_tgl"></font></td>
+                                                <td style="width: 20%;">
+                                                    <font id="txt_tgl"></font>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 15%;">No HP</td>
-                                                <td style="width: 15%;"><font id="txt_nohp"></font></td>
+                                                <td style="width: 15%;">
+                                                    <font id="txt_nohp"></font>
+                                                </td>
                                                 <td style="width: 40%;"></td>
                                                 <td style="width: 10%;">Product</td>
                                                 <td style="width: 20%;"></td>
@@ -91,13 +97,13 @@
                             <input type="hidden" id="f_status" name="f_status">
                             <input type="hidden" id="no_order" name="no_order">
                             <input type="hidden" id="sess_nama" name="sess_nama" value="{{Session('sess_nama')}}">
-                                <input type="hidden" id="sess_id" name="sess_id" value="{{Session('sess_id')}}">
+                            <input type="hidden" id="sess_id" name="sess_id" value="{{Session('sess_id')}}">
                             <div class="col-md-12 mb-3">
                                 <button id="tambah_data" class="btn btn-info"><i class="fas fa-plus"></i> Tambah Produk</button>
                                 <button id="tambah_data_paket" class="btn btn-info"><i class="fas fa-plus"></i> Tambah Paket</button>
                             </div>
                             <div class="col-md-12">
-                            <!-- <div class="card-body">
+                                <!-- <div class="card-body">
                                 
                                 <div class="col-md-12"> -->
                                 <table id="tbl_list_dtl" class="table table-striped table-hover dataTable no-footer" style="width:100%" role="grid">
@@ -419,6 +425,24 @@
 <script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
 <!-- <script src="{{ asset('calendar/main.js') }}"></script> -->
 <script>
+    $("#drop-dashboard").removeClass('active');
+    $("#drop-banner").removeClass('active');
+    $("#drop-master").removeClass("active");
+
+    $("#btn-master-user").removeClass("font-weight-bold");
+    $("#btn-master-access").removeClass("font-weight-bold");
+    $("#btn-master-kategori").removeClass("font-weight-bold");
+    $("#btn-master-kategori-paket").removeClass("font-weight-bold");
+    $("#btn-master-product").removeClass("font-weight-bold");
+    $("#btn-master-paket").removeClass("font-weight-bold");
+
+    $("#drop-order").addClass("active");
+    $("#drop-schedule").removeClass('active');
+    $("#drop-payment").removeClass("active");
+    $("#drop-invoice-os").removeClass('active');
+    $("#drop-invoice-ls").removeClass("active");
+    $("#drop-message").removeClass('active');
+
     $(document).ready(function() {
         $.ajaxSetup({
             headers: {
@@ -490,7 +514,8 @@
                     }, // 3
                     {
                         data: "tgl_order",
-                        name: "tgl_order", render: function (d) {
+                        name: "tgl_order",
+                        render: function(d) {
                             return moment(d).format("DD-MM-YYYY");
                         },
                     }, // 3
@@ -552,7 +577,9 @@
                 ajax: {
                     url: "{{route('api.order.listdtl')}}",
                     type: "GET",
-                    data: {no_order:no_order},
+                    data: {
+                        no_order: no_order
+                    },
                 },
                 columns: [{
                         data: "id",
@@ -573,7 +600,8 @@
                     }, // 3
                     {
                         data: "tgl_order",
-                        name: "tgl_order", render: function (d) {
+                        name: "tgl_order",
+                        render: function(d) {
                             return moment(d).format("DD-MM-YYYY");
                         },
                         visible: false
@@ -595,7 +623,8 @@
                     }, // 4
                     {
                         data: "harga",
-                        name: "harga", render: function (d) {
+                        name: "harga",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                     }, // 3
@@ -634,9 +663,9 @@
         }
 
         function list_data_barang(ket) {
-            if(ket=='B'){
+            if (ket == 'B') {
                 url = "{{route('api.order.list.barang')}}";
-            }else{
+            } else {
                 url = "{{route('api.order.list.paket')}}";
             }
             $("#datatable_list_barang").DataTable({
@@ -647,37 +676,69 @@
                     url: url,
                     type: "GET",
                 },
-                columns: [
-                    { data: "id", name: "id", visible: false }, // 0
-                    { data: "DT_RowIndex", name: "DT_RowIndex", orderable: false, searchable: false }, // 1
+                columns: [{
+                        data: "id",
+                        name: "id",
+                        visible: false
+                    }, // 0
+                    {
+                        data: "DT_RowIndex",
+                        name: "DT_RowIndex",
+                        orderable: false,
+                        searchable: false
+                    }, // 1
                     // { data: "kode", name: "kode", visible: true }, // 2
-                    { data: "nama", name: "nama", visible: true }, // 3
-                    { data: "kategori", name: "kategori", visible: true }, // 3
-                    { data: "harga", name: "harga", render: function (d) {
+                    {
+                        data: "nama",
+                        name: "nama",
+                        visible: true
+                    }, // 3
+                    {
+                        data: "kategori",
+                        name: "kategori",
+                        visible: true
+                    }, // 3
+                    {
+                        data: "harga",
+                        name: "harga",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                     }, // 3
-                    { data: "keterangan", name: "keterangan", visible: true }, // 4                
+                    {
+                        data: "keterangan",
+                        name: "keterangan",
+                        visible: true
+                    }, // 4                
                 ],
                 //      aligment left, right, center row dan coloumn
-                order: [["0", "desc"]],
-                columnDefs: [
-                    { className: "text-center", targets: [0, 1, 2, 3] },                
+                order: [
+                    ["0", "desc"]
                 ],
+                columnDefs: [{
+                    className: "text-center",
+                    targets: [0, 1, 2, 3]
+                }, ],
                 bAutoWidth: false,
                 responsive: true,
             });
             $("#datatable_list_barang").css("cursor", "pointer");
         }
 
-        function proses_po(no_order,f_status) {
+        function proses_po(no_order, f_status) {
             sess_nama = $('#sess_nama').val();
             sess_id = $('#sess_id').val();
             diskon = $('#diskon').val();
             $.ajax({
                 type: "post",
                 url: "{{route('api.order.proses')}}",
-                data: {no_order:no_order, f_status:f_status, sess_nama:sess_nama, sess_id:sess_id, diskon:diskon},
+                data: {
+                    no_order: no_order,
+                    f_status: f_status,
+                    sess_nama: sess_nama,
+                    sess_id: sess_id,
+                    diskon: diskon
+                },
                 success: function(response) {
                     for (var key in response) {
                         var flag = response["success"];
@@ -732,21 +793,22 @@
             });
         }
 
-        function get_total(no_order)
-        {
+        function get_total(no_order) {
             $.ajax({
                 type: "get",
                 url: "{{route('api.order.total')}}",
-                data: {no_order:no_order},
+                data: {
+                    no_order: no_order
+                },
                 success: function(response) {
                     total = 'Rp. ' + currencyFormat(response.total);
                     jadwal = response.jadwal;
                     $('#total_hide').val(amountToFloat(response.total));
                     $('#total').html(total);
-                    if(jadwal>0){
-                        $('#schedule_meet').attr("hidden",true);
-                    }else{
-                        $('#schedule_meet').attr("hidden",false);
+                    if (jadwal > 0) {
+                        $('#schedule_meet').attr("hidden", true);
+                    } else {
+                        $('#schedule_meet').attr("hidden", false);
                     }
                 },
                 error: function(xhr, status, error) {
@@ -781,11 +843,11 @@
             email = data['email'];
             f_status = data['f_status'];
 
-            if(f_status>1){
-                $('#tambah_data').attr("hidden",true);
+            if (f_status > 1) {
+                $('#tambah_data').attr("hidden", true);
             }
             // $('#sysid').val(id);
-            $('.text_title').html('Order No : '+no_order);
+            $('.text_title').html('Order No : ' + no_order);
             $('#txt_nama').html(nama);
             $('#txt_tgl').html(tgl_order);
             $('#txt_nohp').html(no_tlp);
@@ -804,7 +866,7 @@
         });
 
         $('#save_button').click(function() {
-            proses_po($('#no_order').val(),$('#f_status').val());
+            proses_po($('#no_order').val(), $('#f_status').val());
         });
 
         $('#back_button').click(function() {
@@ -850,18 +912,17 @@
             $('#modal_browse_barang').appendTo("body"); //Agar posisi modal paling awal
         });
 
-        $("#datatable_list_barang tbody").on("click", "tr", function () {
+        $("#datatable_list_barang tbody").on("click", "tr", function() {
             var table = $("#datatable_list_barang").DataTable();
             var data = table.row(this).data();
             var row = $(this).closest("tr");
 
             if ($(this).hasClass('selected')) {
                 $(this).removeClass('selected');
-            }
-            else {
+            } else {
                 table.$('tr.selected').removeClass('selected');
                 $(this).addClass('selected');
-            }        
+            }
         });
 
         $('.btn_select_barang').click(function(event) {
@@ -873,14 +934,14 @@
             var id_barang = data["id"];
             var nama_barang = data["nama"];
 
-            if(ket == 'B'){
+            if (ket == 'B') {
                 $('#barang_id').val(id_barang);
                 $('#barang').val(nama_barang);
-            }else{
+            } else {
                 $('#barang_id_p').val(id_barang);
                 $('#barang_p').val(nama_barang);
             }
-            
+
         });
 
         $('#simpan').click(function(event) {
@@ -1157,11 +1218,11 @@
 
         $('#schedule_button').click(function(event) {
             var date = new Date();
-            var currentDate = date.toISOString().substring(0,10);
+            var currentDate = date.toISOString().substring(0, 10);
             document.getElementById('tgl_dari').value = currentDate;
             document.getElementById('tgl_sampai').value = currentDate;
             // no_order = $('#no_order').val();
-            
+
             // $('#no_order_s').val(no_order);
             $('#tempat').val('');
             // $('#id_order').val(0);
@@ -1188,7 +1249,7 @@
                     }
 
                     if ($.trim(flag) == "true") {
-                        
+
                         list_data();
                         swal('Success!', message, {
                             icon: 'success',
@@ -1240,19 +1301,19 @@
         //     alert(total);
         // });
 
-        $('#diskon').keypress(function (e) {
-            if(e.which == 13){
+        $('#diskon').keypress(function(e) {
+            if (e.which == 13) {
                 total_awal = amountToFloat($('#total_hide').val());
                 diskon = amountToFloat($(this).val());
-                if(diskon>total_awal){
+                if (diskon > total_awal) {
                     swal('Peringatan!', 'Diskon tidak boleh lebih besar dari Total Bayar !!!', {
-                            icon: 'info',
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-info'
-                                }
+                        icon: 'info',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-info'
                             }
-                        });
+                        }
+                    });
                 }
                 total = total_awal - diskon;
                 // $('#total_hide').val(amountToFloat(response.total));

@@ -52,7 +52,22 @@
 
 <script>
     $("#drop-dashboard").removeClass('active');
-    $("#drop-invoice-os").addClass("active");
+    $("#drop-banner").removeClass('active');
+    $("#drop-master").removeClass("active");
+
+    $("#btn-master-user").removeClass("font-weight-bold");
+    $("#btn-master-access").removeClass("font-weight-bold");
+    $("#btn-master-kategori").removeClass("font-weight-bold");
+    $("#btn-master-kategori-paket").removeClass("font-weight-bold");
+    $("#btn-master-product").removeClass("font-weight-bold");
+    $("#btn-master-paket").removeClass("font-weight-bold");
+
+    $("#drop-order").removeClass("active");
+    $("#drop-schedule").removeClass('active');
+    $("#drop-payment").removeClass("active");
+    $("#drop-invoice-os").addClass('active');
+    $("#drop-invoice-ls").removeClass("active");
+    $("#drop-message").removeClass('active');
 
     $(document).ready(function() {
         $.ajaxSetup({
@@ -99,7 +114,8 @@
                     }, // 3
                     {
                         data: "tgl_payment",
-                        name: "tgl_payment", render: function (d) {
+                        name: "tgl_payment",
+                        render: function(d) {
                             return moment(d).format("DD-MM-YYYY");
                         },
                     }, // 3
@@ -110,21 +126,24 @@
                     }, // 4
                     {
                         data: "total_payment",
-                        name: "total_payment", render: function (d) {
+                        name: "total_payment",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                         visible: true
                     }, // 4
                     {
                         data: "actual_payment",
-                        name: "actual_payment", render: function (d) {
+                        name: "actual_payment",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                         visible: false
                     }, // 4
                     {
                         data: "os_payment",
-                        name: "os_payment", render: function (d) {
+                        name: "os_payment",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                         visible: true

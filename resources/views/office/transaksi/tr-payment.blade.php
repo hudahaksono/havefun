@@ -5,7 +5,7 @@
 <!-- <link rel="stylesheet" href="{{ asset('calendar/main.css') }}" /> -->
 <!-- Main Content -->
 <div class="main-content">
-	<section class="section">
+    <section class="section">
         <div id="list_data" class="row">
             <div class="col-12 col-sm-12 col-lg-12">
                 <div class="card">
@@ -32,7 +32,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                
+
                                             </tr>
                                         </tbody>
                                     </table>
@@ -106,7 +106,25 @@
 <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
 <script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
-	$(document).ready(function() {
+    $("#drop-dashboard").removeClass('active');
+    $("#drop-banner").removeClass('active');
+    $("#drop-master").removeClass("active");
+
+    $("#btn-master-user").removeClass("font-weight-bold");
+    $("#btn-master-access").removeClass("font-weight-bold");
+    $("#btn-master-kategori").removeClass("font-weight-bold");
+    $("#btn-master-kategori-paket").removeClass("font-weight-bold");
+    $("#btn-master-product").removeClass("font-weight-bold");
+    $("#btn-master-paket").removeClass("font-weight-bold");
+
+    $("#drop-order").removeClass("active");
+    $("#drop-schedule").removeClass('active');
+    $("#drop-payment").addClass("active");
+    $("#drop-invoice-os").removeClass('active');
+    $("#drop-invoice-ls").removeClass("active");
+    $("#drop-message").removeClass('active');
+
+    $(document).ready(function() {
         $.ajaxSetup({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -151,7 +169,8 @@
                     }, // 3
                     {
                         data: "tgl_payment",
-                        name: "tgl_payment", render: function (d) {
+                        name: "tgl_payment",
+                        render: function(d) {
                             return moment(d).format("DD-MM-YYYY");
                         },
                     }, // 3
@@ -162,35 +181,40 @@
                     }, // 4
                     {
                         data: "total_payment",
-                        name: "total_payment", render: function (d) {
+                        name: "total_payment",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                         visible: true
                     }, // 4
                     {
                         data: "total_diskon",
-                        name: "total_diskon", render: function (d) {
+                        name: "total_diskon",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                         visible: true
                     }, // 4
                     {
                         data: "total_tagihan",
-                        name: "total_tagihan", render: function (d) {
+                        name: "total_tagihan",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                         visible: true
                     }, // 4
                     {
                         data: "actual_payment",
-                        name: "actual_payment", render: function (d) {
+                        name: "actual_payment",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                         visible: true
                     }, // 4
                     {
                         data: "os_payment",
-                        name: "os_payment", render: function (d) {
+                        name: "os_payment",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                         visible: true
@@ -242,7 +266,7 @@
             $('#total_payment').val(currencyFormat(total_tagihan));
             $('#actual_payment').val(0);
             $('.os_payment').val(os_payment);
-            $('#os_payment').html('Outstanding Payment : '+currencyFormat(os_payment));
+            $('#os_payment').html('Outstanding Payment : ' + currencyFormat(os_payment));
 
             $('#modal_input_payment').modal();
             $('#modal_input_payment').appendTo("body");
@@ -252,7 +276,7 @@
             os_payment = $('.os_payment').val();
             payment = $(this).val();
             total_os = parseFloat(os_payment) - parseFloat(payment);
-            $('#os_payment').html('Outstanding Payment : '+currencyFormat(total_os));
+            $('#os_payment').html('Outstanding Payment : ' + currencyFormat(total_os));
         });
 
         $('.btn_save').click(function(event) {
@@ -260,22 +284,26 @@
             actual_payment = parseFloat($('#actual_payment').val());
             os_payment = parseFloat($('.os_payment').val());
             no_order = $('#no_order').val();
-            
-            if(actual_payment > os_payment){
+
+            if (actual_payment > os_payment) {
                 swal('Peringatan!', 'Input payment lebih besar dari outstanding payment', {
-                            icon: 'info',
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-info'
-                                }
-                            }
-                        });
+                    icon: 'info',
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-info'
+                        }
+                    }
+                });
                 return false;
             }
             $.ajax({
                 type: "post",
                 url: "{{route('api.payment.store')}}",
-                data: {id_payment:id_payment, actual_payment:actual_payment,no_order:no_order},
+                data: {
+                    id_payment: id_payment,
+                    actual_payment: actual_payment,
+                    no_order: no_order
+                },
                 success: function(response) {
                     for (var key in response) {
                         var flag = response["success"];

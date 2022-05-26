@@ -134,6 +134,23 @@
 <script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('calendar/main.js') }}"></script>
 <script>
+    $("#drop-dashboard").removeClass('active');
+    $("#drop-banner").removeClass('active');
+    $("#drop-master").removeClass("active");
+
+    $("#btn-master-user").removeClass("font-weight-bold");
+    $("#btn-master-access").removeClass("font-weight-bold");
+    $("#btn-master-kategori").removeClass("font-weight-bold");
+    $("#btn-master-kategori-paket").removeClass("font-weight-bold");
+    $("#btn-master-product").removeClass("font-weight-bold");
+    $("#btn-master-paket").removeClass("font-weight-bold");
+
+    $("#drop-order").removeClass("active");
+    $("#drop-schedule").addClass('active');
+    $("#drop-payment").removeClass("active");
+    $("#drop-invoice-os").removeClass('active');
+    $("#drop-invoice-ls").removeClass("active");
+    $("#drop-message").removeClass('active');
     $(document).ready(function() {
         $.ajaxSetup({
             headers: {
@@ -141,229 +158,228 @@
             },
         });
 
-        
+
 
     });
 
-        function form_state(state) {
-            switch (state) {
-                case 'LOAD':
-                    $('#add_data').hide();
-                    $('#list_data').show();
-                    break;
-                case 'ADD_HDR':
-                    reset_input();
-                    $("#state").val("ADD");
-                    $('#title_input').html('Tambah Schedule');
-                    $('#add_data').show('slow');
-                    $('#list_data').hide('slow');
-                    break;
-                case 'EDIT_HDR':
-                    $("#state").val("EDIT");
-                    $('#title_input').html('Edit Schedule');
-                    $('#add_data').show('slow');
-                    $('#list_data').hide('slow');
-                    break;
-            }
+    function form_state(state) {
+        switch (state) {
+            case 'LOAD':
+                $('#add_data').hide();
+                $('#list_data').show();
+                break;
+            case 'ADD_HDR':
+                reset_input();
+                $("#state").val("ADD");
+                $('#title_input').html('Tambah Schedule');
+                $('#add_data').show('slow');
+                $('#list_data').hide('slow');
+                break;
+            case 'EDIT_HDR':
+                $("#state").val("EDIT");
+                $('#title_input').html('Edit Schedule');
+                $('#add_data').show('slow');
+                $('#list_data').hide('slow');
+                break;
         }
+    }
 
-        function reset_input() {
-            var date = new Date();
-            var currentDate = date.toISOString().substring(0,10);
-            document.getElementById('tgl_dari').value = currentDate;
-            document.getElementById('tgl_sampai').value = currentDate;
-            
-            $('#no_order').val('');
-            $('#tempat').val('');
-            $('#id_order').val(0);
-            // $('#tgl_sampai').val(moment().format('DD/MM/YYYY'));
-            $('#keterangan').val('');
-        }
+    function reset_input() {
+        var date = new Date();
+        var currentDate = date.toISOString().substring(0, 10);
+        document.getElementById('tgl_dari').value = currentDate;
+        document.getElementById('tgl_sampai').value = currentDate;
 
-        function list_data(){
-            document.addEventListener('DOMContentLoaded', function() {
-                var calendarEl = document.getElementById('calendar');
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    headerToolbar: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-                    },
-                    // initialDate: '2020-09-12',
-                    navLinks: true, // can click day/week names to navigate views
-                    businessHours: true, // display business hours
-                    editable: true,
-                    selectable: true,
-                    events: "{{route('api.schedule.list')}}"
+        $('#no_order').val('');
+        $('#tempat').val('');
+        $('#id_order').val(0);
+        // $('#tgl_sampai').val(moment().format('DD/MM/YYYY'));
+        $('#keterangan').val('');
+    }
+
+    function list_data() {
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+                // initialDate: '2020-09-12',
+                navLinks: true, // can click day/week names to navigate views
+                businessHours: true, // display business hours
+                editable: true,
+                selectable: true,
+                events: "{{route('api.schedule.list')}}"
+            });
+
+            calendar.render();
+        });
+    }
+
+    function list_data_order() {
+        $.ajax({
+            type: "get",
+            url: "{{route('api.schedule.listorder')}}",
+            dataType: 'JSON',
+            success: function(response) {
+                // console.log(response.data);
+                $.each(response.data, function(key, value) {
+                    console.log(value[0]);
+
                 });
-
-                calendar.render();
-            });
-        }
-
-        function list_data_order() {
-            $.ajax({
-                type: "get",
-                url: "{{route('api.schedule.listorder')}}",
-                dataType:'JSON',
-                success: function(response) {
-                    // console.log(response.data);
-                    $.each(response.data, function (key, value) {
-                        console.log(value[0]);
-
-                    });
-                    // alert(response[2]);
-                    // for (var key in response) {
-                    //     // alert(response["draw"]);
-                    //     // var flag = response["success"];
-                    //     // var message = response["message"];
-                    // }
-                },
-                error: function(xhr, status, error) {
-                    var errorMessage = xhr.status + ": " + xhr.statusText;
-                    swal('Error!', errorMessage, {
-                        icon: 'danger',
-                        buttons: {
-                            confirm: {
-                                className: 'btn btn-danger'
-                            }
+                // alert(response[2]);
+                // for (var key in response) {
+                //     // alert(response["draw"]);
+                //     // var flag = response["success"];
+                //     // var message = response["message"];
+                // }
+            },
+            error: function(xhr, status, error) {
+                var errorMessage = xhr.status + ": " + xhr.statusText;
+                swal('Error!', errorMessage, {
+                    icon: 'danger',
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-danger'
                         }
-                    });
-                },
-            });
-            // $("#datatable_list_order").DataTable({
-            //     destroy: true,
-            //     processing: true,
-            //     serverSide: true,
-            //     ajax: {
-            //         url: "{{route('api.schedule.listorder')}}",
-            //         type: "GET",
-            //     },
-            //     columns: [
-            //         { data: "id", name: "id", visible: false }, // 0
-            //         { data: "DT_RowIndex", name: "DT_RowIndex", orderable: false, searchable: false }, // 1
-            //         // { data: "kode", name: "kode", visible: true }, // 2
-            //         { data: "no_order", name: "no_order", visible: true }, // 3
-            //         { data: "tgl_order", name: "tgl_order", render: function (d) {
-            //                 return moment(d).format('DD-MM-YYYY');
-            //             },
-            //         }, // 3
-            //         { data: "nama", name: "nama", visible: true }, // 4                
-            //     ],
-            //     //      aligment left, right, center row dan coloumn
-            //     order: [["0", "desc"]],
-            //     columnDefs: [
-            //         { className: "text-center", targets: [0, 1, 2, 3] },                
-            //     ],
-            //     bAutoWidth: false,
-            //     responsive: true,
-            // });
-            // $("#datatable_list_order").css("cursor", "pointer");
-        }
+                    }
+                });
+            },
+        });
+        // $("#datatable_list_order").DataTable({
+        //     destroy: true,
+        //     processing: true,
+        //     serverSide: true,
+        //     ajax: {
+        //         url: "{{route('api.schedule.listorder')}}",
+        //         type: "GET",
+        //     },
+        //     columns: [
+        //         { data: "id", name: "id", visible: false }, // 0
+        //         { data: "DT_RowIndex", name: "DT_RowIndex", orderable: false, searchable: false }, // 1
+        //         // { data: "kode", name: "kode", visible: true }, // 2
+        //         { data: "no_order", name: "no_order", visible: true }, // 3
+        //         { data: "tgl_order", name: "tgl_order", render: function (d) {
+        //                 return moment(d).format('DD-MM-YYYY');
+        //             },
+        //         }, // 3
+        //         { data: "nama", name: "nama", visible: true }, // 4                
+        //     ],
+        //     //      aligment left, right, center row dan coloumn
+        //     order: [["0", "desc"]],
+        //     columnDefs: [
+        //         { className: "text-center", targets: [0, 1, 2, 3] },                
+        //     ],
+        //     bAutoWidth: false,
+        //     responsive: true,
+        // });
+        // $("#datatable_list_order").css("cursor", "pointer");
+    }
 
-        form_state('LOAD');
-        list_data();
+    form_state('LOAD');
+    list_data();
+    list_data_order();
+
+    $('#btn_add_data').click(function(event) {
+        form_state('ADD_HDR');
+    });
+
+    $('#back,#batal').click(function() {
+        $('#list_data').show('slow');
+        $('#add_data').hide('slow');
+    });
+
+    $('#browse_order').click(function(event) {
         list_data_order();
+        $('#modal_browse_order').modal();
+        $('#modal_browse_order').appendTo("body");
+    });
 
-        $('#btn_add_data').click(function(event) {
-            form_state('ADD_HDR');
-        });
+    $("#datatable_list_order tbody").on("click", "tr", function() {
+        var table = $("#datatable_list_order").DataTable();
+        var data = table.row(this).data();
+        var row = $(this).closest("tr");
 
-        $('#back,#batal').click(function() {
-            $('#list_data').show('slow');
-            $('#add_data').hide('slow');
-        });
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        } else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    });
 
-        $('#browse_order').click(function(event) {
-            list_data_order();
-            $('#modal_browse_order').modal();
-            $('#modal_browse_order').appendTo("body"); 
-        });
+    $('.btn_select_order').click(function(event) {
+        var table = $("#datatable_list_order").DataTable();
+        var idx = table.cell(".selected", 0).index();
+        var data = table.row(idx.row).data();
 
-        $("#datatable_list_order tbody").on("click", "tr", function () {
-            var table = $("#datatable_list_order").DataTable();
-            var data = table.row(this).data();
-            var row = $(this).closest("tr");
+        var id_order = data["id"];
+        var no_order = data["no_order"];
+        $('#id_order').val(id_order);
+        $('#no_order').val(no_order);
+    });
 
-            if ($(this).hasClass('selected')) {
-                $(this).removeClass('selected');
-            }
-            else {
-                table.$('tr.selected').removeClass('selected');
-                $(this).addClass('selected');
-            }        
-        });
+    $('#save').click(function(event) {
+        $.ajax({
+            type: "post",
+            url: "{{route('api.schedule.store')}}",
+            data: $("#form_input").serialize(),
+            success: function(response) {
+                for (var key in response) {
+                    var flag = response["success"];
+                    var message = response["message"];
+                }
 
-        $('.btn_select_order').click(function(event) {
-            var table = $("#datatable_list_order").DataTable();
-            var idx = table.cell(".selected", 0).index();
-            var data = table.row(idx.row).data();
+                if ($.trim(flag) == "true") {
 
-            var id_order = data["id"];
-            var no_order = data["no_order"];
-            $('#id_order').val(id_order);
-            $('#no_order').val(no_order);
-        });
-
-        $('#save').click(function(event) {
-            $.ajax({
-                type: "post",
-                url: "{{route('api.schedule.store')}}",
-                data: $("#form_input").serialize(),
-                success: function(response) {
-                    for (var key in response) {
-                        var flag = response["success"];
-                        var message = response["message"];
-                    }
-
-                    if ($.trim(flag) == "true") {
-                        
-                        list_data();
-                        swal('Success!', message, {
-                            icon: 'success',
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-success'
-                                }
-                            }
-                        });
-
-                        $('#list_data').show('slow');
-                        $('#add_data').hide('slow');
-                    } else if ($.trim(message) == "true") {
-                        swal('Warning!', message, {
-                            icon: 'warning',
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-warning'
-                                }
-                            }
-                        });
-                    } else {
-                        swal('Peringatan!', message, {
-                            icon: 'info',
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-info'
-                                }
-                            }
-                        });
-                    }
-                },
-                error: function(xhr, status, error) {
-                    var errorMessage = xhr.status + ": " + xhr.statusText;
-                    swal('Error!', errorMessage, {
-                        icon: 'danger',
+                    list_data();
+                    swal('Success!', message, {
+                        icon: 'success',
                         buttons: {
                             confirm: {
-                                className: 'btn btn-danger'
+                                className: 'btn btn-success'
                             }
                         }
                     });
-                },
-            });
+
+                    $('#list_data').show('slow');
+                    $('#add_data').hide('slow');
+                } else if ($.trim(message) == "true") {
+                    swal('Warning!', message, {
+                        icon: 'warning',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-warning'
+                            }
+                        }
+                    });
+                } else {
+                    swal('Peringatan!', message, {
+                        icon: 'info',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-info'
+                            }
+                        }
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                var errorMessage = xhr.status + ": " + xhr.statusText;
+                swal('Error!', errorMessage, {
+                    icon: 'danger',
+                    buttons: {
+                        confirm: {
+                            className: 'btn btn-danger'
+                        }
+                    }
+                });
+            },
         });
-    
+    });
+
     // document.addEventListener('DOMContentLoaded', function() {
     //     var calendarEl = document.getElementById('calendar');
 

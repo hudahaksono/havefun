@@ -151,18 +151,18 @@
                         <li class="dropdown active" id="drop-dashboard">
                             <a href="/dashboard" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
                         </li>
-                        <li class="dropdown" id="drop-dashboard">
+                        <li class="dropdown" id="drop-banner">
                             <a href="/master-banner" class="nav-link"><i data-feather="star"></i><span>Banner</span></a>
                         </li>
                         <li class="dropdown" id="drop-master">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="database"></i><span>Master Data</span></a>
                             <ul class="dropdown-menu">
-                                <li id="master-user"><a class="nav-link" href="/master-user">Master User</a></li>
-                                <li id="master-access"><a class="nav-link" href="/master-akses">Master Access</a></li>
-                                <li id="master-kategori"><a class="nav-link" href="/master-kategori">Master Kategori</a></li>
-                                <li id="master-kategori-paket"><a class="nav-link" href="/master-kategori-paket">Master Kategori Paket</a></li>
-                                <li id="master-product"><a class="nav-link" href="/master-product">Master Product</a></li>
-                                <li id="master-paket"><a style="font-weight:bold" class="nav-link" href="/master-paket">Master Paket</a></li>
+                                <li id="master-user"><a id="btn-master-user" class="nav-link" href="/master-user">Master User</a></li>
+                                <li id="master-access"><a id="btn-master-access" class="nav-link" href="/master-akses">Master Access</a></li>
+                                <li id="master-kategori"><a id="btn-master-kategori" class="nav-link" href="/master-kategori">Master Kategori</a></li>
+                                <li id="master-kategori-paket"><a id="btn-master-kategori-paket" class="nav-link" href="/master-kategori-paket">Master Kategori Paket</a></li>
+                                <li id="master-product"><a id="btn-master-product" class="nav-link" href="/master-product">Master Product</a></li>
+                                <li id="master-paket"><a id="btn-master-paket" class="nav-link" href="/master-paket">Master Paket</a></li>
                                 <!-- <li id="master-banner"><a class="nav-link" href="/master-banner">Master Banner</a></li> -->
                             </ul>
                         </li>

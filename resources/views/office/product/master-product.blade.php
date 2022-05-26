@@ -206,7 +206,7 @@
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="col-md-12 text-right">
 									<div class="form-group">
 										<button style="color:white" type="submit" class="btn btn-info waves-effect waves-dark e_btn-upload" data-toggle="tooltip" title="Save">
@@ -231,7 +231,22 @@
 <script src="{{ asset('js/jquery.form.js') }}"></script>
 <script>
 	$("#drop-dashboard").removeClass('active');
+	$("#drop-banner").removeClass('active');
 	$("#drop-master").addClass("active");
+
+	$("#btn-master-user").removeClass("font-weight-bold");
+	$("#btn-master-access").removeClass("font-weight-bold");
+	$("#btn-master-kategori").removeClass("font-weight-bold");
+	$("#btn-master-kategori-paket").removeClass("font-weight-bold");
+	$("#btn-master-product").addClass("font-weight-bold");
+	$("#btn-master-paket").removeClass("font-weight-bold");
+
+	$("#drop-order").removeClass("active");
+	$("#drop-schedule").removeClass('active');
+	$("#drop-payment").removeClass("active");
+	$("#drop-invoice-os").removeClass('active');
+	$("#drop-invoice-ls").removeClass("active");
+	$("#drop-message").removeClass('active');
 
 	$(".btn-tambah").click(function() {
 		var html = $(".clone").html();
@@ -250,14 +265,14 @@
 		});
 
 		function currencyFormat(num, decimal = 0) {
-            //return parseFloat(num).toFixed(decimal).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-            return accounting.formatMoney(num, "", decimal, ",", ".");
-        }
+			//return parseFloat(num).toFixed(decimal).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+			return accounting.formatMoney(num, "", decimal, ",", ".");
+		}
 
-        function amountToFloat(amount) {
-            //return parseFloat(amount.toString().replace(/\s/g, "").replace(",", "."));
-            return parseFloat(accounting.unformat(amount));
-        }
+		function amountToFloat(amount) {
+			//return parseFloat(amount.toString().replace(/\s/g, "").replace(",", "."));
+			return parseFloat(accounting.unformat(amount));
+		}
 
 		function reset_input() {
 			$('#sysid').val('');
@@ -370,11 +385,12 @@
 						visible: true
 					}, // 9
 					{
-                        data: "harga",
-                        name: "harga", render: function (d) {
-                            return currencyFormat(d);
-                        },
-                    }, // 9
+						data: "harga",
+						name: "harga",
+						render: function(d) {
+							return currencyFormat(d);
+						},
+					}, // 9
 					{
 						data: "action",
 						name: "action",

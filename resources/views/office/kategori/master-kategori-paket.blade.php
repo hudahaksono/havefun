@@ -100,7 +100,22 @@
 <script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
     $("#drop-dashboard").removeClass('active');
+    $("#drop-banner").removeClass('active');
     $("#drop-master").addClass("active");
+
+    $("#btn-master-user").removeClass("font-weight-bold");
+    $("#btn-master-access").removeClass("font-weight-bold");
+    $("#btn-master-kategori").removeClass("font-weight-bold");
+    $("#btn-master-kategori-paket").addClass("font-weight-bold");
+    $("#btn-master-product").removeClass("font-weight-bold");
+    $("#btn-master-paket").removeClass("font-weight-bold");
+
+    $("#drop-order").removeClass("active");
+    $("#drop-schedule").removeClass('active');
+    $("#drop-payment").removeClass("active");
+    $("#drop-invoice-os").removeClass('active');
+    $("#drop-invoice-ls").removeClass("active");
+    $("#drop-message").removeClass('active');
 
     $(document).ready(function() {
         $.ajaxSetup({

@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
                                     <form class="row" id="form_input" action="{{route('api.paket.store')}}" method="post" enctype="multipart/form-data">
-                                        
+
                                         <input type="hidden" name="state" id="state">
                                         <input type="hidden" id="sysid" name="sysid">
                                         <div class="col-md-12">
@@ -78,7 +78,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="kategori">Kategori <span style="color: red;">*</span></label>
-                                                <select id="kategori" name="kategori" class="form-control" >
+                                                <select id="kategori" name="kategori" class="form-control">
                                                     <option value=0>Pilih Kategori</option>
                                                     <option value=1>Paket Lite</option>
                                                     <option value=2>Paket Medium</option>
@@ -243,7 +243,22 @@
 
 <script>
     $("#drop-dashboard").removeClass('active');
+    $("#drop-banner").removeClass('active');
     $("#drop-master").addClass("active");
+
+    $("#btn-master-user").removeClass("font-weight-bold");
+    $("#btn-master-access").removeClass("font-weight-bold");
+    $("#btn-master-kategori").removeClass("font-weight-bold");
+    $("#btn-master-kategori-paket").removeClass("font-weight-bold");
+    $("#btn-master-product").removeClass("font-weight-bold");
+    $("#btn-master-paket").addClass("font-weight-bold");
+
+    $("#drop-order").removeClass("active");
+    $("#drop-schedule").removeClass('active');
+    $("#drop-payment").removeClass("active");
+    $("#drop-invoice-os").removeClass('active');
+    $("#drop-invoice-ls").removeClass("active");
+    $("#drop-message").removeClass('active');
 
     $(".btn-tambah").click(function() {
         var html = $(".clone").html();
@@ -359,7 +374,7 @@
                         data: "nama",
                         name: "nama",
                         visible: true
-                    }, 
+                    },
                     {
                         data: "id_kategori",
                         name: "id_kategori",
@@ -369,7 +384,7 @@
                         data: "nama_kategori",
                         name: "nama_kategori",
                         visible: true
-                    },                       
+                    },
                     {
                         data: "file_name",
                         name: "file_name",
@@ -382,7 +397,8 @@
                     }, // 9
                     {
                         data: "harga",
-                        name: "harga", render: function (d) {
+                        name: "harga",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                     }, // 9
@@ -419,20 +435,41 @@
                 ajax: {
                     url: "{{route('api.paket.list.dtl')}}",
                     type: "GET",
-                    data: {id_hdr:id_hdr},
+                    data: {
+                        id_hdr: id_hdr
+                    },
                 },
-                columns: [
-                    { data: "id", name: "id", visible: false }, // 0
-                    { data: "DT_RowIndex", name: "DT_RowIndex", orderable: false, searchable: false }, // 1
+                columns: [{
+                        data: "id",
+                        name: "id",
+                        visible: false
+                    }, // 0
+                    {
+                        data: "DT_RowIndex",
+                        name: "DT_RowIndex",
+                        orderable: false,
+                        searchable: false
+                    }, // 1
                     // { data: "kode", name: "kode", visible: true }, // 2
-                    { data: "nama", name: "nama", visible: true }, // 3              
-                    { data: "action", name: "action", visible: true }, // 4
+                    {
+                        data: "nama",
+                        name: "nama",
+                        visible: true
+                    }, // 3              
+                    {
+                        data: "action",
+                        name: "action",
+                        visible: true
+                    }, // 4
                 ],
                 //      aligment left, right, center row dan coloumn
-                order: [["0", "desc"]],
-                columnDefs: [
-                    { className: "text-center", targets: [0, 1, 2, 3] },                
+                order: [
+                    ["0", "desc"]
                 ],
+                columnDefs: [{
+                    className: "text-center",
+                    targets: [0, 1, 2, 3]
+                }, ],
                 bAutoWidth: false,
                 responsive: true,
             });
@@ -478,22 +515,44 @@
                     url: "{{route('api.order.list.barang')}}",
                     type: "GET",
                 },
-                columns: [
-                    { data: "id", name: "id", visible: false }, // 0
-                    { data: "DT_RowIndex", name: "DT_RowIndex", orderable: false, searchable: false }, // 1
+                columns: [{
+                        data: "id",
+                        name: "id",
+                        visible: false
+                    }, // 0
+                    {
+                        data: "DT_RowIndex",
+                        name: "DT_RowIndex",
+                        orderable: false,
+                        searchable: false
+                    }, // 1
                     // { data: "kode", name: "kode", visible: true }, // 2
-                    { data: "nama", name: "nama", visible: true }, // 3
-                    { data: "harga", name: "harga", render: function (d) {
+                    {
+                        data: "nama",
+                        name: "nama",
+                        visible: true
+                    }, // 3
+                    {
+                        data: "harga",
+                        name: "harga",
+                        render: function(d) {
                             return currencyFormat(d);
                         },
                     }, // 3
-                    { data: "keterangan", name: "keterangan", visible: true }, // 4                
+                    {
+                        data: "keterangan",
+                        name: "keterangan",
+                        visible: true
+                    }, // 4                
                 ],
                 //      aligment left, right, center row dan coloumn
-                order: [["0", "desc"]],
-                columnDefs: [
-                    { className: "text-center", targets: [0, 1, 2, 3] },                
+                order: [
+                    ["0", "desc"]
                 ],
+                columnDefs: [{
+                    className: "text-center",
+                    targets: [0, 1, 2, 3]
+                }, ],
                 bAutoWidth: false,
                 responsive: true,
             });
@@ -740,18 +799,17 @@
             $('#modal_browse_barang').appendTo("body"); //Agar posisi modal paling awal
         });
 
-        $("#datatable_list_barang tbody").on("click", "tr", function () {
+        $("#datatable_list_barang tbody").on("click", "tr", function() {
             var table = $("#datatable_list_barang").DataTable();
             var data = table.row(this).data();
             var row = $(this).closest("tr");
 
             if ($(this).hasClass('selected')) {
                 $(this).removeClass('selected');
-            }
-            else {
+            } else {
                 table.$('tr.selected').removeClass('selected');
                 $(this).addClass('selected');
-            }        
+            }
         });
 
         $('.btn_select_barang').click(function(event) {

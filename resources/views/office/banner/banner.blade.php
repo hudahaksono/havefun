@@ -60,7 +60,7 @@
                                         <input id="nama" name="nama" class="form-control" type="text" />
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="keterangan">Keterangan <span style="color: red;">*</span></label>
@@ -112,7 +112,22 @@
 <script src="{{ asset('js/jquery.form.js') }}"></script>
 <script>
     $("#drop-dashboard").removeClass('active');
-    $("#drop-master").addClass("active");
+    $("#drop-banner").addClass('active');
+    $("#drop-master").removeClass("active");
+
+    $("#btn-master-user").removeClass("font-weight-bold");
+    $("#btn-master-access").removeClass("font-weight-bold");
+    $("#btn-master-kategori").removeClass("font-weight-bold");
+    $("#btn-master-kategori-paket").removeClass("font-weight-bold");
+    $("#btn-master-product").removeClass("font-weight-bold");
+    $("#btn-master-paket").removeClass("font-weight-bold");
+
+    $("#drop-order").removeClass("active");
+    $("#drop-schedule").removeClass('active');
+    $("#drop-payment").removeClass("active");
+    $("#drop-invoice-os").removeClass('active');
+    $("#drop-invoice-ls").removeClass("active");
+    $("#drop-message").removeClass('active');
 
     // $(".btn-tambah").click(function() {
     //     var html = $(".clone").html();
@@ -202,7 +217,7 @@
 
         list_data();
         $('#tambah_data').click(function() {
-        	$('#sysid').val('');
+            $('#sysid').val('');
             $('#nama').val('');
             $('#keterangan').val('');
 
@@ -217,12 +232,12 @@
         });
 
         $("#tbl_list_hdr tbody").on("click", "td:nth-child(3)", function() {
-			var $row = $(this).closest("tr");
-			var data = $("#tbl_list_hdr").DataTable().row($row).data();
-			file_name = data["file_name"];
-			// alert(file_name);
-			window.open("/master-banner/view_file/" + file_name, "_blank");
-		});
+            var $row = $(this).closest("tr");
+            var data = $("#tbl_list_hdr").DataTable().row($row).data();
+            file_name = data["file_name"];
+            // alert(file_name);
+            window.open("/master-banner/view_file/" + file_name, "_blank");
+        });
 
         $("body").on("click", ".btn-upload", function(e) {
             $(this).parents("form").ajaxForm(options);
@@ -238,7 +253,7 @@
                         timer: 4000,
                         showConfirmButton: true
                     });
-                    window.location ="{{route('master-banner')}}";
+                    window.location = "{{route('master-banner')}}";
                 } else {
                     // printErrorMsg(response.responseJSON.error);
                     swal({
