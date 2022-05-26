@@ -36,7 +36,13 @@
                     </ul>
                 </div>
                 <ul class="navbar-nav navbar-right">
-                    <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i>
+                    <li class="dropdown dropdown-list-toggle">
+                        <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg">
+                            <span style="margin-left:15px;position:absolute;background:red;border-radius:50%;width:20px;height:20px">
+                                <p style="position:absolute;padding-left:7px;bottom:-21px;font-weight:bold;color:white">1</p>
+                            </span>
+                            <i data-feather="bell" class="bell">
+                            </i>
                         </a>
                         <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                             <div class="dropdown-header">
